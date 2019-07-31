@@ -1,0 +1,197 @@
+2019-07-31 16:19:35.639 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  The following profiles are active: dev
+2019-07-31 16:19:35.667 [ERROR] [main] [org.springframework.boot.SpringApplication]  -  Application run failed
+java.lang.AbstractMethodError: null
+	at org.springframework.core.OrderComparator.findOrder(OrderComparator.java:141)
+	at org.springframework.core.annotation.AnnotationAwareOrderComparator.findOrder(AnnotationAwareOrderComparator.java:65)
+	at org.springframework.core.OrderComparator.getOrder(OrderComparator.java:124)
+	at org.springframework.core.OrderComparator.getOrder(OrderComparator.java:112)
+	at org.springframework.core.OrderComparator.doCompare(OrderComparator.java:81)
+	at org.springframework.core.OrderComparator.compare(OrderComparator.java:68)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:360)
+	at java.util.TimSort.sort(TimSort.java:220)
+	at java.util.Arrays.sort(Arrays.java:1512)
+	at java.util.ArrayList.sort(ArrayList.java:1462)
+	at org.springframework.boot.SpringApplication.asUnmodifiableOrderedSet(SpringApplication.java:1308)
+	at org.springframework.boot.SpringApplication.getListeners(SpringApplication.java:1218)
+	at org.springframework.boot.context.event.EventPublishingRunListener.contextLoaded(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.contextLoaded(SpringApplicationRunListeners.java:66)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:382)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
+	at com.jinyafu.thirdpart.ThirdPartServerApplication.main(ThirdPartServerApplication.java:11)
+2019-07-31 16:23:32.759 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  The following profiles are active: dev
+2019-07-31 16:23:32.789 [ERROR] [main] [org.springframework.boot.SpringApplication]  -  Application run failed
+java.lang.AbstractMethodError: null
+	at org.springframework.core.OrderComparator.findOrder(OrderComparator.java:141)
+	at org.springframework.core.annotation.AnnotationAwareOrderComparator.findOrder(AnnotationAwareOrderComparator.java:65)
+	at org.springframework.core.OrderComparator.getOrder(OrderComparator.java:124)
+	at org.springframework.core.OrderComparator.getOrder(OrderComparator.java:112)
+	at org.springframework.core.OrderComparator.doCompare(OrderComparator.java:81)
+	at org.springframework.core.OrderComparator.compare(OrderComparator.java:68)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:360)
+	at java.util.TimSort.sort(TimSort.java:220)
+	at java.util.Arrays.sort(Arrays.java:1512)
+	at java.util.ArrayList.sort(ArrayList.java:1462)
+	at org.springframework.boot.SpringApplication.asUnmodifiableOrderedSet(SpringApplication.java:1308)
+	at org.springframework.boot.SpringApplication.getListeners(SpringApplication.java:1218)
+	at org.springframework.boot.context.event.EventPublishingRunListener.contextLoaded(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.contextLoaded(SpringApplicationRunListeners.java:66)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:382)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
+	at com.jinyafu.thirdpart.ThirdPartServerApplication.main(ThirdPartServerApplication.java:11)
+2019-07-31 16:55:42.184 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:55:43.528 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[default], label=null, version=null, state=null
+2019-07-31 16:55:43.536 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[]}
+2019-07-31 16:55:43.568 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  The following profiles are active: dev
+2019-07-31 16:55:43.586 [INFO ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6579c3d9: startup date [Wed Jul 31 16:55:43 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@40dff0b7
+2019-07-31 16:55:43.991 [INFO ] [main] [org.springframework.beans.factory.support.DefaultListableBeanFactory]  -  Overriding bean definition for bean 'routingDataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=dataSourceConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=mybatisPlusConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/MybatisPlusConfig.class]]
+2019-07-31 16:55:44.136 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.thirdpart]' package. Please check your configuration.
+2019-07-31 16:55:44.330 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.jmall.mapper.pay]' package. Please check your configuration.
+2019-07-31 16:55:44.358 [WARN ] [main] [org.springframework.context.annotation.ConfigurationClassPostProcessor]  -  Cannot enhance @Configuration bean definition 'mybatisPlusConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2019-07-31 16:55:44.464 [INFO ] [main] [org.springframework.cloud.context.scope.GenericScope]  -  BeanFactory id=e2d5f42e-f253-3ad6-bf4d-1924b952031c
+2019-07-31 16:55:44.484 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:55:44.636 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bb090ee] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:55:44.680 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$27ca93eb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:55:45.134 [INFO ] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]  -  Tomcat initialized with port(s): 6603 (http)
+2019-07-31 16:55:45.256 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Starting service [Tomcat]
+2019-07-31 16:55:45.262 [INFO ] [main] [org.apache.catalina.core.StandardEngine]  -  Starting Servlet Engine: Apache Tomcat/8.5.39
+2019-07-31 16:55:45.268 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.AprLifecycleListener]  -  The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Program Files (x86)\NetSarang\Xshell 6\;D:\Program Files (x86)\NetSarang\Xftp 6\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\apache-maven-3.5.0\bin;D:\Program Files\TortoiseGit\bin;D:\Program Files\erl9.3\bin;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin;C:\Users\000062064\AppData\Local\Microsoft\WindowsApps;C:\Users\000062064\AppData\Local\GitHubDesktop\bin;.]
+2019-07-31 16:55:45.454 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]]  -  Initializing Spring embedded WebApplicationContext
+2019-07-31 16:55:45.455 [INFO ] [localhost-startStop-1] [org.springframework.web.context.ContextLoader]  -  Root WebApplicationContext: initialization completed in 1869 ms
+2019-07-31 16:55:45.557 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.ServletRegistrationBean]  -  Servlet dispatcherServlet mapped to [/]
+2019-07-31 16:55:45.564 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-31 16:55:45.564 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-31 16:55:45.565 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-31 16:55:45.570 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-31 16:55:49.547 [WARN ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/jinyafu/thirdpart/config/MybatisPlusConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.io.FileNotFoundException: class path resource [mapper/pay/] cannot be resolved to URL because it does not exist
+2019-07-31 16:55:49.554 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Stopping service [Tomcat]
+2019-07-31 16:55:49.577 [WARN ] [localhost-startStop-1] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:55:49.583 [WARN ] [localhost-startStop-1] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:215)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2078)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1093)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:55:49.594 [INFO ] [main] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener]  -  
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-31 16:55:49.607 [ERROR] [main] [org.springframework.boot.SpringApplication]  -  Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [com/jinyafu/thirdpart/config/MybatisPlusConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.io.FileNotFoundException: class path resource [mapper/pay/] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:591)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1246)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:762)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:881)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
+	at com.jinyafu.thirdpart.ThirdPartServerApplication.main(ThirdPartServerApplication.java:11)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.ibatis.session.SqlSessionFactory]: Factory method 'sqlSessionFactory' threw exception; nested exception is java.io.FileNotFoundException: class path resource [mapper/pay/] cannot be resolved to URL because it does not exist
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:583)
+	... 18 common frames omitted
+Caused by: java.io.FileNotFoundException: class path resource [mapper/pay/] cannot be resolved to URL because it does not exist
+	at org.springframework.core.io.ClassPathResource.getURL(ClassPathResource.java:195)
+	at org.springframework.core.io.support.PathMatchingResourcePatternResolver.findPathMatchingResources(PathMatchingResourcePatternResolver.java:496)
+	at org.springframework.core.io.support.PathMatchingResourcePatternResolver.getResources(PathMatchingResourcePatternResolver.java:297)
+	at com.jinyafu.thirdpart.config.MybatisPlusConfig.sqlSessionFactory(MybatisPlusConfig.java:119)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 19 common frames omitted
+2019-07-31 16:58:27.018 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:58:28.373 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[default], label=null, version=null, state=null
+2019-07-31 16:58:28.382 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[]}
+2019-07-31 16:58:28.416 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  The following profiles are active: dev
+2019-07-31 16:58:28.429 [INFO ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@907f2b7: startup date [Wed Jul 31 16:58:28 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@93cf163
+2019-07-31 16:58:29.222 [INFO ] [main] [org.springframework.cloud.context.scope.GenericScope]  -  BeanFactory id=f7974725-011f-33dd-9fb2-b40f699718ee
+2019-07-31 16:58:29.248 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:58:29.371 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$dbfe9067] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:58:29.812 [INFO ] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]  -  Tomcat initialized with port(s): 6603 (http)
+2019-07-31 16:58:29.844 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Starting service [Tomcat]
+2019-07-31 16:58:29.845 [INFO ] [main] [org.apache.catalina.core.StandardEngine]  -  Starting Servlet Engine: Apache Tomcat/8.5.39
+2019-07-31 16:58:29.857 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.AprLifecycleListener]  -  The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Program Files (x86)\NetSarang\Xshell 6\;D:\Program Files (x86)\NetSarang\Xftp 6\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\apache-maven-3.5.0\bin;D:\Program Files\TortoiseGit\bin;D:\Program Files\erl9.3\bin;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin;C:\Users\000062064\AppData\Local\Microsoft\WindowsApps;C:\Users\000062064\AppData\Local\GitHubDesktop\bin;.]
+2019-07-31 16:58:30.033 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]]  -  Initializing Spring embedded WebApplicationContext
+2019-07-31 16:58:30.033 [INFO ] [localhost-startStop-1] [org.springframework.web.context.ContextLoader]  -  Root WebApplicationContext: initialization completed in 1604 ms
+2019-07-31 16:58:30.132 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.ServletRegistrationBean]  -  Servlet dispatcherServlet mapped to [/]
+2019-07-31 16:58:30.141 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-31 16:58:30.141 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-31 16:58:30.141 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-31 16:58:30.141 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-31 16:58:30.291 [INFO ] [main] [org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor]  -  Initializing ExecutorService 'taskExecutor'
+2019-07-31 16:58:30.361 [WARN ] [main] [com.netflix.config.sources.URLConfigurationSource]  -  No URLs will be polled as dynamic configuration sources.
+2019-07-31 16:58:30.361 [INFO ] [main] [com.netflix.config.sources.URLConfigurationSource]  -  To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-07-31 16:58:30.366 [WARN ] [main] [com.netflix.config.sources.URLConfigurationSource]  -  No URLs will be polled as dynamic configuration sources.
+2019-07-31 16:58:30.367 [INFO ] [main] [com.netflix.config.sources.URLConfigurationSource]  -  To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-07-31 16:58:30.466 [INFO ] [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]  -  Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-31 16:58:30.708 [INFO ] [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter]  -  Looking for @ControllerAdvice: org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@907f2b7: startup date [Wed Jul 31 16:58:28 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@93cf163
+2019-07-31 16:58:30.779 [INFO ] [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]  -  Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2019-07-31 16:58:30.786 [INFO ] [main] [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping]  -  Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-07-31 16:58:30.821 [INFO ] [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]  -  Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-31 16:58:30.822 [INFO ] [main] [org.springframework.web.servlet.handler.SimpleUrlHandlerMapping]  -  Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2019-07-31 16:58:31.087 [INFO ] [main] [org.springframework.ui.freemarker.SpringTemplateLoader]  -  SpringTemplateLoader for FreeMarker: using resource loader [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@907f2b7: startup date [Wed Jul 31 16:58:28 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@93cf163] and template loader path [classpath:/templates/]
+2019-07-31 16:58:31.093 [INFO ] [main] [org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer]  -  ClassTemplateLoader for Spring macros added to FreeMarker configuration
+2019-07-31 16:58:31.122 [WARN ] [main] [org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration]  -  Cannot find template location(s): [classpath:/templates/] (please add some templates, check your FreeMarker configuration, or set spring.freemarker.checkTemplateLocation=false)
+2019-07-31 16:58:32.549 [INFO ] [main] [org.springframework.cloud.commons.util.InetUtils]  -  Cannot determine local hostname
+2019-07-31 16:58:33.734 [INFO ] [main] [org.springframework.cloud.commons.util.InetUtils]  -  Cannot determine local hostname
+2019-07-31 16:58:33.947 [INFO ] [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter]  -  Registering beans for JMX exposure on startup
+2019-07-31 16:58:33.957 [INFO ] [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter]  -  Bean with name 'refreshScope' has been autodetected for JMX exposure
+2019-07-31 16:58:33.964 [INFO ] [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter]  -  Bean with name 'configurationPropertiesRebinder' has been autodetected for JMX exposure
+2019-07-31 16:58:33.965 [INFO ] [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter]  -  Bean with name 'environmentManager' has been autodetected for JMX exposure
+2019-07-31 16:58:33.974 [INFO ] [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter]  -  Located managed bean 'environmentManager': registering with JMX server as MBean [org.springframework.cloud.context.environment:name=environmentManager,type=EnvironmentManager]
+2019-07-31 16:58:33.988 [INFO ] [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter]  -  Located managed bean 'refreshScope': registering with JMX server as MBean [org.springframework.cloud.context.scope.refresh:name=refreshScope,type=RefreshScope]
+2019-07-31 16:58:34.003 [INFO ] [main] [org.springframework.jmx.export.annotation.AnnotationMBeanExporter]  -  Located managed bean 'configurationPropertiesRebinder': registering with JMX server as MBean [org.springframework.cloud.context.properties:name=configurationPropertiesRebinder,context=907f2b7,type=ConfigurationPropertiesRebinder]
+2019-07-31 16:58:34.014 [INFO ] [main] [org.springframework.context.support.DefaultLifecycleProcessor]  -  Starting beans in phase 0
+2019-07-31 16:58:34.037 [INFO ] [main] [org.springframework.cloud.netflix.eureka.InstanceInfoFactory]  -  Setting initial instance status as: STARTING
+2019-07-31 16:58:34.087 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Initializing Eureka in region us-east-1
+2019-07-31 16:58:34.375 [INFO ] [main] [com.netflix.discovery.provider.DiscoveryJerseyProvider]  -  Using JSON encoding codec LegacyJacksonJson
+2019-07-31 16:58:34.375 [INFO ] [main] [com.netflix.discovery.provider.DiscoveryJerseyProvider]  -  Using JSON decoding codec LegacyJacksonJson
+2019-07-31 16:58:34.526 [INFO ] [main] [com.netflix.discovery.provider.DiscoveryJerseyProvider]  -  Using XML encoding codec XStreamXml
+2019-07-31 16:58:34.527 [INFO ] [main] [com.netflix.discovery.provider.DiscoveryJerseyProvider]  -  Using XML decoding codec XStreamXml
+2019-07-31 16:58:34.773 [INFO ] [main] [com.netflix.discovery.shared.resolver.aws.ConfigClusterResolver]  -  Resolving eureka endpoints via configuration
+2019-07-31 16:58:34.865 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Disable delta property : false
+2019-07-31 16:58:34.872 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Single vip registry refresh property : null
+2019-07-31 16:58:34.872 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Force full registry fetch : false
+2019-07-31 16:58:34.872 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Application is null : false
+2019-07-31 16:58:34.872 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Registered Applications size is zero : true
+2019-07-31 16:58:34.872 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Application version is -1: true
+2019-07-31 16:58:34.872 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Getting all instance registry info from the eureka server
+2019-07-31 16:58:35.045 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  The response status is 200
+2019-07-31 16:58:35.049 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Starting heartbeat executor: renew interval is: 30
+2019-07-31 16:58:35.059 [INFO ] [main] [com.netflix.discovery.InstanceInfoReplicator]  -  InstanceInfoReplicator onDemand update allowed rate per min is 4
+2019-07-31 16:58:35.063 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Discovery Client initialized at timestamp 1564563515062 with initial instances count: 7
+2019-07-31 16:58:35.068 [INFO ] [main] [org.springframework.cloud.netflix.eureka.serviceregistry.EurekaServiceRegistry]  -  Registering application THIRD-PART-SERVER with eureka with status UP
+2019-07-31 16:58:35.069 [INFO ] [main] [com.netflix.discovery.DiscoveryClient]  -  Saw local status change event StatusChangeEvent [timestamp=1564563515069, current=UP, previous=STARTING]
+2019-07-31 16:58:35.071 [INFO ] [DiscoveryClient-InstanceInfoReplicator-0] [com.netflix.discovery.DiscoveryClient]  -  DiscoveryClient_THIRD-PART-SERVER/localhost:third-part-server:6603: registering service...
+2019-07-31 16:58:35.116 [INFO ] [DiscoveryClient-InstanceInfoReplicator-0] [com.netflix.discovery.DiscoveryClient]  -  DiscoveryClient_THIRD-PART-SERVER/localhost:third-part-server:6603 - registration status: 204
+2019-07-31 16:58:35.124 [INFO ] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]  -  Tomcat started on port(s): 6603 (http) with context path ''
+2019-07-31 16:58:35.126 [INFO ] [main] [org.springframework.cloud.netflix.eureka.serviceregistry.EurekaAutoServiceRegistration]  -  Updating port to 6603
+2019-07-31 16:58:35.134 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  Started ThirdPartServerApplication in 12.031 seconds (JVM running for 13.183)

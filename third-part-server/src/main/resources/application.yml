@@ -1,0 +1,87 @@
+server:
+  port: 6603
+
+#spring:
+#  cloud:
+#    config: # 配置中心
+#      name: third-part-server
+#      profile: ${config.name:dev}
+      #label: master
+#      uri: http://127.0.0.1:${config.port:8888}
+
+
+spring:
+  profile: dev #开发环境
+  profiles:
+    active: dev #使用开发环境
+  application:
+    name: third-part-server
+  # 关闭热部署
+  devtools:
+    restart:
+      enabled: false
+  # redis集群配置
+  redis:
+    cluster:
+      #各Redis 节点信息
+      nodes: 192.168.100.31:7000,192.168.100.31:7001,192.168.100.31:7002,192.168.100.31:7003,192.168.100.31:7004,192.168.100.31:7005
+      #执行命令超时时间
+      command-timeout: 15000
+      #重试次数
+      max-attempts: 5
+      #跨集群执行命令时要遵循的最大重定向数量
+      max-redirects: 3
+      #连接池最大连接数（使用负值表示没有限制）
+      max-active: 16
+      #连接池最大阻塞等待时间（使用负值表示没有限制）
+      max-wait: -1
+      #连接池中的最大空闲连接
+      max-idle: 8
+      #连接池中的最小空闲连接
+      min-idle: 0
+      #是否在从池中取出连接前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个
+      test-on-borrow: true
+
+#超时配置
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+  #对当前实例的重试次数
+  MaxAutoRetries: 1
+  #切换实例的重试次数
+  MaxAutoRetriesNextServer: 1
+  OkToRetryOnAllOperations: true # 是否对所有请求都进行重试
+  eureka:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          strategy: SEMAPHORE
+          thread:
+            # 网关中路由转发请求的HystrixCommand超时时间，hystrix超时时间的计算： (ribbonReadTimeout + ribbonConnectTimeout) * (maxAutoRetries + 1) * (maxAutoRetriesNextServer + 1)
+            timeoutInMilliseconds: 50000
+  #上下文共享
+  shareSecurityContext: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8099/eureka/
+    #healthcheck:
+      #enabled: true
+  instance:
+    # 使用IP注册
+    #prefer-ip-address: true
+    #instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    statusPageUrl: https://${eureka.hostname}:${server.port}/info
+    healthCheckUrl: https://${eureka.hostname}:${server.port}/health
+    homePageUrl: https://${eureka.hostname}:${server.port}/
+
+#日志配置
+logging:
+  config: classpath:logback-spring.xml

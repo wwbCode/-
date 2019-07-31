@@ -1,0 +1,456 @@
+2019-07-31 16:19:32.359 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@31d0e481: startup date [Wed Jul 31 16:19:32 CST 2019]; root of context hierarchy
+2019-07-31 16:19:32.662 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:19:32.713 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$d4771064] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:19:34.208 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:19:35.588 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[dev], label=null, version=null, state=null
+2019-07-31 16:19:35.597 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='file:///C://Users/000062064/IdeaProjects/config-center/master/third-part-server-dev.yml'}]}
+2019-07-31 16:23:29.539 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@14dda234: startup date [Wed Jul 31 16:23:29 CST 2019]; root of context hierarchy
+2019-07-31 16:23:29.839 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:23:29.892 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$74950fcc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:23:31.347 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:23:32.705 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[dev], label=null, version=null, state=null
+2019-07-31 16:23:32.715 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[MapPropertySource {name='file:///C://Users/000062064/IdeaProjects/config-center/master/third-part-server-dev.yml'}]}
+2019-07-31 16:26:35.986 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@5a9d6f02: startup date [Wed Jul 31 16:26:35 CST 2019]; root of context hierarchy
+2019-07-31 16:26:36.289 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:26:36.340 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$2ea367e0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:26:37.798 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:26:39.300 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[dev], label=null, version=null, state=null
+2019-07-31 16:26:39.308 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[]}
+2019-07-31 16:26:39.312 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  No active profile set, falling back to default profiles: default
+2019-07-31 16:26:39.345 [ERROR] [main] [org.springframework.boot.SpringApplication]  -  Application run failed
+java.lang.AbstractMethodError: null
+	at org.springframework.core.OrderComparator.findOrder(OrderComparator.java:141)
+	at org.springframework.core.annotation.AnnotationAwareOrderComparator.findOrder(AnnotationAwareOrderComparator.java:65)
+	at org.springframework.core.OrderComparator.getOrder(OrderComparator.java:124)
+	at org.springframework.core.OrderComparator.getOrder(OrderComparator.java:112)
+	at org.springframework.core.OrderComparator.doCompare(OrderComparator.java:81)
+	at org.springframework.core.OrderComparator.compare(OrderComparator.java:68)
+	at java.util.TimSort.countRunAndMakeAscending(TimSort.java:360)
+	at java.util.TimSort.sort(TimSort.java:220)
+	at java.util.Arrays.sort(Arrays.java:1512)
+	at java.util.ArrayList.sort(ArrayList.java:1462)
+	at org.springframework.boot.SpringApplication.asUnmodifiableOrderedSet(SpringApplication.java:1308)
+	at org.springframework.boot.SpringApplication.getListeners(SpringApplication.java:1218)
+	at org.springframework.boot.context.event.EventPublishingRunListener.contextLoaded(EventPublishingRunListener.java:85)
+	at org.springframework.boot.SpringApplicationRunListeners.contextLoaded(SpringApplicationRunListeners.java:66)
+	at org.springframework.boot.SpringApplication.prepareContext(SpringApplication.java:382)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:305)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
+	at com.jinyafu.thirdpart.ThirdPartServerApplication.main(ThirdPartServerApplication.java:11)
+2019-07-31 16:28:52.950 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@7cbc3762: startup date [Wed Jul 31 16:28:52 CST 2019]; root of context hierarchy
+2019-07-31 16:28:53.221 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:28:53.272 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e48d43e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:28:54.754 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:28:56.133 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=application, profiles=[default], label=null, version=null, state=null
+2019-07-31 16:28:56.143 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[]}
+2019-07-31 16:28:56.147 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  No active profile set, falling back to default profiles: default
+2019-07-31 16:28:56.166 [INFO ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1f86099a: startup date [Wed Jul 31 16:28:56 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@7cbc3762
+2019-07-31 16:28:56.939 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.thirdpart]' package. Please check your configuration.
+2019-07-31 16:28:57.188 [INFO ] [main] [org.springframework.data.repository.config.RepositoryConfigurationDelegate]  -  Multiple Spring Data modules found, entering strict repository configuration mode!
+2019-07-31 16:28:57.454 [INFO ] [main] [org.springframework.beans.factory.support.DefaultListableBeanFactory]  -  Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=refresh; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=false; primary=false; factoryBeanName=org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]] with [Root bean: class [org.springframework.aop.scope.ScopedProxyFactoryBean]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in BeanDefinition defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]]
+2019-07-31 16:28:57.646 [INFO ] [main] [org.springframework.cloud.context.scope.GenericScope]  -  BeanFactory id=33dc191b-bbfa-30e2-a6eb-a75e064a30f8
+2019-07-31 16:28:57.672 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:28:57.849 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c87340e7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:28:57.926 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e48d43e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:28:58.462 [INFO ] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]  -  Tomcat initialized with port(s): 6603 (http)
+2019-07-31 16:28:58.499 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Starting service [Tomcat]
+2019-07-31 16:28:58.504 [INFO ] [main] [org.apache.catalina.core.StandardEngine]  -  Starting Servlet Engine: Apache Tomcat/8.5.39
+2019-07-31 16:28:58.510 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.AprLifecycleListener]  -  The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Program Files (x86)\NetSarang\Xshell 6\;D:\Program Files (x86)\NetSarang\Xftp 6\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\apache-maven-3.5.0\bin;D:\Program Files\TortoiseGit\bin;D:\Program Files\erl9.3\bin;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin;C:\Users\000062064\AppData\Local\Microsoft\WindowsApps;C:\Users\000062064\AppData\Local\GitHubDesktop\bin;.]
+2019-07-31 16:28:58.723 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]]  -  Initializing Spring embedded WebApplicationContext
+2019-07-31 16:28:58.723 [INFO ] [localhost-startStop-1] [org.springframework.web.context.ContextLoader]  -  Root WebApplicationContext: initialization completed in 2557 ms
+2019-07-31 16:28:58.967 [WARN ] [localhost-startStop-1] [com.netflix.config.sources.URLConfigurationSource]  -  No URLs will be polled as dynamic configuration sources.
+2019-07-31 16:28:58.967 [INFO ] [localhost-startStop-1] [com.netflix.config.sources.URLConfigurationSource]  -  To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2019-07-31 16:28:58.988 [INFO ] [localhost-startStop-1] [com.netflix.config.DynamicPropertyFactory]  -  DynamicPropertyFactory is initialized with configuration sources: com.netflix.config.ConcurrentCompositeConfiguration@64cc9e40
+2019-07-31 16:28:59.328 [ERROR] [localhost-startStop-1] [org.springframework.boot.web.embedded.tomcat.TomcatStarter]  -  Error starting Tomcat context. Exception: org.springframework.beans.factory.BeanCreationException. Message: Error creating bean with name 'servletEndpointRegistrar' defined in class path resource [org/springframework/boot/actuate/autoconfigure/endpoint/web/ServletEndpointManagementContextConfiguration$WebMvcServletEndpointManagementContextConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.endpoint.web.ServletEndpointRegistrar]: Factory method 'servletEndpointRegistrar' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'healthEndpoint' defined in class path resource [org/springframework/boot/actuate/autoconfigure/health/HealthEndpointConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.health.HealthEndpoint]: Factory method 'healthEndpoint' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthIndicatorAutoConfiguration': Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.boot.actuate.autoconfigure.jdbc.DataSourceHealthIndicatorAutoConfiguration$$EnhancerBySpringCGLIB$$3757926d]: Constructor threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource': Post-processing of FactoryBean's singleton object failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'scopedTarget.dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception; nested exception is org.springframework.boot.autoconfigure.jdbc.DataSourceProperties$DataSourceBeanCreationException: Failed to determine a suitable driver class
+2019-07-31 16:28:59.344 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Stopping service [Tomcat]
+2019-07-31 16:28:59.361 [WARN ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat
+2019-07-31 16:28:59.377 [INFO ] [main] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener]  -  
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-31 16:28:59.379 [ERROR] [main] [org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter]  -  
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2019-07-31 16:49:32.700 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@66565121: startup date [Wed Jul 31 16:49:32 CST 2019]; root of context hierarchy
+2019-07-31 16:49:32.955 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:49:33.004 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e0965c1e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:49:34.458 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:49:35.814 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[dev], label=null, version=null, state=null
+2019-07-31 16:49:35.822 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[]}
+2019-07-31 16:49:35.827 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  No active profile set, falling back to default profiles: default
+2019-07-31 16:49:35.844 [INFO ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@654c1a54: startup date [Wed Jul 31 16:49:35 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@66565121
+2019-07-31 16:49:36.253 [INFO ] [main] [org.springframework.beans.factory.support.DefaultListableBeanFactory]  -  Overriding bean definition for bean 'routingDataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=dataSourceConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=mybatisPlusConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/MybatisPlusConfig.class]]
+2019-07-31 16:49:36.391 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.thirdpart]' package. Please check your configuration.
+2019-07-31 16:49:36.564 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.jmall.mapper.pay]' package. Please check your configuration.
+2019-07-31 16:49:36.593 [WARN ] [main] [org.springframework.context.annotation.ConfigurationClassPostProcessor]  -  Cannot enhance @Configuration bean definition 'mybatisPlusConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2019-07-31 16:49:36.704 [INFO ] [main] [org.springframework.cloud.context.scope.GenericScope]  -  BeanFactory id=e2d5f42e-f253-3ad6-bf4d-1924b952031c
+2019-07-31 16:49:36.724 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:49:36.861 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c47c5921] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:49:36.904 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e0965c1e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:49:37.360 [INFO ] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]  -  Tomcat initialized with port(s): 6603 (http)
+2019-07-31 16:49:37.396 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Starting service [Tomcat]
+2019-07-31 16:49:37.404 [INFO ] [main] [org.apache.catalina.core.StandardEngine]  -  Starting Servlet Engine: Apache Tomcat/8.5.39
+2019-07-31 16:49:37.415 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.AprLifecycleListener]  -  The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Program Files (x86)\NetSarang\Xshell 6\;D:\Program Files (x86)\NetSarang\Xftp 6\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\apache-maven-3.5.0\bin;D:\Program Files\TortoiseGit\bin;D:\Program Files\erl9.3\bin;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin;C:\Users\000062064\AppData\Local\Microsoft\WindowsApps;C:\Users\000062064\AppData\Local\GitHubDesktop\bin;.]
+2019-07-31 16:49:37.678 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]]  -  Initializing Spring embedded WebApplicationContext
+2019-07-31 16:49:37.678 [INFO ] [localhost-startStop-1] [org.springframework.web.context.ContextLoader]  -  Root WebApplicationContext: initialization completed in 1834 ms
+2019-07-31 16:49:37.768 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.ServletRegistrationBean]  -  Servlet dispatcherServlet mapped to [/]
+2019-07-31 16:49:37.781 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-31 16:49:37.781 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-31 16:49:37.781 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-31 16:49:37.782 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-31 16:49:37.859 [WARN ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+2019-07-31 16:49:37.860 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Stopping service [Tomcat]
+2019-07-31 16:49:37.885 [WARN ] [localhost-startStop-1] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:49:37.886 [WARN ] [localhost-startStop-1] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:49:37.895 [INFO ] [main] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener]  -  
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-31 16:49:37.911 [ERROR] [main] [org.springframework.boot.SpringApplication]  -  Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:591)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1246)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:762)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:881)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
+	at com.jinyafu.thirdpart.ThirdPartServerApplication.main(ThirdPartServerApplication.java:11)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:583)
+	... 18 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at com.jinyafu.thirdpart.config.DataSourceConfig.masterDataSource(DataSourceConfig.java:40)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$4324a650.CGLIB$masterDataSource$3(<generated>)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$4324a650$$FastClassBySpringCGLIB$$486c64c0.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$4324a650.masterDataSource(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 19 common frames omitted
+2019-07-31 16:50:08.050 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@13d73fa: startup date [Wed Jul 31 16:50:08 CST 2019]; root of context hierarchy
+2019-07-31 16:50:08.319 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:50:08.362 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$d8dedaa1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:50:09.829 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:50:11.214 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[dev], label=null, version=null, state=null
+2019-07-31 16:50:11.224 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[]}
+2019-07-31 16:50:11.229 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  No active profile set, falling back to default profiles: default
+2019-07-31 16:50:11.254 [INFO ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@778ca8ef: startup date [Wed Jul 31 16:50:11 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@13d73fa
+2019-07-31 16:50:11.715 [INFO ] [main] [org.springframework.beans.factory.support.DefaultListableBeanFactory]  -  Overriding bean definition for bean 'routingDataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=dataSourceConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=mybatisPlusConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/MybatisPlusConfig.class]]
+2019-07-31 16:50:11.860 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.thirdpart]' package. Please check your configuration.
+2019-07-31 16:50:12.072 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.jmall.mapper.pay]' package. Please check your configuration.
+2019-07-31 16:50:12.112 [WARN ] [main] [org.springframework.context.annotation.ConfigurationClassPostProcessor]  -  Cannot enhance @Configuration bean definition 'mybatisPlusConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2019-07-31 16:50:12.216 [INFO ] [main] [org.springframework.cloud.context.scope.GenericScope]  -  BeanFactory id=e2d5f42e-f253-3ad6-bf4d-1924b952031c
+2019-07-31 16:50:12.235 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:50:12.400 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$bcc4d7a4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:50:12.444 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$d8dedaa1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:50:12.970 [INFO ] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]  -  Tomcat initialized with port(s): 6603 (http)
+2019-07-31 16:50:13.014 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Starting service [Tomcat]
+2019-07-31 16:50:13.014 [INFO ] [main] [org.apache.catalina.core.StandardEngine]  -  Starting Servlet Engine: Apache Tomcat/8.5.39
+2019-07-31 16:50:13.025 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.AprLifecycleListener]  -  The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Program Files (x86)\NetSarang\Xshell 6\;D:\Program Files (x86)\NetSarang\Xftp 6\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\apache-maven-3.5.0\bin;D:\Program Files\TortoiseGit\bin;D:\Program Files\erl9.3\bin;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin;C:\Users\000062064\AppData\Local\Microsoft\WindowsApps;C:\Users\000062064\AppData\Local\GitHubDesktop\bin;.]
+2019-07-31 16:50:13.288 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]]  -  Initializing Spring embedded WebApplicationContext
+2019-07-31 16:50:13.288 [INFO ] [localhost-startStop-1] [org.springframework.web.context.ContextLoader]  -  Root WebApplicationContext: initialization completed in 2034 ms
+2019-07-31 16:50:13.383 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.ServletRegistrationBean]  -  Servlet dispatcherServlet mapped to [/]
+2019-07-31 16:50:13.396 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-31 16:50:13.396 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-31 16:50:13.397 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-31 16:50:13.397 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-31 16:50:28.851 [WARN ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+2019-07-31 16:50:28.859 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Stopping service [Tomcat]
+2019-07-31 16:50:28.884 [WARN ] [localhost-startStop-2] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:50:28.885 [WARN ] [localhost-startStop-2] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:50:28.900 [INFO ] [main] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener]  -  
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-31 16:50:28.914 [ERROR] [main] [org.springframework.boot.SpringApplication]  -  Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:591)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1246)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:762)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:881)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
+	at com.jinyafu.thirdpart.ThirdPartServerApplication.main(ThirdPartServerApplication.java:11)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:583)
+	... 18 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at com.jinyafu.thirdpart.config.DataSourceConfig.masterDataSource(DataSourceConfig.java:40)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$3b6d24d3.CGLIB$masterDataSource$1(<generated>)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$3b6d24d3$$FastClassBySpringCGLIB$$a032843d.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$3b6d24d3.masterDataSource(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 19 common frames omitted
+2019-07-31 16:51:09.059 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@2d96543c: startup date [Wed Jul 31 16:51:09 CST 2019]; root of context hierarchy
+2019-07-31 16:51:09.368 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:51:09.428 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$572e2af2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:51:10.909 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:51:12.270 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[dev], label=null, version=null, state=null
+2019-07-31 16:51:12.280 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[]}
+2019-07-31 16:51:12.285 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  No active profile set, falling back to default profiles: default
+2019-07-31 16:51:12.305 [INFO ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@107e5441: startup date [Wed Jul 31 16:51:12 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@2d96543c
+2019-07-31 16:51:12.731 [INFO ] [main] [org.springframework.beans.factory.support.DefaultListableBeanFactory]  -  Overriding bean definition for bean 'routingDataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=dataSourceConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=mybatisPlusConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/MybatisPlusConfig.class]]
+2019-07-31 16:51:12.876 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.thirdpart]' package. Please check your configuration.
+2019-07-31 16:51:13.065 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.jmall.mapper.pay]' package. Please check your configuration.
+2019-07-31 16:51:13.095 [WARN ] [main] [org.springframework.context.annotation.ConfigurationClassPostProcessor]  -  Cannot enhance @Configuration bean definition 'mybatisPlusConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2019-07-31 16:51:13.223 [INFO ] [main] [org.springframework.cloud.context.scope.GenericScope]  -  BeanFactory id=e2d5f42e-f253-3ad6-bf4d-1924b952031c
+2019-07-31 16:51:13.243 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:51:13.387 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3b1427f5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:51:13.427 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$572e2af2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:51:13.916 [INFO ] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]  -  Tomcat initialized with port(s): 6603 (http)
+2019-07-31 16:51:13.960 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Starting service [Tomcat]
+2019-07-31 16:51:13.960 [INFO ] [main] [org.apache.catalina.core.StandardEngine]  -  Starting Servlet Engine: Apache Tomcat/8.5.39
+2019-07-31 16:51:13.972 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.AprLifecycleListener]  -  The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Program Files (x86)\NetSarang\Xshell 6\;D:\Program Files (x86)\NetSarang\Xftp 6\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\apache-maven-3.5.0\bin;D:\Program Files\TortoiseGit\bin;D:\Program Files\erl9.3\bin;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin;C:\Users\000062064\AppData\Local\Microsoft\WindowsApps;C:\Users\000062064\AppData\Local\GitHubDesktop\bin;.]
+2019-07-31 16:51:14.241 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]]  -  Initializing Spring embedded WebApplicationContext
+2019-07-31 16:51:14.241 [INFO ] [localhost-startStop-1] [org.springframework.web.context.ContextLoader]  -  Root WebApplicationContext: initialization completed in 1936 ms
+2019-07-31 16:51:14.334 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.ServletRegistrationBean]  -  Servlet dispatcherServlet mapped to [/]
+2019-07-31 16:51:14.347 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-31 16:51:14.348 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-31 16:51:14.348 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-31 16:51:14.348 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-31 16:51:14.427 [WARN ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+2019-07-31 16:51:14.428 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Stopping service [Tomcat]
+2019-07-31 16:51:14.442 [WARN ] [localhost-startStop-1] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:51:14.443 [WARN ] [localhost-startStop-1] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:51:14.469 [INFO ] [main] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener]  -  
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-31 16:51:14.485 [ERROR] [main] [org.springframework.boot.SpringApplication]  -  Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:591)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1246)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:762)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:881)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
+	at com.jinyafu.thirdpart.ThirdPartServerApplication.main(ThirdPartServerApplication.java:11)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:583)
+	... 18 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at com.jinyafu.thirdpart.config.DataSourceConfig.masterDataSource(DataSourceConfig.java:40)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$b9bc7524.CGLIB$masterDataSource$2(<generated>)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$b9bc7524$$FastClassBySpringCGLIB$$84b3ab27.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$b9bc7524.masterDataSource(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 19 common frames omitted
+2019-07-31 16:53:34.821 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@687ef2e0: startup date [Wed Jul 31 16:53:34 CST 2019]; root of context hierarchy
+2019-07-31 16:53:35.106 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:53:35.168 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$5e3efd79] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:53:36.658 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Fetching config from server at : http://localhost:8888
+2019-07-31 16:53:38.079 [INFO ] [main] [org.springframework.cloud.config.client.ConfigServicePropertySourceLocator]  -  Located environment: name=third-part-server, profiles=[dev], label=null, version=null, state=null
+2019-07-31 16:53:38.088 [INFO ] [main] [org.springframework.cloud.bootstrap.config.PropertySourceBootstrapConfiguration]  -  Located property source: CompositePropertySource {name='configService', propertySources=[]}
+2019-07-31 16:53:38.092 [INFO ] [main] [com.jinyafu.thirdpart.ThirdPartServerApplication]  -  No active profile set, falling back to default profiles: default
+2019-07-31 16:53:38.110 [INFO ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@64a896b0: startup date [Wed Jul 31 16:53:38 CST 2019]; parent: org.springframework.context.annotation.AnnotationConfigApplicationContext@687ef2e0
+2019-07-31 16:53:38.525 [INFO ] [main] [org.springframework.beans.factory.support.DefaultListableBeanFactory]  -  Overriding bean definition for bean 'routingDataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=dataSourceConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=mybatisPlusConfig; factoryMethodName=routingDataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [com/jinyafu/thirdpart/config/MybatisPlusConfig.class]]
+2019-07-31 16:53:38.674 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.thirdpart]' package. Please check your configuration.
+2019-07-31 16:53:38.851 [WARN ] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner]  -  No MyBatis mapper was found in '[com.jinyafu.jmall.mapper.pay]' package. Please check your configuration.
+2019-07-31 16:53:38.881 [WARN ] [main] [org.springframework.context.annotation.ConfigurationClassPostProcessor]  -  Cannot enhance @Configuration bean definition 'mybatisPlusConfig' since its singleton instance has been created too early. The typical cause is a non-static @Bean method with a BeanDefinitionRegistryPostProcessor return type: Consider declaring such methods as 'static'.
+2019-07-31 16:53:38.993 [INFO ] [main] [org.springframework.cloud.context.scope.GenericScope]  -  BeanFactory id=e2d5f42e-f253-3ad6-bf4d-1924b952031c
+2019-07-31 16:53:39.012 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:53:39.160 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4224fa7c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:53:39.201 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$5e3efd79] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:53:39.668 [INFO ] [main] [org.springframework.boot.web.embedded.tomcat.TomcatWebServer]  -  Tomcat initialized with port(s): 6603 (http)
+2019-07-31 16:53:39.706 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Starting service [Tomcat]
+2019-07-31 16:53:39.706 [INFO ] [main] [org.apache.catalina.core.StandardEngine]  -  Starting Servlet Engine: Apache Tomcat/8.5.39
+2019-07-31 16:53:39.717 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.AprLifecycleListener]  -  The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_162\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:\Program Files (x86)\NetSarang\Xshell 6\;D:\Program Files (x86)\NetSarang\Xftp 6\;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;D:\Program Files\Git\cmd;D:\Program Files\apache-maven-3.5.0\bin;D:\Program Files\TortoiseGit\bin;D:\Program Files\erl9.3\bin;D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.14\sbin;C:\Users\000062064\AppData\Local\Microsoft\WindowsApps;C:\Users\000062064\AppData\Local\GitHubDesktop\bin;.]
+2019-07-31 16:53:39.990 [INFO ] [localhost-startStop-1] [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]]  -  Initializing Spring embedded WebApplicationContext
+2019-07-31 16:53:39.990 [INFO ] [localhost-startStop-1] [org.springframework.web.context.ContextLoader]  -  Root WebApplicationContext: initialization completed in 1880 ms
+2019-07-31 16:53:40.085 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.ServletRegistrationBean]  -  Servlet dispatcherServlet mapped to [/]
+2019-07-31 16:53:40.099 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-31 16:53:40.099 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-31 16:53:40.099 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-31 16:53:40.099 [INFO ] [localhost-startStop-1] [org.springframework.boot.web.servlet.FilterRegistrationBean]  -  Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-31 16:55:02.023 [WARN ] [RMI TCP Connection(5)-127.0.0.1] [javax.management.remote.misc]  -  The server has decided to close this client connection.
+2019-07-31 16:55:02.026 [WARN ] [main] [org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext]  -  Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+2019-07-31 16:55:02.035 [INFO ] [main] [org.apache.catalina.core.StandardService]  -  Stopping service [Tomcat]
+2019-07-31 16:55:02.054 [WARN ] [localhost-startStop-2] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-8] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:55:02.061 [WARN ] [localhost-startStop-2] [org.apache.catalina.loader.WebappClassLoaderBase]  -  The web application [ROOT] appears to have started a thread named [logback-9] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1088)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2019-07-31 16:55:02.071 [INFO ] [main] [org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener]  -  
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2019-07-31 16:55:02.086 [ERROR] [main] [org.springframework.boot.SpringApplication]  -  Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in class path resource [com/jinyafu/thirdpart/config/DataSourceConfig.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:591)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1246)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1096)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:535)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:495)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:762)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:881)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:386)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1242)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1230)
+	at com.jinyafu.thirdpart.ThirdPartServerApplication.main(ThirdPartServerApplication.java:11)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.sql.DataSource]: Factory method 'masterDataSource' threw exception; nested exception is java.lang.NullPointerException
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:583)
+	... 18 common frames omitted
+Caused by: java.lang.NullPointerException: null
+	at com.jinyafu.thirdpart.config.DataSourceConfig.masterDataSource(DataSourceConfig.java:41)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$c0cd47ab.CGLIB$masterDataSource$3(<generated>)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$c0cd47ab$$FastClassBySpringCGLIB$$123e6321.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:228)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:365)
+	at com.jinyafu.thirdpart.config.DataSourceConfig$$EnhancerBySpringCGLIB$$c0cd47ab.masterDataSource(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 19 common frames omitted
+2019-07-31 16:55:40.429 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@40dff0b7: startup date [Wed Jul 31 16:55:40 CST 2019]; root of context hierarchy
+2019-07-31 16:55:40.678 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:55:40.727 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$27ca93eb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-07-31 16:58:25.221 [INFO ] [main] [org.springframework.context.annotation.AnnotationConfigApplicationContext]  -  Refreshing org.springframework.context.annotation.AnnotationConfigApplicationContext@93cf163: startup date [Wed Jul 31 16:58:25 CST 2019]; root of context hierarchy
+2019-07-31 16:58:25.489 [INFO ] [main] [org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]  -  JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-07-31 16:58:25.538 [INFO ] [main] [org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker]  -  Bean 'configurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$dbfe9067] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)

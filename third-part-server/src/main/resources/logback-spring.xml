@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2019-2029 深圳金雅福控股集团有限公司 All Rights Reserved.FileName: logback-spring.xml@author: lean.yang@date: 19-7-31 下午4:19@version: 1.0
+  -->
+
+<configuration scan="true" scanPeriod="60 seconds">
+    <!-- spring boot默认配置 -->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <!-- <include resource="org/springframework/boot/logging/logback/defaults.xml" />-->
+    <!--<jmxConfigurator/>-->
+
+    <!--读取配置中心的属性-->
+    <springProperty scope="context" name="serverName" source="spring.application.name" defaultValue="serverName"/>
+
+    <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
+    <!-- <property name="LOG_HOME" value="E:/temp/logs/" />  -->
+    <property name="LOG_HOME" value="logs/" ></property>
+    <!-- 控制台日志 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!-- 格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符 -->
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread] [%logger]  -  %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+      
+    <!-- 文件日志 -->     
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <encoder>
+            <pattern>
+                %d{yyyy-MM-dd HH:mm:ss.SSS} [%-5level] [%thread] [%logger]  -  %msg%n
+            </pattern>
+        </encoder>
+
+        <!-- 可让每天产生一个日志文件，最多 200 个，自动回滚 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_HOME}/${serverName}_%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>200</maxHistory>
+        </rollingPolicy>
+        <!-- 每个日志文件，最大 100MB  -->
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>60MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <!-- 输出到控制台和文件，可定义更多的 Appender -->
+    <root level="INFO">
+        <appender-ref ref="console" />
+        <appender-ref ref="rollingFile" />
+    </root>
+
+    <!-- mybatis SQL日志打印 -->
+    <!-- <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG" />
+    <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG" />
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />
+    <logger name="java.sql.PreparedStatement" level="DEBUG" />
+    <logger name="java.sql.Statement" level="DEBUG" />
+    <logger name="java.sql.Connection" level="DEBUG" /> -->
+
+    <!-- 生产阶段 日志级别 -->
+    <springProfile name="pro">
+        <logger name="org.mybatis" level="ERROR" />
+        <logger name="org.apache.ibatis.io" level="ERROR" />
+        <logger name="org.springframework" level="DEBUG" />
+    </springProfile>
+
+    <!-- 开发与测试阶段 日志级别 -->
+    <springProfile name="dev">
+        <!--<logger name="org.mybatis" level="ERROR" />
+        <logger name="org.apache.ibatis.io" level="ERROR" />
+        <logger name="org.springframework" level="DEBUG" />
+        <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG" />
+        <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG" />
+        <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />
+        <logger name="java.sql.PreparedStatement" level="DEBUG" />
+        <logger name="java.sql.Statement" level="DEBUG" />
+        <logger name="java.sql.Connection" level="DEBUG" />-->
+    </springProfile>
+
+</configuration>
