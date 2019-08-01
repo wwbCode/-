@@ -117,6 +117,12 @@
             <version>1.1</version>
         </dependency>
 
+        <!--springBoot-email-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
     </dependencies>
     <build>
         <finalName>third-part-server</finalName>

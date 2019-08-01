@@ -23,4 +23,59 @@ public class GoogleHandler implements HandlerAdapter {
     public boolean supports(Object handler) {
         return false;
     }
+
+    /**
+     * 发送文本邮件
+     *
+     * @param from
+     * @param to
+     * @param subject
+     * @param content
+     */
+    @Override
+    public void sendSimpleMail(String from, String to, String subject, String content) {
+
+    }
+
+    /**
+     * 发送模板邮件
+     *
+     * @param from
+     * @param to
+     * @param subject
+     * @param content
+     */
+    @Override
+    public void sendTemplateMail(String from, String to, String subject, String content) {
+
+    }
+
+    /**
+     * 发送附件邮件
+     *
+     * @param from
+     * @param to
+     * @param subject
+     * @param content
+     * @param filePath
+     */
+    @Override
+    public void sendAttachmentsMail(String from, String to, String subject, String content, String filePath) {
+
+    }
+
+    /**
+     * 发送内嵌图片
+     *
+     * @param from
+     * @param to
+     * @param subject
+     * @param content
+     * @param imgPath
+     * @param imgId
+     */
+    @Override
+    public void sendInlineResourceMail(String from, String to, String subject, String content, String imgPath, String imgId) {
+
+    }
 }

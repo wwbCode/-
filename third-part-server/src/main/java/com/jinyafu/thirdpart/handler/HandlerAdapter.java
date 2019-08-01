@@ -4,6 +4,13 @@
 
 package com.jinyafu.thirdpart.handler;
 
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.MimeMessageHelper;
+
+import javax.mail.internet.MimeMessage;
+import java.io.File;
+
 /**
  * @author lean.yang
  * @title: HandlerAdapter
@@ -32,5 +39,46 @@ public interface HandlerAdapter {
      */
     boolean supports(Object handler);
 
+    /**
+     * 发送文本邮件
+     *
+     * @param from
+     * @param to
+     * @param subject
+     * @param content
+     */
+    void sendSimpleMail(String from, String to, String subject, String content);
+
+    /**
+     * 发送模板邮件
+     * @param from
+     * @param to
+     * @param subject
+     * @param content
+     */
+    void sendTemplateMail(String from, String to, String subject, String content);
+
+    /**
+     * 发送附件邮件
+     *
+     * @param from
+     * @param to
+     * @param subject
+     * @param content
+     * @param filePath
+     */
+    void sendAttachmentsMail(String from, String to, String subject, String content, String filePath);
+
+    /**
+     * 发送内嵌图片
+     *
+     * @param from
+     * @param to
+     * @param subject
+     * @param content
+     * @param imgPath
+     * @param imgId
+     */
+    void sendInlineResourceMail(String from, String to, String subject, String content, String imgPath, String imgId);
 
 }
