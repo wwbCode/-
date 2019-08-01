@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * @Description: 类功能介绍
+ * @Description:获取适配器公共controller
  * @CreateDate: 2019/8/1 9:46
  * @Copyright版权所有 深圳金雅福控股集团有限公司
  * @Author: mjt
