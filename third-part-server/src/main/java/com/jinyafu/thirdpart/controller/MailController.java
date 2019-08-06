@@ -4,13 +4,12 @@ import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.Out;
 import com.jinyafu.thirdpart.common.code.OutputCode;
 import com.jinyafu.thirdpart.common.pojo.sun.EmailInfoReq;
-import com.jinyafu.thirdpart.config.EmailConfig;
 import com.jinyafu.thirdpart.handler.HandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Description: 邮件发送
@@ -19,12 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Author: mjt
  * @Version: 1.0
  */
-@RequestMapping("/email/sendEmail")
 @Slf4j
+@RestController
+@RequestMapping("/email/sendEmail")
 public class MailController extends BaseController {
 
-    @Autowired
-    private EmailConfig emailConfig;
 
     /**
      * @description: 发送发票邮件
@@ -45,7 +43,7 @@ public class MailController extends BaseController {
                 +"</div>"
                 +"</body></html>";
         HandlerAdapter handlerAdapter=getHandler("email");
-        handlerAdapter.sendTemplateMail(emailConfig.getUsername(), emailInfoReq.getUserEmailAddress(),"发票邮件", html);
+        handlerAdapter.sendTemplateMail(emailInfoReq.getPlatformEmailAddress(), emailInfoReq.getUserEmailAddress(),"发票邮件", html);
         return MessageOutput.get(OutputCode.SEND_EMAIL_SUCCESS.getCode(),OutputCode.SEND_EMAIL_SUCCESS.getMessage());
     }
 }

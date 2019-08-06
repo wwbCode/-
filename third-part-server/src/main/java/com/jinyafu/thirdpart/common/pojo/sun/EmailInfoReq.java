@@ -40,5 +40,9 @@ public class EmailInfoReq {
      * 用户邮件地址
      */
     public String userEmailAddress;
+    /**
+     * 平台邮件发件人地址
+     */
+    public String platformEmailAddress;
 
 }
