@@ -19,6 +19,6 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "email")
 public class EmailConfig {
-    /*平台邮件发件人*/
+    /*平台邮件发件人地址*/
     private String username;
 }

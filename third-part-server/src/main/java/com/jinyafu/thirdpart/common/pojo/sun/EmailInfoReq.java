@@ -14,7 +14,7 @@ import lombok.Data;
 */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class TicketInfoReq {
+public class EmailInfoReq {
 
     /**
      * 订单号

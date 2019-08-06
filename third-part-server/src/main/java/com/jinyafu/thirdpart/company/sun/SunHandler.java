@@ -5,6 +5,7 @@
 package com.jinyafu.thirdpart.company.sun;
 
 import com.jinyafu.thirdpart.common.enums.*;
+import com.jinyafu.thirdpart.handler.AbsHandlerAdapter;
 import com.jinyafu.thirdpart.handler.HandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,9 @@ import java.io.File;
  * @Version: 1.0
  */
 @Slf4j
-public class SunHandler implements HandlerAdapter {
+public class SunHandler extends AbsHandlerAdapter {
     @Autowired
     private JavaMailSender mailSender;
-    
-    @Override
-    public Object handleDemo(Object reqDTO) {
-        return null;
-    }
 
     @Override
     public boolean supports(Object handler) {

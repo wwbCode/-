@@ -3,7 +3,7 @@ package com.jinyafu.thirdpart.controller;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.Out;
 import com.jinyafu.thirdpart.common.code.OutputCode;
-import com.jinyafu.thirdpart.common.pojo.sun.TicketInfoReq;
+import com.jinyafu.thirdpart.common.pojo.sun.EmailInfoReq;
 import com.jinyafu.thirdpart.config.EmailConfig;
 import com.jinyafu.thirdpart.handler.HandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
@@ -34,18 +34,18 @@ public class MailController extends BaseController {
      * @return: com.jinyafu.thirdpart.common.code.Out
      */
     @PostMapping("/sendTicketMail")
-    public Out sendTicketMail(@RequestBody TicketInfoReq ticketInfoReq){
+    public Out sendTicketMail(@RequestBody EmailInfoReq emailInfoReq){
         String html ="<html><body>"
                 +"<div>"
-                +"<p>"+"标题：您的金雅福订单【"+ticketInfoReq.getOrderNumber()+"】电子发票已开具"+"</p>"
-                +"<p>"+"内容：尊敬的"+ ticketInfoReq.getNickname()+"您好："+"</p>"
-                +"<p>"+"感谢您在金雅福 ("+ ticketInfoReq.getNetUrl()+" ) 购物!"+"</p>"
-                +"<p>"+"金雅福已经为您开具订单"+ticketInfoReq.getOrderNumber()+"的电子普通发票，发票数量共计"+ticketInfoReq.getNum()+"张，如下:"+"</p>"
-                +"<p>"+"，您可以点击“"+ ticketInfoReq.getTicketUrl() +"”获取该发票文件；"+"</p>"
+                +"<p>"+"标题：您的金雅福订单【"+emailInfoReq.getOrderNumber()+"】电子发票已开具"+"</p>"
+                +"<p>"+"内容：尊敬的"+ emailInfoReq.getNickname()+"您好："+"</p>"
+                +"<p>"+"感谢您在金雅福 ("+ emailInfoReq.getNetUrl()+" ) 购物!"+"</p>"
+                +"<p>"+"金雅福已经为您开具订单"+emailInfoReq.getOrderNumber()+"的电子普通发票，发票数量共计"+emailInfoReq.getNum()+"张，如下:"+"</p>"
+                +"<p>"+"，您可以点击“"+ emailInfoReq.getTicketUrl() +"”获取该发票文件；"+"</p>"
                 +"</div>"
                 +"</body></html>";
         HandlerAdapter handlerAdapter=getHandler("email");
-        handlerAdapter.sendTemplateMail(emailConfig.getUsername(), ticketInfoReq.getUserEmailAddress(),"发票邮件", html);
+        handlerAdapter.sendTemplateMail(emailConfig.getUsername(), emailInfoReq.getUserEmailAddress(),"发票邮件", html);
         return MessageOutput.get(OutputCode.SEND_EMAIL_SUCCESS.getCode(),OutputCode.SEND_EMAIL_SUCCESS.getMessage());
     }
 }
