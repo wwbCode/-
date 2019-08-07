@@ -5,7 +5,6 @@
 package com.jinyafu.thirdpart.company.google;
 
 import com.jinyafu.thirdpart.handler.AbsHandlerAdapter;
-import com.jinyafu.thirdpart.handler.HandlerAdapter;
 
 /**
  * @author lean.yang

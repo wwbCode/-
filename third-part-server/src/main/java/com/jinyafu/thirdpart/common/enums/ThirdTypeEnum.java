@@ -4,7 +4,6 @@
 
 package com.jinyafu.thirdpart.common.enums;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +19,9 @@ public enum ThirdTypeEnum {
     /**邮件第三方*/
     EAMIL_SUN(1, "email", "sun邮件第三方"),
     /**短信第三方*/
-    SMS(2, "sms", "短信第三方"),
+    SMS_ALIYUN(2, "aliyun", "阿里云短信服务"),
+    SMS_MICROSOFT(2, "microsoft", "微软短信服务"),
+    SMS_JIGUANG(2, "jiguang", "极光短信服务"),
     ;
 
     ThirdTypeEnum() {

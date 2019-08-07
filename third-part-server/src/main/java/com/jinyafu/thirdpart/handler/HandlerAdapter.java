@@ -4,12 +4,6 @@
 
 package com.jinyafu.thirdpart.handler;
 
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.MimeMessageHelper;
-
-import javax.mail.internet.MimeMessage;
-import java.io.File;
 
 /**
  * @author lean.yang
@@ -80,5 +74,26 @@ public interface HandlerAdapter {
      * @param imgId
      */
     void sendInlineResourceMail(String from, String to, String subject, String content, String imgPath, String imgId);
-
+    
+    /**
+     * 发送验证码短信
+     * 
+     * @version 2019年8月6日下午3:48:27
+     * @author Ly
+     * @param payType
+     * @param mobile
+     * @return
+     */
+    Object sendMessage(String payType, String mobile);
+    
+    /**
+     * 验证短信验证码
+     * 
+     * @version 2019年8月6日下午4:49:05
+     * @author Ly
+     * @param mobile
+     * @param verifyCode
+     * @return
+     */
+    Object verifyMessage(String mobile, String verifyCode);
 }

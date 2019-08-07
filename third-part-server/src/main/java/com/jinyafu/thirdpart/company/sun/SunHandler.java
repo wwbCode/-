@@ -6,7 +6,6 @@ package com.jinyafu.thirdpart.company.sun;
 
 import com.jinyafu.thirdpart.common.enums.*;
 import com.jinyafu.thirdpart.handler.AbsHandlerAdapter;
-import com.jinyafu.thirdpart.handler.HandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;

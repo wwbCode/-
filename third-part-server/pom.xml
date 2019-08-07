@@ -107,7 +107,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.4</version>
+            <version>1.18.4</version><!--$NO-MVN-MAN-VER$-->
         </dependency>
 
         <!-- email start -->
@@ -123,6 +123,23 @@
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
 
+		<!-- 阿里sms -->
+		<dependency>
+		  	<groupId>com.aliyun</groupId>
+		  	<artifactId>aliyun-java-sdk-core</artifactId>
+		  	<version>4.0.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aliyun</groupId>
+			<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+			<version>1.1.0</version>
+		</dependency>
+		<!-- sms end -->
+		<dependency>
+			<groupId>com.github.penggle</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>2.3.2</version>
+		</dependency>
     </dependencies>
     <build>
         <finalName>third-part-server</finalName>

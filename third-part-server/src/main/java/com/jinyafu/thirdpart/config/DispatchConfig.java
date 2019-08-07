@@ -4,10 +4,12 @@
 
 package com.jinyafu.thirdpart.config;
 
-import com.jinyafu.thirdpart.company.google.GoogleHandler;
-import com.jinyafu.thirdpart.company.sun.SunHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import com.jinyafu.thirdpart.company.aliyun.AliyunHandler;
+import com.jinyafu.thirdpart.company.google.GoogleHandler;
+import com.jinyafu.thirdpart.company.sun.SunHandler;
 
 /**
  * @author lean.yang
@@ -23,6 +25,7 @@ public class DispatchConfig {
         CompanyDispatch payDispatch = new CompanyDispatch();
         payDispatch.getHandlerAdapters().add(googleHandler());
         payDispatch.getHandlerAdapters().add((sunHandler()));
+        payDispatch.getHandlerAdapters().add((aliyunHandler()));
         return payDispatch;
     }
 
@@ -49,6 +52,10 @@ public class DispatchConfig {
     @Bean
     public SunHandler sunHandler(){
         return new SunHandler();
+    }
+    
+    public AliyunHandler aliyunHandler() {
+        return new AliyunHandler();
     }
 
 }

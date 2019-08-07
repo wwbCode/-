@@ -5,7 +5,6 @@ import com.jinyafu.thirdpart.common.code.Out;
 import com.jinyafu.thirdpart.common.code.OutputCode;
 import com.jinyafu.thirdpart.common.pojo.sun.EmailInfoReq;
 import com.jinyafu.thirdpart.handler.HandlerAdapter;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @Author: mjt
  * @Version: 1.0
  */
+@RequestMapping("/third/email/sendEmail")
 @Slf4j
-@RestController
-@RequestMapping("/email/sendEmail")
 public class MailController extends BaseController {
 
 

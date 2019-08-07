@@ -1,8 +1,6 @@
 package com.jinyafu.thirdpart.common.pojo.sun;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.jinyafu.thirdpart.common.code.Out;
-import com.jinyafu.thirdpart.common.code.OutputCode;
 import lombok.Data;
 
 /**

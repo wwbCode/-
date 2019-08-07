@@ -19,7 +19,17 @@ public enum OutputCode {
     NX("THIRD_000005","没有数据"),
     AX("THIRD_000006", "权限不足"),
     EMPTY("THIRD_000007", "参数为空"),
-    SEND_EMAIL_SUCCESS("THIRD_000008", "发送成功");
+    SEND_EMAIL_SUCCESS("THIRD_000008", "发送成功"),
+    /**参数效验失败*/
+    PARAMS_INVALID_EMPTY("THIRD_000009", "参数不能为空"),
+    /**参数效验失败*/
+    PARAMS_INVALID_FAIL("THIRD_000010", "参数效验失败"),
+    /**短信发送异常*/
+    MESSAGE_SEND_FAIL("90008", "短信发送失败，请联系客服人员！"),
+    /**短信验证码错误*/
+    VERIFY_CODE_ERROR("90008", "验证码错误！"),
+    /**短信验证码已失效*/
+    VERIFY_CODE_INVALID("90008", "验证码已失效！");
 
     @Getter
     private String code;

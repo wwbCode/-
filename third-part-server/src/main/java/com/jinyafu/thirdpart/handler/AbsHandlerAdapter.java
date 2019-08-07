@@ -77,4 +77,32 @@ public abstract class AbsHandlerAdapter implements HandlerAdapter {
     public void sendInlineResourceMail(String from, String to, String subject, String content, String imgPath, String imgId) {
 
     }
+    
+    /**
+     * 发送验证码短信
+     * 
+     * @version 2019年8月6日下午3:48:27
+     * @author Ly
+     * @param payType
+     * @param mobile
+     * @return
+     */
+    @Override
+    public Object sendMessage(String payType, String mobile) {
+        return this.sendMessage(payType, mobile);
+    }
+    
+    /**
+     * 验证短信验证码
+     * 
+     * @version 2019年8月6日下午4:49:05
+     * @author Ly
+     * @param mobile
+     * @param verifyCode
+     * @return
+     */
+    @Override
+    public Object verifyMessage(String mobile, String verifyCode) {
+        return this.verifyMessage(mobile, verifyCode);
+    }
 }
