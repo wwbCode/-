@@ -37,7 +37,6 @@ public class AliyunSms {
     // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
     static final String accessKeyId = "LTAION03v3ViY3Ww";
     static final String accessKeySecret = "YMBJ7iKgCJ4yiYob41ocVfoTB1xQCD"; 
-    //static final String sign = "化工品交易网";//签名
     static final String sign = "金雅福商城";//签名
     
     //超时时长

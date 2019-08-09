@@ -16,7 +16,7 @@ import com.google.code.kaptcha.Producer;
  * date 2018-06-13 10:27:23<br>
  * description
  * 
- * @author XiaHui<br>
+ * @author Ly<br>
  * @since
  */
 @Service
@@ -31,7 +31,7 @@ public class VerifyManager {
 	 * date 2018-07-20 13:43:36<br>
 	 * description 根据业务编码生成验证码,默认有效时间2分钟
 	 * 
-	 * @author XiaHui<br>
+	 * @author Ly<br>
 	 * @param businessCode
 	 * @return
 	 * @since
@@ -95,7 +95,7 @@ public class VerifyManager {
 	 * 清除超时的验证码
 	 * date 2018-07-20 13:57:50<br>
 	 * description 
-	 * @author XiaHui<br>
+	 * @author Ly<br>
 	 * @since
 	 */
 	public void clearTimeout() {

@@ -39,43 +39,46 @@ public class SmsController extends BaseController {
 	
 	/**
 	 * 发送短信验证码
-	 * @version 2019年7月18日下午4:30:06
+	 * @version 2019年8月7日下午1:46:18
 	 * @author Ly
+	 * @param type
 	 * @param request
 	 * @param mobile
 	 * @return
 	 */
 	@ResponseBody
-	@PostMapping("{payType}")
-	public Out sendVerifyCode(@PathVariable(name = "payType") String payType, HttpServletRequest request,  
+	@PostMapping("{type}")
+	public Out sendVerifyCode(@PathVariable(name = "type") String type, HttpServletRequest request,  
 	        @RequestBody String mobile) {
 		if(mobile==null || mobile.isEmpty()) {
 		    return MessageOutput.get(OutputCode.PARAMS_INVALID_EMPTY.getCode(),OutputCode.PARAMS_INVALID_EMPTY.getMessage());
 		}	
-		HandlerAdapter handlerAdapter=getHandler(payType);
-        handlerAdapter.sendMessage(payType, mobile);
+		HandlerAdapter handlerAdapter=getHandler(type);
+        handlerAdapter.sendMessage(type, mobile);
 		return MessageOutput.get(OutputCode.OK.getCode(), OutputCode.OK.getMessage());
 	}
 	
 	/**
 	 * 判断验证码是否正确
-	 * @version 2019年7月18日下午5:37:43
+	 * @version 2019年8月7日下午1:46:33
 	 * @author Ly
 	 * @param request
+	 * @param type
 	 * @param mobile
+	 * @param verifyCode
 	 * @return
 	 */
 	@ResponseBody
-    @PostMapping("/verify/{payType}")
+    @PostMapping("/verify/{type}")
     public Out verify(
             HttpServletRequest request,  
-            @PathVariable(name = "payType") String payType, 
+            @PathVariable(name = "type") String type, 
             @RequestBody String mobile,
             @RequestBody String verifyCode) {
         if (mobile == null || verifyCode == null) {
             return MessageOutput.get(OutputCode.PARAMS_INVALID_EMPTY.getCode(), OutputCode.PARAMS_INVALID_EMPTY.getMessage());
         }      
-        HandlerAdapter handlerAdapter=getHandler(payType);
+        HandlerAdapter handlerAdapter=getHandler(type);
         handlerAdapter.verifyMessage(mobile, verifyCode);
         return MessageOutput.get(OutputCode.OK.getCode(), OutputCode.OK.getMessage());
     }

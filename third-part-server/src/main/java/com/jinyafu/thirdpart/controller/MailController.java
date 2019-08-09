@@ -5,10 +5,11 @@ import com.jinyafu.thirdpart.common.code.Out;
 import com.jinyafu.thirdpart.common.code.OutputCode;
 import com.jinyafu.thirdpart.common.pojo.sun.EmailInfoReq;
 import com.jinyafu.thirdpart.handler.HandlerAdapter;
+
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Description: 邮件发送
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @Version: 1.0
  */
 @RequestMapping("/third/email/sendEmail")
-@Slf4j
 public class MailController extends BaseController {
 
 
