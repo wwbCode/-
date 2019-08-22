@@ -23,7 +23,7 @@ public class ThirdPartServerApplicationTests extends BaseController{
 
     }
 
-    @Test
+    /*@Test
     public void sendTemplateMailTest(String orderNumber,String nickname,String netUrl,Integer num,String ticketUrl) {
         String html ="<html><body>"
                 +"<div>"
@@ -37,7 +37,7 @@ public class ThirdPartServerApplicationTests extends BaseController{
         HandlerAdapter handlerAdapter=getHandler("email");
         handlerAdapter.sendTemplateMail("2016402773@qq.com", "mutongzijt@163.com",
                 "发票邮件", html);
-    }
+    }*/
 
     @Test
     public void sendAttachmentsMailTest() {
@@ -57,6 +57,16 @@ public class ThirdPartServerApplicationTests extends BaseController{
         HandlerAdapter handlerAdapter=getHandler("email");
         handlerAdapter.sendInlineResourceMail("2016402773@qq.com", "mutongzijt@163.com",
                 "sendAttachmentsMailTest", content, imgPath, imgId);
+    }
+
+    @Test
+    public void testInteger() {
+        Integer a=6553005;
+        Integer b=1000;
+        Integer c=1000;
+        System.out.println("..........."+(a+b));
+        System.out.println(b==c);
+        System.out.println(b.equals(c));
     }
 
 }
