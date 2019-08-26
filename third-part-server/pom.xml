@@ -76,29 +76,20 @@
             <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
         
-        <dependency>
+        <!-- <dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>4.3.2.RELEASE</version>
-		</dependency>
+		</dependency> -->
+		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>4.3.2.RELEASE</version>
 		</dependency>
-		
-		<dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus</artifactId>
-            <version>3.1.1</version>
-        </dependency>
 
-        <!--<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-        </dependency>-->
-        <!-- 使用mybatis -->
-        <!--<dependency>
+	<!-- 使用mybatis -->
+        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.0.1</version>
@@ -108,18 +99,24 @@
             <artifactId>druid</artifactId>
             <version>1.1.9</version>
         </dependency>
-        <dependency>
+        
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		</dependency>
+				
+		<dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
-            <version>3.1.1</version>
-        </dependency>-->
-
+            <version>3.1.2</version>
+        </dependency>
+        
         <!-- jdbc start -->
-        <!--<dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            &lt;!&ndash; <version>6.0.6</version> &ndash;&gt;
-        </dependency>-->
+            <!-- <version>6.0.6</version> -->
+        </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -182,6 +179,14 @@
 	        <artifactId>esdk-obs-java</artifactId>
 	        <version>3.0.3</version>
 	    </dependency>
+	    
+	    <!-- https://mvnrepository.com/artifact/net.minidev/json-smart -->
+		<dependency>
+		    <groupId>net.minidev</groupId>
+		    <artifactId>json-smart</artifactId>
+		    <version>2.3</version>
+		</dependency>
+	    
     </dependencies>
     <build>
         <finalName>third-part-server</finalName>
@@ -191,6 +196,7 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
+                    <include>**/*.yml</include>
                 </includes>
             </resource>
             <resource>
@@ -198,6 +204,7 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
+                    <include>**/*.yml</include>
                 </includes>
             </resource>
             <resource>
