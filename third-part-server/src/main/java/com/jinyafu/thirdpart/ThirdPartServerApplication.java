@@ -12,7 +12,6 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@ComponentScan(basePackages = {"com.jinyafu"})
 public class ThirdPartServerApplication {
 	
     public static void main(String[] args) {

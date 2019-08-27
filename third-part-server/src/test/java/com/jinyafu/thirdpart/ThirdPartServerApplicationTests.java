@@ -18,7 +18,7 @@ public class ThirdPartServerApplicationTests extends BaseController{
     @Test
     public void sendSimpleMailTest() {
         HandlerAdapter handlerAdapter=getHandler("email");
-        handlerAdapter.sendSimpleMail("2016402773@qq.com", "11111@163.com",
+        handlerAdapter.sendSimpleMail("2016402773@qq.com", "mutongzijt@163.com",
                 "qq发邮件测试", "sendSimpleMailTestfrom 测试邮件");
 
     }
