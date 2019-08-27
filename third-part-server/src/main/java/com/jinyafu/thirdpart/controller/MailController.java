@@ -10,6 +10,7 @@ import com.jinyafu.thirdpart.handler.HandlerAdapter;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @Description: 邮件发送
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Version: 1.0
  */
 @RequestMapping("/third/email/sendEmail")
+@RestController
 public class MailController extends BaseController {
 
 
@@ -30,8 +32,8 @@ public class MailController extends BaseController {
      * @return: com.jinyafu.thirdpart.common.code.Out
      */
     @PostMapping("/sendTicketMail")
-    public Out sendTicketMail(@RequestBody EmailInfoReq emailInfoReq){
-        String html ="<html><body>"
+    public Out sendTicketMail(){
+        /*String html ="<html><body>"
                 +"<div>"
                 +"<p>"+"标题：您的金雅福订单【"+emailInfoReq.getOrderNumber()+"】电子发票已开具"+"</p>"
                 +"<p>"+"内容：尊敬的"+ emailInfoReq.getNickname()+"您好："+"</p>"
@@ -41,7 +43,7 @@ public class MailController extends BaseController {
                 +"</div>"
                 +"</body></html>";
         HandlerAdapter handlerAdapter=getHandler("email");
-        handlerAdapter.sendTemplateMail(emailInfoReq.getPlatformEmailAddress(), emailInfoReq.getUserEmailAddress(),"发票邮件", html);
+        handlerAdapter.sendTemplateMail(emailInfoReq.getPlatformEmailAddress(), emailInfoReq.getUserEmailAddress(),"发票邮件", html);*/
         return MessageOutput.get(OutputCode.SEND_EMAIL_SUCCESS.getCode(),OutputCode.SEND_EMAIL_SUCCESS.getMessage());
     }
 }
