@@ -32,8 +32,8 @@ public class MailController extends BaseController {
      * @return: com.jinyafu.thirdpart.common.code.Out
      */
     @PostMapping("/sendTicketMail")
-    public Out sendTicketMail(){
-        /*String html ="<html><body>"
+    public Out sendTicketMail(@RequestBody EmailInfoReq emailInfoReq){
+        String html ="<html><body>"
                 +"<div>"
                 +"<p>"+"标题：您的金雅福订单【"+emailInfoReq.getOrderNumber()+"】电子发票已开具"+"</p>"
                 +"<p>"+"内容：尊敬的"+ emailInfoReq.getNickname()+"您好："+"</p>"
@@ -43,7 +43,7 @@ public class MailController extends BaseController {
                 +"</div>"
                 +"</body></html>";
         HandlerAdapter handlerAdapter=getHandler("email");
-        handlerAdapter.sendTemplateMail(emailInfoReq.getPlatformEmailAddress(), emailInfoReq.getUserEmailAddress(),"发票邮件", html);*/
+        handlerAdapter.sendTemplateMail(emailInfoReq.getPlatformEmailAddress(), emailInfoReq.getUserEmailAddress(),"发票邮件", html);
         return MessageOutput.get(OutputCode.SEND_EMAIL_SUCCESS.getCode(),OutputCode.SEND_EMAIL_SUCCESS.getMessage());
     }
 }
