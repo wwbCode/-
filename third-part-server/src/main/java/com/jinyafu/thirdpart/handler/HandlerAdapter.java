@@ -16,12 +16,22 @@ public interface HandlerAdapter {
     /**
      * @return java.lang.Object
      * @throws
-     * @description: 业务处理接口demo
+     * @description: 业务处理接口
      * @params [reqDTO]
      * @author lean.yang
      * @date 2019/7/11
      */
-    Object handleDemo(Object reqDTO);
+    Object handle(Object reqDTO);
+
+    /**
+     * @description: 业务处理接口
+     * @params [type, reqDTO]
+     * @return java.lang.Object
+     * @throws Exception
+     * @author lean.yang
+     * @date 2019/8/27
+     */
+    Object handle(Object type, Object reqDTO) throws Exception;
 
     /**
      * @return boolean

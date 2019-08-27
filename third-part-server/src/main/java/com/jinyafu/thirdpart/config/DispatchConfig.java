@@ -4,6 +4,8 @@
 
 package com.jinyafu.thirdpart.config;
 
+import com.jinyafu.thirdpart.company.weixin.MiniProgramApiHandler;
+import com.jinyafu.thirdpart.company.weixin.WeChatPublicApiHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -26,6 +28,8 @@ public class DispatchConfig {
         payDispatch.getHandlerAdapters().add(googleHandler());
         payDispatch.getHandlerAdapters().add((sunHandler()));
         payDispatch.getHandlerAdapters().add((aliyunHandler()));
+        payDispatch.getHandlerAdapters().add((miniProgramApiHandler()));
+        payDispatch.getHandlerAdapters().add((weChatPublicApiHandler()));
         return payDispatch;
     }
 
@@ -56,6 +60,32 @@ public class DispatchConfig {
     
     public AliyunHandler aliyunHandler() {
         return new AliyunHandler();
+    }
+
+    /**
+     * @description: 小程序
+     * @params []
+     * @return com.jinyafu.thirdpart.company.weixin.MiniProgramApiHandler
+     * @throws
+     * @author lean.yang
+     * @date 2019/8/27
+     */
+    @Bean
+    public MiniProgramApiHandler miniProgramApiHandler() {
+        return new MiniProgramApiHandler();
+    }
+
+    /**
+     * @description: 微信公众号
+     * @params []
+     * @return com.jinyafu.thirdpart.company.weixin.WeChatPublicApiHandler
+     * @throws
+     * @author lean.yang
+     * @date 2019/8/27
+     */
+    @Bean
+    public WeChatPublicApiHandler weChatPublicApiHandler() {
+        return new WeChatPublicApiHandler();
     }
 
 }

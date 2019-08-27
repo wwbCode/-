@@ -22,6 +22,8 @@ public enum ThirdTypeEnum {
     SMS_ALIYUN(2, "aliyun", "阿里云短信服务"),
     SMS_MICROSOFT(2, "microsoft", "微软短信服务"),
     SMS_JIGUANG(2, "jiguang", "极光短信服务"),
+    API_WEIXIN_MINI(5, "weixinMini", "微信小程序接口"),
+    API_WEIXIN_PUBLIC(6, "weixinPublic", "微信公众号接口")
     ;
 
     ThirdTypeEnum() {
