@@ -1,4 +1,4 @@
-package com.jinyafu.jmall.mapper.third;
+package com.jinyafu.jmall.mapper.third.file;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jinyafu.jmall.entity.third.FileInfo;

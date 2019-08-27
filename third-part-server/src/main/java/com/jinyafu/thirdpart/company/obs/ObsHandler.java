@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jinyafu.jmall.entity.third.FileInfo;
-import com.jinyafu.jmall.mapper.third.FileInfoMapper;
+import com.jinyafu.jmall.mapper.third.file.FileInfoMapper;
 import com.jinyafu.thirdpart.common.code.Output;
 import com.jinyafu.thirdpart.common.code.OutputCode;
 import com.jinyafu.thirdpart.common.util.common.AcceptFileHandler;

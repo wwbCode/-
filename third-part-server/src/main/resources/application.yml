@@ -64,8 +64,8 @@ db:
   initialSize: 1
   logAbandoned: true
   master:
-      password: root
-      url: jdbc:mysql://192.168.100.31:3308/jmall_core?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&transformedBitIsBoolean=true
+      password: 123456
+      url: jdbc:mysql://192.168.85.220:3306/third?characterEncoding=utf-8&characterSetResults=utf-8&useUnicode=true&zeroDateTimeBehavior=convertToNull&useSSL=true
       username: root
   maxActive: 10
   maxOpenPreparedStatements: 20
@@ -75,12 +75,12 @@ db:
   removeAbandoned: true
   removeAbandonedTimeout: 1800
   slave1:
-      password: root
-      url: jdbc:mysql://192.168.100.31:3309/jmall_core?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=true
+      password: 123456
+      url: jdbc:mysql://192.168.85.220:3306/third?characterEncoding=utf-8&characterSetResults=utf-8&useUnicode=true&zeroDateTimeBehavior=convertToNull&useSSL=true
       username: root
   slave2:
-      password: root
-      url: jdbc:mysql://192.168.100.31:3309/jmall_core?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=true
+      password: 123456
+      url: jdbc:mysql://192.168.85.220:3306/third?characterEncoding=utf-8&characterSetResults=utf-8&useUnicode=true&zeroDateTimeBehavior=convertToNull&useSSL=true
       username: root
   testOnBorrow: true
   testOnReturn: true
@@ -90,7 +90,7 @@ db:
 
 #mybatis
 mybatis-plus:
-  mapper-locations: classpath:mapper/third/*.xml
+  mapper-locations: classpath:mapper/third/**/*.xml
   #mapper-locations: com/jinyafu/jmall/mapper/core/mapper
   #实体扫描，多个package用逗号或者分号分隔
   typeAliasesPackage: com.jinyafu.jmall.entity.third
