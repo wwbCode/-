@@ -15,4 +15,15 @@ public interface CommonConsts {
      * 注册验证码短信模板
      * */
    String SMS_REGISTER_VERIFYCODE = "SMS_141205206";
+   
+   /**
+    * 系统管理员
+    * */
+   String type_system = "0";
+   /**
+    * 普通用户
+    * */
+   String type_general = "1";
+   
+   
 }

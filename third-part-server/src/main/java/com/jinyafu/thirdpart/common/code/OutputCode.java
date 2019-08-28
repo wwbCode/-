@@ -11,7 +11,7 @@ import lombok.Getter;
  */
 public enum OutputCode {
 
-    OK("THIRD_000000", "处理成功"),
+    OK("200", "处理成功"),
     PM("THIRD_000001", "参数不对"),
     EX("THIRD_000002", "系统错误"),
     TX("THIRD_000003","登录已过期，请重新登录"),
