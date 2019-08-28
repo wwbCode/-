@@ -1,0 +1,35 @@
+npm-debug.log
+node_modules
+.project
+.vscode
+.history
+.DS_Store
+\.settings/
+
+dist/
+
+# Eclipse #
+.classpath
+.project
+.externalToolBuilders/
+.metadata
+.settings
+.myeclipse
+
+# IntelliJ #
+*.iml
+*.ipr
+*.iws
+.idea
+/out/
+
+
+# NetBeans #
+nbproject
+
+build.xml
+manifest.mf
+
+# Mac #
+.DS_Store
+._*
