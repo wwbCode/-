@@ -45,7 +45,7 @@ public class SupplierController {
     @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public MessageOutput addSupplier(@RequestBody Supplier supplier){
-        return supplierService.addSupplier(supplier);//在里面抛错误
+        return supplierService.addSupplier(supplier);
 
     }
 
