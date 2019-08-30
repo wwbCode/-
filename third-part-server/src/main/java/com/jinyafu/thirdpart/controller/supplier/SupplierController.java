@@ -28,13 +28,12 @@ import java.util.UUID;
  * @author: Mr.Wwb
  * @create: 2019-08-29 17:01
  **/
-@ResponseBody
+
 @RequestMapping("third/supplier")
 @Controller
 public class SupplierController {
     @Autowired
     SupplierService supplierService;
-
 
     /**
      * @description: 添加供应商
@@ -43,10 +42,11 @@ public class SupplierController {
      * @param:
      * @return:
      */
+    @ResponseBody
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public MessageOutput addSupplier(@RequestBody Supplier supplier){
-        supplierService.addSupplier(supplier);//在里面抛错误
-        return MessageOutput.ok();
+        return supplierService.addSupplier(supplier);//在里面抛错误
+
     }
 
     /**
@@ -57,9 +57,10 @@ public class SupplierController {
      * @return:
      */
 
+    @ResponseBody
     @RequestMapping(value = "/listAll",method = RequestMethod.POST)
-    public List<Supplier> list(){
-        return supplierService.list();
+    public MessageOutput listAll(){
+        return supplierService.listAll();
     }
 
     /**
@@ -69,24 +70,28 @@ public class SupplierController {
      * @param:
      * @return:
      */
+
+    @ResponseBody
     @RequestMapping(value = "/edit",method = RequestMethod.POST)
     public MessageOutput editSupplier (@RequestBody Supplier supplier){
-        supplierService.editSupplier(supplier);
-        return MessageOutput.ok();
-    }
+        return supplierService.editSupplier(supplier);
 
-    /**
-     * @description: 删除
-     * @date: 2019/8/29 20:20
-     * @author: wwb
-     * @param:
-     * @return:
-     */
-    @RequestMapping(value = "delete",method = RequestMethod.POST)
-    public MessageOutput deleteSupplier(@RequestBody String supplierId){
-        supplierService.deleteSupplier(supplierId);
-        return MessageOutput.ok();
     }
+//
+//    /**
+//     * @description: 删除
+//     * @date: 2019/8/29 20:20
+//     * @author: wwb
+//     * @param:
+//     * @return:
+//     */
+//
+//    @ResponseBody
+//    @RequestMapping(value = "delete",method = RequestMethod.POST)
+//    public MessageOutput deleteSupplier(@RequestBody String supplierId){
+//        supplierService.deleteSupplier(supplierId);
+//        return MessageOutput.ok();
+//    }
 
     /**
      * @description: 查找供应商
