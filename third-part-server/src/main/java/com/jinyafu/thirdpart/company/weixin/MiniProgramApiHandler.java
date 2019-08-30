@@ -59,4 +59,6 @@ public class MiniProgramApiHandler extends AbsHandlerAdapter {
         MiniProgramLoginResVo miniProgramLoginResponse = JSON.parseObject(response, MiniProgramLoginResVo.class);
         return miniProgramLoginResponse;
     }
+
+
 }
