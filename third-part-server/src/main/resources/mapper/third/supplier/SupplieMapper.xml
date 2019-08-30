@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
+<mapper namespace="com.jinyafu.jmall.mapper.third.supplier.SupplierMapper">
+    <insert id="addSupplier" parameterType="com.jinyafu.jmall.entity.third.supplier.Supplier">
+        INSERT INTO supplier (id,name,address,tel,remark,operator,user,startTime,status)
+
+        VALUES
+
+        (#{id},#{name},#{address},#{tel},#{remark},#{operator},#{user},#{startTime},#{status})
+
+    </insert>
+    <select id="listAll" resultType="com.jinyafu.jmall.entity.third.supplier.SupplierExt">
+        SELECT * FROM supplier WHERE status =1
+    </select>
+    <update id="updateSupplier" parameterType="com.jinyafu.jmall.entity.third.supplier.Supplier">
+        update supplier
+        <set>
+            <if test="name !=null "> name = #{name},</if>
+            <if test="address != null ">address = #{address},</if>
+            <if test="tel != null ">tel = #{tel},</if>
+            <if test="remark != null ">remark = #{remark},</if>
+            <if test="operator != null ">operator = #{operator},</if>
+            <if test="user!= null ">user= #{user},</if>
+            <if test="status != null ">status = #{status}</if>
+
+        </set>
+        where id=#{id}
+
+    </update>
+    <select id="selectSupplierByName" parameterType="String"
+            resultType="com.jinyafu.jmall.entity.third.supplier.Supplier">
+        SELECT * FROM  supplier WHERE name=#{name}
+    </select>
 
 </mapper>

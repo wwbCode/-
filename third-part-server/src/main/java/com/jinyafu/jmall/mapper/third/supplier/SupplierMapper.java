@@ -12,6 +12,8 @@ import com.jinyafu.thirdpart.common.code.MessageOutput;
 import feign.Param;
 
 import javax.xml.crypto.Data;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @program: third-part-server-SupplierMapper
@@ -25,6 +27,8 @@ public interface SupplierMapper extends BaseMapper<Supplier> {
       public void editSupplier(@Param("data") Supplier supplier);
       public void updateSupplier(@Param("data") Supplier supplier);
       public void deleteSupplier(@Param("status") String status );
+      public List<Supplier>listAll();
+      public List<Supplier> selectSupplierByName(@Param("name") String name);
 
 }
 
