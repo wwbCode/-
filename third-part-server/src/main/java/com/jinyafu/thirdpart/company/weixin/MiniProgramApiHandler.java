@@ -31,6 +31,8 @@ public class MiniProgramApiHandler extends AbsHandlerAdapter {
         switch ((ApiOperateType) type) {
             case WX_MINI_CODE2SESSION:
                 return code2Session((MiniProgramLoginReqVo) reqDTO);
+            /*case WX_ACODE_UNLIMIT:
+                return getWxAcodeUnlimit(() reqDTO);*/
         }
         return null;
     }

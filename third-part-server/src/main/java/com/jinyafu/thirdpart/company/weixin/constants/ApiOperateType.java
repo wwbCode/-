@@ -13,7 +13,8 @@ import lombok.Setter;
  */
 public enum ApiOperateType {
     WX_PUBLIC_TOKEN("TOKEN", "公众号token接口"),
-    WX_MINI_CODE2SESSION("CODE2SESSION", "小程序登录会话接口");
+    WX_MINI_CODE2SESSION("CODE2SESSION", "小程序登录会话接口"),
+    WX_ACODE_UNLIMIT("WXACODEUNLIMIT", "获取海量小程序码");
 
     ApiOperateType(String code, String desc) {
         this.code = code;
