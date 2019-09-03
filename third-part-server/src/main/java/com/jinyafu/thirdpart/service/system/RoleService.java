@@ -38,8 +38,7 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
-   }
-
+    }
     public void addOrUpdate(Role role, List<String> menuIds) {
         if (null == role.getId() || "".equals(role.getId())) {
             roleMapper.insertRole(role);

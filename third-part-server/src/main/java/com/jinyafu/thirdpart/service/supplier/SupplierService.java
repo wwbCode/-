@@ -63,6 +63,7 @@ public class SupplierService {
      * 供应商列表
      */
     @Transactional
+
     public PageOutput listAll(PageInfos pageInfos) {
         Page<Supplier> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
         List<Supplier> supplierList = supplierMapper.listAll();
