@@ -25,5 +25,8 @@ public interface RoleMapper extends BaseMapper<Menu>{
 
     void delete(String id);
 
+    Role get(String id);
 
+
+    List<Role> list();
 }

@@ -21,6 +21,10 @@
         </where>
     </select>
 
+    <select id="list" resultType="map">
+        select * from role
+    </select>
+
     <insert id="insertRole" parameterType="com.jinyafu.jmall.entity.third.system.Role">
         <selectKey keyProperty="id" resultType="String" order="BEFORE">
             select replace(uuid(),'-','') as id
@@ -48,7 +52,7 @@
     </insert>
 
     <update id="update" parameterType="com.jinyafu.jmall.entity.third.system.Role">
-        update m_role set
+        update role set
         name = #{name},
         introduce = #{introduce},
         flag = #{flag},
@@ -56,5 +60,13 @@
         rank = #{rank}
         where id = #{id}
     </update>
+    
+    <select id="get" parameterType="string" resultType="com.jinyafu.jmall.entity.third.system.Role">
+        select * from role where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="string">
+        delete from role where id = #{id}
+    </delete>
 
 </mapper>

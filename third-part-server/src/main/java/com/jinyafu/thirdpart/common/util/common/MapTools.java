@@ -1,5 +1,6 @@
 package com.jinyafu.thirdpart.common.util.common;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.springframework.cglib.beans.BeanMap;
 
 import java.util.HashMap;
@@ -15,6 +16,9 @@ import java.util.Map;
 
 public class MapTools {
 
+    /*
+    * javaBean 转换成 Map
+    * */
     public static <T> Map<String, Object> beanToMap(T bean) {
         Map<String, Object> map = new HashMap<String, Object>();
         if (bean != null) {
@@ -24,6 +28,30 @@ public class MapTools {
             }
         }
         return map;
+    }
+
+    /*
+    * Map 转换成 javaBean
+    * */
+    public static <T> T toBean(Map map,Class<T> clazz){
+
+        try {
+            /*
+             * 1创建指定类的javabean对象
+             */
+            T bean=clazz.newInstance();
+            /**
+             * 2.把数据封装到Java bean中
+             */
+            BeanUtils.populate(bean, map);
+            /**
+             * 3.返回Javabean;
+             */
+            return bean;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+
+        }
     }
 
 }

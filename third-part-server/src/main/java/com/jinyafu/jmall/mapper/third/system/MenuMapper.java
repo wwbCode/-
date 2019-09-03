@@ -23,7 +23,7 @@ public interface MenuMapper extends BaseMapper<Menu> {
 
     void delete(String id);
 
-    int updateMapBySelective(Map<String,Object> map);
+    void updateMapBySelective(Map<String,Object> map);
 
     List<Menu> queryList(Map<String,Object> map);
 

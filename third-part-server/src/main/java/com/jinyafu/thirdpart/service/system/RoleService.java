@@ -36,9 +36,8 @@ public class RoleService {
     RoleMenuMapper roleMenuMapper;
 
     public PageOutput queryList(RoleQuery roleQuery, PageInfos pageInfos){
-        Page<Object> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
+        Page<Role> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
         List<Role> roleList = roleMapper.queryList(roleQuery);
-        pageInfos.setTotalCount((int) page.getTotal());
         return PageOutput.ok(page, roleList);
     }
 
@@ -94,4 +93,24 @@ public class RoleService {
         }
     }
 
+    public Role getRole(String id) {
+        id = (null == id) ? "" : id;
+        return roleMapper.get(id);
+    }
+
+    public void delete(String id) {
+        roleMapper.delete(id);
+        roleMenuMapper.deleteByRoleId(id);
+        //adminRoleDAO.deleteByRoleId(id);
+    }
+
+    public List<RoleMenu> getRoleMenuListByRoleId(String roleId) {
+        List<RoleMenu> rmList = roleMenuMapper.getRoleMenuListByRoleId(roleId);
+        return rmList;
+    }
+
+    public List<Role> allList() {
+        List<Role> list = roleMapper.list();
+        return list;
+    }
 }

@@ -1,7 +1,9 @@
 package com.jinyafu.thirdpart.controller.system;
 
+
 import com.jinyafu.jmall.entity.data.system.RoleQuery;
 import com.jinyafu.jmall.entity.third.system.Role;
+import com.jinyafu.jmall.entity.third.system.RoleMenu;
 import com.jinyafu.thirdpart.common.annotation.PermissionMapping;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.Output;
@@ -12,7 +14,7 @@ import com.jinyafu.thirdpart.service.system.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+
 import java.util.List;
 import java.util.Map;
 
@@ -70,8 +72,7 @@ public class RoleController {
     @ResponseBody
     @PermissionMapping(name = "编辑角色", key = "/third/system/role/addOrUpdate", superKey = "/third/system/role/list")
     @RequestMapping(method = RequestMethod.POST, value = "/role/addOrUpdate")
-    public MessageOutput<?> addOrUpdate(HttpServletRequest request,
-                                     @RequestBody Map<String, Object> map) {
+    public MessageOutput<?> addOrUpdate(@RequestBody Map<String, Object> map) {
         try {
             Role role;
             if(map.get("role")!=null&&map.get("role")!=""){
@@ -85,6 +86,59 @@ public class RoleController {
         } catch (Exception e) {
             e.printStackTrace();
             return MessageOutput.ex();
+        }
+    }
+
+    @ResponseBody
+    @PermissionMapping(name = "获取单个角色详情", key = "/third/system/role/get", superKey = "/third/system/role/list")
+    @RequestMapping(method = RequestMethod.POST, value = "/role/get")
+    public Output<?> get(@RequestBody Map<String, Object> map) {
+        try {
+            Role role = roleService.getRole(map.get("id").toString());
+            return Output.ok(role);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Output.ex();
+        }
+    }
+
+    @ResponseBody
+    @PermissionMapping(name = "删除角色", key = "/third/system/role/delete", superKey = "/third/system/role/list")
+    @RequestMapping(method = RequestMethod.POST, value = "/role/delete")
+    public MessageOutput<?> delete(@RequestBody Map<String, Object> map) {
+        try {
+            roleService.delete(map.get("id").toString());
+            return MessageOutput.ok();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return MessageOutput.ex();
+        }
+    }
+
+    @ResponseBody
+    @PermissionMapping(name = "角色权限", key = "/third/system/role/roleMenuList", superKey = "/third/system/role/list")
+    @RequestMapping(method = RequestMethod.POST, value = "/role/roleMenuList")
+    public Output<?> roleMenuList(@RequestBody Map<String, Object> map) {
+        try {
+            List<RoleMenu> list = roleService.getRoleMenuListByRoleId(map.get("id").toString());
+            return Output.ok(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Output.ex();
+        }
+    }
+
+    @ResponseBody
+    @PermissionMapping(name = "所有角色列表", key = "/third/system/role/allList", superKey = "system", type = PermissionMapping.Type.menu)
+    @RequestMapping(method = RequestMethod.POST, value = "/role/allList")
+    public Output<?> allList() {
+
+        try {
+            List<Role> list = roleService.allList();
+            return Output.ok(list);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Output.ex();
         }
     }
 

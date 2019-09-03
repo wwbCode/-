@@ -1,129 +1,112 @@
-/*
- *   Copyright © 2011-2015 Kinghood Group All Rights Reserved.
- *   未经本公司正式书面同意，其他任何个人、团体不得使用、复制、修改或发布本软件.
- *   版权所有深圳金雅福控股集团有限公司 www.jinyafu.com.
- */
-
 package com.jinyafu.jmall.entity.third.system;
-
-import java.util.Date;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 /**
- * 用户表
- * @version 2019年8月27日下午5:38:08
- * @author Ly
+ * @Description:
+ * @CreateDate: 2019/8/29 9:30
+ * @Copyright版权所有 深圳金雅福控股集团有限公司
+ * @Author: xzq
+ * @Version: 1.0
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
-@TableName(value = "user")
+@TableName(value = "User")
 @Data
-public class User extends Model<User> {
-
-    private static final long serialVersionUID = 1L;
+public class User {
 
     @TableId("id")
-    private String id;
+    private String id;// 用户Id
 
-    /**
-     * 用户账号
-     */
     @TableField("account")
-    private String account;
+    private String account;// 帐号
 
-    /**
-     * 密码
-     */
     @TableField("password")
-    private String password;
+    private String password;// 密码
 
-    /**
-     * 姓名
-     */
-    @TableField("name")
-    private String name;
+    @TableField("createTime")
+    @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTime;// 建立时间
 
-    /**
-     * 有效标志 1：启用 0：停用
-     */
+    @TableField("updateTime")
+    private Date updateTime;//
+
     @TableField("flag")
-    private String flag;
+    private String flag;// 有效标志 1：启用 0：停用
 
-    /**
-     * 性别
-     */
-    @TableField("gender")
-    private Integer gender;
-
-    /**
-     * 手机
-     */
-    @TableField("mobile")
-    private String mobile;
-    
-    /**
-     * 工号
-     */
     @TableField("employeeNumber")
     private String employeeNumber;
 
-    /**
-     * 头像
-     */
+    @TableField("name")
+    private String name;// 姓名
+
+    @TableField("gender")
+    private String gender;// 性别,1:男 2:女 3:保密
+
+    // /基本信息
     @TableField("avatar")
-    private String avatar;
+    private String avatar;// 自定义照片
 
-    /**
-     * 创建时间
-     */
-    @TableField("createTime")
-    private Date createTime;
+    @TableField("mobile")
+    private String mobile;// 手机
 
-    /**
-     * 更新时间
-     */
-    @TableField("updateTime")
-    private Date updateTime;
-
-    /**
-     * 用户类型 0：超级管理员 1：普通管理员
-     */
-    @TableField("type")
-    private String type;
-    
-    /**
-     * 邮箱
-     */
     @TableField("email")
-    private String email;
-    
-    /**
-     * 备注
-     */
-    @TableField("remark")
-    private String remark;
+    private String email;// 电子信箱
 
+    @TableField("qq")
+    private String qq;// qq
+
+    @TableField("identityCard")
+    private String identityCard;// 身份证号码
+
+    @TableField("remark")
+    private String remark;// 备注
+
+    @TableField("introduce")
+    private String introduce;// 个人简介
+
+    @TableField("type")
+    private int type = 1;// 用户类型 0：超级管理员 1：普通管理员
+
+    // ////非持久化字段
+    public static final String status_disable = "0";
+    public static final String status_enable = "1";
     /**
-     * 是否删除(0：未删除；1：已删除；)
+     * 用户类型
      */
-    @TableField("isDelete")
-    private Integer isDelete;
+    public static final int type_system = 0;
+    public static final int type_general = 1;
 
     @Override
-	public String toString() {
-		return "User [id=" + id + ", account=" + account + ", password=" + password + ", name=" + name + ", flag="
-				+ flag + ", gender=" + gender + ", mobile=" + mobile + ", employeeNumber=" + employeeNumber
-				+ ", avatar=" + avatar + ", createTime=" + createTime + ", updateTime=" + updateTime + ", type=" + type
-				+ ", email=" + email + ", remark=" + remark + ", isDelete=" + isDelete + "]";
-	}
-    
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", flag='" + flag + '\'' +
+                ", employeeNumber='" + employeeNumber + '\'' +
+                ", name='" + name + '\'' +
+                ", gender='" + gender + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", email='" + email + '\'' +
+                ", qq='" + qq + '\'' +
+                ", identityCard='" + identityCard + '\'' +
+                ", remark='" + remark + '\'' +
+                ", introduce='" + introduce + '\'' +
+                ", type=" + type +
+                '}';
+    }
 }
