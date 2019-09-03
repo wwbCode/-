@@ -69,6 +69,10 @@ public class Output<T> implements Out {
         return new Output<>(OutputCode.OK.getCode());
     }
 
+    public static Output<Object> ok(OutputCode code){
+        return new Output<>(code.getCode(),code.getMessage());
+    }
+
     /**
      * 获取
      *

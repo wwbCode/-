@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.system.UserMapper">
+
+    <select id="queryList" parameterType="com.jinyafu.jmall.entity.data.system.UserQuery" resultType="map">
+        select * from user
+        <where>
+            <if test="account != null and account != ''">and account like "%"#{account}"%"</if>
+            <if test="name != null and name != ''">and name like "%"#{name}"%"</if>
+            <if test="mobile != null and mobile != ''">and mobile like "%"#{mobile}"%"</if>
+            <if test="gender != null and gender != ''">and gender = #{gender}</if>
+            <if test="type != null and type != -1">and type = #{type}</if>
+            <if test="flag != null and flag != ''">and flag = #{flag}</if>
+        </where>
+    </select>
+
+    <select id="get" parameterType="string" resultType="com.jinyafu.jmall.entity.third.system.User">
+        select * from user where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="string">
+        delete from user where id = #{id}
+    </delete>
+
+    <select id="getByAccount" parameterType="string" resultType="com.jinyafu.jmall.entity.third.system.User">
+        select * from user where account = #{account} limit 0,1
+    </select>
+
+    <select id="getAdminByAccount" parameterType="string" resultType="com.jinyafu.jmall.entity.third.system.User">
+        select * from user where account = #{account}
+    </select>
+
+    <insert id="insertUser" parameterType="com.jinyafu.jmall.entity.third.system.User">
+        <selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') as id
+        </selectKey>
+        insert into user
+        (
+        id,
+        account,
+        password,
+        createTime,
+        updateTime,
+        flag,
+        employeeNumber,
+        name,
+        gender,
+        avatar,
+        mobile,
+        email,
+        qq,
+        identityCard,
+        remark,
+        introduce,
+        type
+        )
+        values
+        (
+        #{id},
+        #{account},
+        #{password},
+        now(),
+        #{updateTime},
+        #{flag},
+        #{employeeNumber},
+        #{name},
+        #{gender},
+        #{avatar},
+        #{mobile},
+        #{email},
+        #{qq},
+        #{identityCard},
+        #{remark},
+        #{introduce},
+        #{type}
+        )
+    </insert>
+
+    <update id="updateBySelective" parameterType="com.jinyafu.jmall.entity.third.system.User">
+        update user
+        <set>
+            <if test="account != null and account != ''">account = #{account},</if>
+            <if test="password != null and password != ''">password = #{password},</if>
+            <if test="updateTime != null ">updateTime = #{updateTime},</if>
+            <if test="flag != null and flag != ''">flag = #{flag},</if>
+            <if test="name != null and name != ''">name = #{name},</if>
+            <if test="gender != null and gender != ''">gender = #{gender},</if>
+            <if test="avatar != null and avatar != ''">avatar = #{avatar},</if>
+            <if test="mobile != null and mobile != ''">mobile = #{mobile},</if>
+            <if test="email != null and email != ''">email = #{email},</if>
+            <if test="qq != null and qq != ''">qq = #{qq},</if>
+            <if test="identityCard != null and identityCard != ''">identityCard = #{identityCard},</if>
+            <if test="remark != null and remark != ''">remark = #{remark},</if>
+            <if test="introduce != null and introduce != ''">introduce = #{introduce},</if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+</mapper>

@@ -118,7 +118,7 @@ public class MybatisPlusConfig {
         MybatisSqlSessionFactoryBean sqlSessionFactoryBean = new MybatisSqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(routingDataSource);
         // 配置文件已经扫描
-        sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/third/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/third/**/*.xml"));
         //sqlSessionFactoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("com/jinyafu/jmall/mapper/core/mapper"));
         // 扩展mybatis配置
         MybatisConfiguration configuration = new MybatisConfiguration();

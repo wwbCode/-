@@ -11,7 +11,7 @@ import lombok.Getter;
  */
 public enum OutputCode {
 
-    OK("THIRD_000000", "处理成功"),
+    OK("200", "处理成功"),
     PM("THIRD_000001", "参数不对"),
     EX("THIRD_000002", "系统错误"),
     TX("THIRD_000003","登录已过期，请重新登录"),
@@ -25,11 +25,13 @@ public enum OutputCode {
     /**参数效验失败*/
     PARAMS_INVALID_FAIL("THIRD_000010", "参数效验失败"),
     /**短信发送异常*/
-    MESSAGE_SEND_FAIL("90008", "短信发送失败，请联系客服人员！"),
+    MESSAGE_SEND_FAIL("THIRD_000011", "短信发送失败，请联系客服人员！"),
     /**短信验证码错误*/
-    VERIFY_CODE_ERROR("90008", "验证码错误！"),
+    VERIFY_CODE_ERROR("THIRD_000012", "验证码错误！"),
     /**短信验证码已失效*/
-    VERIFY_CODE_INVALID("90008", "验证码已失效！");
+    VERIFY_CODE_INVALID("THIRD_000013", "验证码已失效！"),
+	PX("THIRD_000014", "密码错误"),
+	ACCOUNT_ISNOT_EXIST("THIRD_000015", "账号不存在");
 
     @Getter
     private String code;

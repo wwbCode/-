@@ -19,7 +19,12 @@ public abstract class AbsHandlerAdapter implements HandlerAdapter {
      * @date 2019/7/11
      */
     @Override
-    public Object handleDemo(Object reqDTO) {
+    public Object handle(Object reqDTO) {
+        return null;
+    }
+
+    @Override
+    public Object handle(Object type, Object reqDTO) throws Exception {
         return null;
     }
 

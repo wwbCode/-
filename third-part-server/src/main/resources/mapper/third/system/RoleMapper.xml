@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.system.RoleMapper">
+
+    <select id="queryList" parameterType="com.jinyafu.jmall.entity.data.system.RoleQuery" resultType="map">
+        select * from role
+        <where>
+            <if test="idList!=null and idList.size() > 0">
+                and id in
+                <foreach item="item" index="index" collection="idList"  open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="outIdList!=null and outIdList.size() > 0">
+                and id not in
+                <foreach item="item" index="index" collection="outIdList"  open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="name != null and name != ''">and name like "%"#{name}"%"</if>
+        </where>
+    </select>
+
+    <select id="list" resultType="map">
+        select * from role
+    </select>
+
+    <insert id="insertRole" parameterType="com.jinyafu.jmall.entity.third.system.Role">
+        <selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') as id
+        </selectKey>
+        insert into role
+        (
+        id,
+        name,
+        introduce,
+        createTime,
+        flag,
+        grade,
+        rank
+        )
+        values
+        (
+        #{id},
+        #{name},
+        #{introduce},
+        now(),
+        #{flag},
+        #{grade},
+        #{rank}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.jinyafu.jmall.entity.third.system.Role">
+        update role set
+        name = #{name},
+        introduce = #{introduce},
+        flag = #{flag},
+        grade = #{grade},
+        rank = #{rank}
+        where id = #{id}
+    </update>
+    
+    <select id="get" parameterType="string" resultType="com.jinyafu.jmall.entity.third.system.Role">
+        select * from role where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="string">
+        delete from role where id = #{id}
+    </delete>
+
+</mapper>

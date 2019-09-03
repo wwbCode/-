@@ -33,7 +33,7 @@ public class EmailInfoReq {
     /**
      * 发票下载地址
      */
-    public String ticketUrl;
+    public String invoiceUrl;
     /**
      * 用户邮件地址
      */

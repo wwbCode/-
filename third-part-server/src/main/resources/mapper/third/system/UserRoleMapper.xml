@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.system.UserRoleMapper">
+
+    <select id="getUserRoleInfoListByUserIdList" resultType="map">
+        select
+        mar.* ,
+        r.name roleName
+        from user_role mar
+        left join role r on r.id=mar.roleId
+        where 1=1
+        <if test="userIdList!=null and userIdList.size() > 0">
+            and mar.userId in
+            <foreach item="item" index="index" collection="userIdList"  open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+    </select>
+
+    <delete id="deleteByUserId" parameterType="string">
+        delete from user_role where userId = #{userId}
+    </delete>
+
+    <insert id="insert" parameterType="com.jinyafu.jmall.entity.third.system.UserRole">
+        <selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') as id
+        </selectKey>
+        insert into user_role
+        (
+        id,
+        adminId,
+        roleId,
+        rank,
+        createTime
+        )
+        values
+        (
+        #{id},
+        #{adminId},
+        #{roleId},
+        #{rank},
+        now()
+        )
+    </insert>
+
+    <delete id="delete" parameterType="string">
+        delete from user_role where id = #{id}
+    </delete>
+
+    <select id="getListByUserId" parameterType="string" resultType="map">
+        select * from user_role where userId = #{userId}
+    </select>
+
+</mapper>
