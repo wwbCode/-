@@ -38,7 +38,7 @@ public class RoleService {
     public PageOutput queryList(RoleQuery roleQuery, PageInfos pageInfos){
         Page<Object> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
         List<Role> roleList = roleMapper.queryList(roleQuery);
-        pageInfos.setTotalCount((int) page.getTotal());
+        //pageInfos.setTotalCount((int) page.getTotal());
         return PageOutput.ok(page, roleList);
     }
 
