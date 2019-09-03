@@ -22,13 +22,19 @@ import java.util.Map;
  * @create: 2019-08-29 19:31
  **/
 public interface SupplierMapper extends BaseMapper<Supplier> {
-    /*public User getByAccount(@Param("account") String account);*/
-      public void addSupplier (@Param("data") Supplier supplier);
-      public void editSupplier(@Param("data") Supplier supplier);
-      public void updateSupplier(@Param("data") Supplier supplier);
-      public void deleteSupplier(@Param("status") String status );
-      public List<Supplier>listAll();
-      public List<Supplier> selectSupplierByName(@Param("name") String name);
+
+    void addSupplier(@Param("data") Supplier supplier);
+
+    // public void editSupplier(@Param("data") Supplier supplier);
+    void updateSupplier(@Param("data") Supplier supplier);
+
+    void deleteSupplier(@Param("status") String status);
+
+    List<Supplier> listAll();
+
+    List<Supplier> selectSupplierByName(@Param("name") String name);
+
+    void deleteSupplierById(@Param("id")String id);
 
 }
 

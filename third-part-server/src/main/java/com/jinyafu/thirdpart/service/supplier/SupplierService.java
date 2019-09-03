@@ -6,8 +6,10 @@ package com.jinyafu.thirdpart.service.supplier;/**
  * @Version: 1.0
  */
 
+import com.jinyafu.jmall.entity.third.serve.Serve;
 import com.jinyafu.jmall.entity.third.supplier.Supplier;
 import com.jinyafu.jmall.entity.third.supplier.SupplierExt;
+import com.jinyafu.jmall.mapper.third.serve.ServeMapper;
 import com.jinyafu.jmall.mapper.third.supplier.SupplierMapper;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.OutputCode;
@@ -29,6 +31,8 @@ import java.util.UUID;
 public class SupplierService {
     @Resource
     SupplierMapper supplierMapper;
+    @Resource
+    ServeMapper serveMapper;
 
 
     /**
@@ -76,6 +80,23 @@ public class SupplierService {
             return MessageOutput.get(OutputCode.DX.getCode(), OutputCode.DX.getMessage());
         }
         return MessageOutput.ok();
+    }
+
+    /**
+     * @description: 删除供应商
+     * @date: 2019/9/2 10:45
+     * @author: wwb
+     * @param:
+     * @return:
+     */
+    @Transactional
+    public MessageOutput deleteSupplier (String supplierId){
+        //删除供应商以下所有的服务，把所有的服务状态置为0就可以了
+
+        supplierMapper.deleteSupplierById(supplierId);
+        serveMapper.deleteServeByFid(supplierId);
+        return MessageOutput.ok();
+
     }
 
 
