@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -21,13 +22,18 @@ import com.jinyafu.thirdpart.common.code.OutputCode;
 import com.obs.services.ObsClient;
 import com.obs.services.ObsConfiguration;
 import com.obs.services.exception.ObsException;
+import com.obs.services.model.DeleteObjectsRequest;
+import com.obs.services.model.DeleteObjectsResult;
 import com.obs.services.model.ObsObject;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * TODO:Obs管理类
  * @version 2019年2月14日上午11:45:40
  * @author Mike
  */
+@Slf4j
 public class ObsManger {
 	
 	private static ObsClient obsClient;
@@ -50,7 +56,6 @@ public class ObsManger {
 	 * @return
 	 */
 	public static synchronized Map<String,Object> byteUpload(byte[] content,String objectKey ) {
-		
 		Map<String,Object> map = new HashMap<String,Object>();
 		try {
 			obsClient.putObject(OBSConfig.BUCKETNAME, objectKey, new ByteArrayInputStream(content));
@@ -124,6 +129,58 @@ public class ObsManger {
 		
 		return map;
 	}
+	
+	
+	public static synchronized Map<String,Object> fileUpload(String bucketName,MultipartFile file,String objectKey) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		InputStream fis;
+			try {
+			    fis = file.getInputStream();
+				obsClient.putObject(bucketName, objectKey, fis);
+				map.put("Message", OutputCode.OK.getMessage());
+				map.put("Code", OutputCode.OK.getCode());
+			} catch (IOException e) {
+				map.put("Message", e.getMessage());
+				map.put("Code", "500");
+			} catch (ObsException e) {
+				map.put("Message", e.getErrorMessage());
+				map.put("Code", e.getErrorCode());
+			}
+		
+		return map;
+	}
+	
+	
+	/**
+	 * 
+	 * TODO:批量删除
+	 * @version 2019年8月27日下午6:30:06
+	 * @author Mike
+	 * @param objectKey
+	 * @return
+	 */
+	public static  Map<String,Object> deleteFile(String bucketName,List<String> objectKey) {
+		Map<String,Object> map = new HashMap<String,Object>();
+			try {
+			    DeleteObjectsRequest dor = new DeleteObjectsRequest(bucketName);
+			    for (String filePath : objectKey) {
+			    	dor.addKeyAndVersion(filePath);
+				}
+			    DeleteObjectsResult deleteResult=  obsClient.deleteObjects(dor);
+			    // 获取删除成功的对象
+			    log.info("调用成功结果：{}",deleteResult.getDeletedObjectResults());
+			    // 获取删除失败的对象
+			    log.error("删除失败结果：{}",deleteResult.getErrorResults());
+				map.put("Message", OutputCode.OK.getMessage());
+				map.put("Code", OutputCode.OK.getCode());
+			} catch (ObsException e) {
+				map.put("Message", e.getErrorMessage());
+				map.put("Code", e.getErrorCode());
+			}
+		
+		return map;
+	}
+	
 	
 	/**
 	 * 
