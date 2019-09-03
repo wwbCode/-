@@ -77,21 +77,24 @@ public class SupplierController {
         return supplierService.editSupplier(supplier);
 
     }
-//
-//    /**
-//     * @description: 删除
-//     * @date: 2019/8/29 20:20
-//     * @author: wwb
-//     * @param:
-//     * @return:
-//     */
-//
-//    @ResponseBody
-//    @RequestMapping(value = "delete",method = RequestMethod.POST)
-//    public MessageOutput deleteSupplier(@RequestBody String supplierId){
-//        supplierService.deleteSupplier(supplierId);
-//        return MessageOutput.ok();
-//    }
+
+    /**
+     * @description: 删除
+     * @date: 2019/8/29 20:20
+     * @author: wwb
+     * @param:
+     * @return:
+     */
+
+    @ResponseBody
+    @RequestMapping(value = "delete",method = RequestMethod.POST)
+    public MessageOutput deleteSupplier(@RequestBody String supplierId){
+        if(null!=supplierId) {
+            return supplierService.deleteSupplier(supplierId);
+        } else {
+            return MessageOutput.ex();
+        }
+    }
 
     /**
      * @description: 查找供应商

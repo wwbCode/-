@@ -38,12 +38,14 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
-    public ResponseDTO<?> queryList(RoleDTO data){
+        return PageOutput.ok(page, roleList);    
+}
+public ResponseDTO<?> queryList(RoleDTO data){
     	Page<?> page = new Page<>(data.getPage().getPageNum(), data.getPage().getPageSize());
         List<Role> list = roleMapper.queryList(page, data);
         return ResponseDTO.success(new ResponsePageData<Role>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));
-    }
 
+    }
 //    public  List<Role> queryList(RoleQuery roleQuery){
 //        List<Role> roleList = roleMapper.queryList(roleQuery);
 //        return roleList;
