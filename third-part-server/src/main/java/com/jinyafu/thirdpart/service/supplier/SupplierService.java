@@ -5,10 +5,6 @@ package com.jinyafu.thirdpart.service.supplier;/**
  * @Author: wwb
  * @Version: 1.0
  */
-
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-
 import com.github.pagehelper.PageInfo;
 import com.jinyafu.jmall.entity.third.serve.Serve;
 import com.jinyafu.jmall.entity.third.supplier.Supplier;
@@ -50,6 +46,7 @@ public class SupplierService {
         if (null != supplier.getName()) {
             supplier.setId(UUID.randomUUID().toString().replace("-", ""));
             supplier.setStartTime(new Date());
+          
             supplier.setStatus(1);//未删除
             supplierMapper.addSupplier(supplier);
         } else {

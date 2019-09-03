@@ -22,8 +22,6 @@ import java.util.Map;
  * @create: 2019-08-29 19:31
  **/
 public interface SupplierMapper extends BaseMapper<Supplier> {
-  
-
     void addSupplier(@Param("data") Supplier supplier);
 
     // public void editSupplier(@Param("data") Supplier supplier);

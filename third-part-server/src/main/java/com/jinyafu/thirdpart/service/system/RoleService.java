@@ -36,9 +36,9 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
-  public ResponseDTO<?> queryList(RoleDTO data){
-        return ResponseDTO.success(new ResponsePageData<Role>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));
+        List<Role> list = roleMapper.queryList(page, data);        return ResponseDTO.success(new ResponsePageData<Role>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));
 }
+
     public void addOrUpdate(Role role, List<String> menuIds) {
         if (null == role.getId() || "".equals(role.getId())) {
             roleMapper.insertRole(role);
