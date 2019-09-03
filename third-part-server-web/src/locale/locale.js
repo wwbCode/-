@@ -35,7 +35,7 @@ export default {
         home: 'home',
         switchLangTitle: 'Switch Lang',
         international: 'Switch Lang',
-        tip: 'Note: iview-admin just to demonstrate how to achieve multi-language switching, so only the current page to do the translation.',
+        tip: 'Note: iview-user just to demonstrate how to achieve multi-language switching, so only the current page to do the translation.',
         iviewComponentTitle: 'The effect on the iview',
         intro: 'iview currently supports 15 languages, as long as you see the iview component where the text will be based on your language type automatically set the corresponding language.',
         placeholderText: 'please enter text...',

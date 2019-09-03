@@ -46,7 +46,7 @@
         data () {
             return {
                 form: {
-                    account: 'admin',
+                    account: 'user',
                     password: ''
                 },
                 rules: {

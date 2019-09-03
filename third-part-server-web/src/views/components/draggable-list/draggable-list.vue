@@ -171,7 +171,7 @@ export default {
             },
             animation: 120,
             ghostClass: 'placeholder-style',
-            fallbackClass: 'iview-admin-cloned-item',
+            fallbackClass: 'iview-user-cloned-item',
             onRemove (event) {
                 vm.doArray.splice(event.newIndex, 0, vm.todoArray[event.item.getAttribute('data-index')]);
             }
@@ -183,9 +183,9 @@ export default {
                 pull: true
             },
             sort: false,
-            filter: '.iview-admin-draggable-delete',
+            filter: '.iview-user-draggable-delete',
             animation: 120,
-            fallbackClass: 'iview-admin-cloned-item',
+            fallbackClass: 'iview-user-cloned-item',
             onRemove (event) {
                 vm.doArray.splice(event.oldIndex, 1);
             }
@@ -198,7 +198,7 @@ export default {
             },
             animation: 120,
             ghostClass: 'placeholder-style',
-            fallbackClass: 'iview-admin-cloned-item',
+            fallbackClass: 'iview-user-cloned-item',
             onRemove (event) {
                 vm.affordList.splice(event.newIndex, 0, vm.shoppingList[event.item.getAttribute('data-index')]);
             }
@@ -210,9 +210,9 @@ export default {
                 pull: true
             },
             sort: false,
-            filter: '.iview-admin-draggable-delete',
+            filter: '.iview-user-draggable-delete',
             animation: 120,
-            fallbackClass: 'iview-admin-cloned-item',
+            fallbackClass: 'iview-user-cloned-item',
             onRemove (event) {
                 vm.affordList.splice(event.oldIndex, 1);
             }

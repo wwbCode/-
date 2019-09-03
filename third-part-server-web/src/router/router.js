@@ -67,31 +67,51 @@ export const otherRouter = {
 // 作为Main组件的子页面展示并且在左侧菜单显示的路由写在appRouter里
 export const appRouter = [
     {
-        path: '/access',
+        path: '/system',
         icon: 'key',
-        name: 'access',
+        name: 'system',
         title: '权限管理',
         component: Main,
         children: [
-            { path: 'index', title: '权限管理', name: 'access_index', component: () => import('@/views/access/access.vue') }
-        ]
-    },
-    {
-        path: '/user',
-        icon: 'social-buffer',
-        name: 'user',
-        title: '用户管理',
-        component: Main,
-        children: [
             {
-                path: 'list',
-                icon: 'pound',
-                name: 'user-list',
-                title: '用户管理',
-                component: () => import('@/views/user/list.vue')
+                path: 'menu',
+                title: '菜单管理',
+                name: 'third.system.menu.allList',
+                icon: 'ios-switch-outline',
+                component: () => import('@/views/system/menu/tree.vue')
+            },
+            {
+                name: 'third.system.role.list',
+                path: 'role',
+                title: '角色列表',
+                icon: 'ios-switch-outline',
+                component: () => import('@/views/system/role/role-list.vue')
+            },
+            {
+                name: 'third.system.user.list',
+                path: 'user',
+                title: '系统用户列表',
+                icon: 'ios-switch-outline',
+                component: () => import('@/views/system/user/user-list.vue')
             }
-        ]
+            ]
     },
+    // {
+    //     path: '/user',
+    //     icon: 'social-buffer',
+    //     name: 'user',
+    //     title: '用户管理',
+    //     component: Main,
+    //     children: [
+    //         {
+    //             path: 'list',
+    //             icon: 'pound',
+    //             name: 'user-list',
+    //             title: '用户管理',
+    //             component: () => import('@/views/user/list.vue')
+    //         }
+    //     ]
+    // },
     {
         path: '/access-test',
         icon: 'lock-combination',
