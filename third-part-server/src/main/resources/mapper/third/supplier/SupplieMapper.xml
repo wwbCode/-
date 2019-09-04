@@ -21,8 +21,8 @@
             <if test="remark != null ">remark = #{remark},</if>
             <if test="operator != null ">operator = #{operator},</if>
             <if test="user!= null ">user= #{user},</if>
-            <if test="status != null ">status = #{status}</if>
-
+            <if test="status != null ">status = #{status},</if>
+            <if test="startTime != null ">startTime=#{startTime}</if>
         </set>
         where id=#{id}
 

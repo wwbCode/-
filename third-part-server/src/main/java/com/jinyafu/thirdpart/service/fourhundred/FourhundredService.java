@@ -7,6 +7,7 @@ package com.jinyafu.thirdpart.service.fourhundred;/**
  */
 
 //import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.jinyafu.jmall.entity.third.fourhundred.Fourhundred;
@@ -17,6 +18,7 @@ import com.jinyafu.thirdpart.common.code.PageOutput;
 import com.jinyafu.thirdpart.common.data.PageInfos;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -41,14 +43,16 @@ public class FourhundredService {
      * @return:
      */
     @Transactional
-    public MessageOutput addFourhundred(Fourhundred fourhundred){
-        if(null!=fourhundred.getTel()&&!fourhundred.getId().equals("")){
-            fourhundred.setId(UUID.randomUUID().toString().replace("-",""));
+    public MessageOutput addFourhundred(Fourhundred fourhundred) {
+        //需要通过电话来判断重复
+        if (null != fourhundred.getTel() && !fourhundred.getTel().equals("")) {
+            fourhundred.setId(UUID.randomUUID().toString().replace("-", ""));
+            fourhundred.setIsDelete(1);
             fourhundredMapper.addFourhundred(fourhundred);
+            return MessageOutput.ok();
         } else {
-            return MessageOutput.get(OutputCode.PARAMS_INVALID_EMPTY.getCode(),OutputCode.PARAMS_INVALID_EMPTY.getMessage())
+            return MessageOutput.get(OutputCode.PARAMS_INVALID_EMPTY.getCode(), OutputCode.PARAMS_INVALID_EMPTY.getMessage());
         }
-        return null;
     }
 
     /**
@@ -59,19 +63,90 @@ public class FourhundredService {
      * @return:
      */
     @Transactional
-    public PageOutput listAll(PageInfos pageInfos){
+    public PageOutput listAll(PageInfos pageInfos) {
         List<Fourhundred> fourhundredList = fourhundredMapper.listAll();
-        Page<Fourhundred> page = PageHelper.offsetPage(pageInfos.getPageNum(),pageInfos.getPageSize());
-        return PageOutput.ok(page,fourhundredList);
+        Page<Fourhundred> page = PageHelper.offsetPage(pageInfos.getPageNum(), pageInfos.getPageSize());
+        return PageOutput.ok(page, fourhundredList);
     }
-    
+
     /**
-     * @description: 方法描述
+     * @description: 编辑400
      * @date: 2019/9/4 13:58
      * @author: wwb
-     * @param:  
-     * @return: 
+     * @param:
+     * @return:
      */
     @Transactional
+    public MessageOutput editFourhundred(Fourhundred fourhundred) {
+        if(fourhundred.getId()!=null) {
+            fourhundredMapper.editFourhundred(fourhundred);
+            return MessageOutput.ok();
+        } else {
+            return  MessageOutput.get(OutputCode.PARAMS_INVALID_EMPTY.getCode(),OutputCode.PARAMS_INVALID_EMPTY.getMessage());
+        }
+
+    }
+
+    /**
+     * @description: 删除400记录
+     * @date: 2019/9/4 14:41
+     * @author: wwb
+     * @param:
+     * @return:
+     */
+    @Transactional
+    public MessageOutput deleteFourhundred(String  fourhundredId) {
+        fourhundredMapper.deleteFourhundred(fourhundredId);
+        return MessageOutput.ok();
+    }
+
+    /**
+     * @description: 通过id查找400
+     * @date: 2019/9/4 14:42
+     * @author: wwb
+     * @param:
+     * @return:
+     */
+    @Transactional
+    public MessageOutput getById(String fourhundredId) {
+
+        if (null != fourhundredId) {
+            Fourhundred fourhundred= fourhundredMapper.getById(fourhundredId);
+                return MessageOutput.ok(fourhundred);
+            }
+            else {
+            return MessageOutput.ex();
+        }
+    }
+//
+//    /**
+//     * @description: 通过模糊查询
+//     * @date: 2019/9/4 14:46
+//     * @author: wwb
+//     * @param:
+//     * @return:
+//     */
+//    @Transactional
+//    public PageOutput selectByTel(String Tel){
+//        if(null!=Tel&&!Tel.equals("")){
+//            return PageOutput.ok(fourhundredMapper.selectByTel(Tel));
+//        } else {
+//            return PageOutput.ex();
+//        }
+//    }
+
+    /**
+     * @description: 多条件查询
+     * @date: 2019/9/4 15:13
+     * @author: wwb
+     * @param:
+     * @return:
+     */
+    @Transactional
+    public PageOutput selectByConditions(Fourhundred fourhundred){
+        Page page=new Page();//
+        List<Fourhundred>fourhundredList=fourhundredMapper.selectByConditions(fourhundred);
+       return PageOutput.ok(page,fourhundredList);
+    }
 
 }

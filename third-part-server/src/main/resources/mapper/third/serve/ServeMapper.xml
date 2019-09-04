@@ -3,7 +3,7 @@
 <mapper namespace="com.jinyafu.jmall.mapper.third.serve.ServeMapper">
     <select id="listAll" resultType="com.jinyafu.jmall.entity.third.serve.Serve">
         SELECT * FROM serve
-        WHERE status =1
+        WHERE isDelete =1
         <if test="name !=null and name !=''">
             and  name=#{name}
         </if>
@@ -18,34 +18,34 @@
         </if>
 
     </select>
+    <!--通过id删除-->
     <update id="updateServeById" parameterType="String" >
-        UPDATE  serve SET status=0  WHERE  id=#{id}
+        UPDATE  serve SET isDelete=0 WHERE  id=#{id}
     </update>
-
+     <!--添加服务-->
     <insert id="addServe" parameterType="com.jinyafu.jmall.entity.third.serve.Serve">
-        insert into serve (id,name,gid,pid,user,operator,startTime,endTime,status)
+        insert into serve (id,name,gid,pid,user,operator,startTime,endTime,status,isDelete)
 
         VALUES
 
-        (#{id},#{name},#{gid},#{pid},#{user},#{operator},#{startTime},#{endTime},#{status})
+        (#{id},#{name},#{gid},#{pid},#{user},#{operator},#{startTime},#{endTime},#{status},#{isDelete})
     </insert>
-
+     <!--全称搜所-->
     <select id="selectByAllname" parameterType="String" resultType="com.jinyafu.jmall.entity.third.serve.Serve">
         SELECT *FROM serve
-         WHERE status=1
+         WHERE isDelete=1
         <!-- <if test="name !=null and name != ''">
              and name like concat('%',#{name},'' )
          </if>-->
     </select>
-
+      <!--名字模糊查询-->
     <select id="selectByName" parameterType="com.jinyafu.jmall.entity.third.serve.Serve" resultType="com.jinyafu.jmall.entity.third.serve.Serve">
         SELECT *FROM serve
-        WHERE status=1
+        WHERE isDelete=1
         <if test="name !=null and name!=''"> and name like concat('%',#{name},'%' )</if>
     </select>
 
-
-
+    <!--更新服务信息-->
     <update id="uodateServe" parameterType="com.jinyafu.jmall.entity.third.serve.Serve">
         UPDATE serve
         <set>
@@ -55,12 +55,14 @@
             <if test="startTime != null ">startTime = #{startTime},</if>
             <if test="endTime != null ">endTime = #{endTime},</if>
             <if test="type!= null ">type= #{type},</if>
+            <if test="operator != null">operator=#{operator},</if>
+            <if test="status !=null">status=#{status}</if>
         </set>
         where id=#{id}
     </update>
-
+   <!--删除供应商下的服务-->
     <update id="deleteServeByFid" parameterType="String">
-        UPDATE serve set status = 0 where pid =#{pid}
+        UPDATE serve set idDelete = 0 where pid =#{pid}
     </update>
 
 </mapper>

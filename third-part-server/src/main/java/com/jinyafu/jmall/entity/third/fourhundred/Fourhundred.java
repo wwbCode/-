@@ -31,7 +31,7 @@ public class Fourhundred {
     /**开通时间 */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date OpeningTime;
+    private Date openingTime;
     /** 到期时间*/
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -71,7 +71,7 @@ public class Fourhundred {
     /**最新用途*/
     private String latestUse;
 
-    private Integer pagesize;
-    private  Integer pageNum;
+    /**是否删除*/
+    private Integer isDelete; //0 删除 1 未删除
 
 }
