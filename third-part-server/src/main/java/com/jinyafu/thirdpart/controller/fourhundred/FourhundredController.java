@@ -59,8 +59,8 @@ public class FourhundredController {
     public PageOutput listAll(@RequestBody  Map<String,Object> map){
         PageInfos pageInfos = new PageInfos();
         if(null!=map.get("pageSize")||null!=map.get("pageNum")){
-            pageInfos.setPageSize((Integer) map.get("pageSize"));
-            pageInfos.setPageNum((Integer)map.get("pageNum"));
+            pageInfos.setPageSize((int)map.get("pageSize"));
+            pageInfos.setPageNum((int)map.get("pageNum"));
             //展现部分字段，按时间排序
             return fourhundredService.listAll(pageInfos);
         } else {
