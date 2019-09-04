@@ -6,6 +6,10 @@ package com.jinyafu.thirdpart.service.supplier;/**
  * @Version: 1.0
  */
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
+import com.github.pagehelper.PageInfo;
 import com.jinyafu.jmall.entity.third.serve.Serve;
 import com.jinyafu.jmall.entity.third.supplier.Supplier;
 import com.jinyafu.jmall.entity.third.supplier.SupplierExt;
@@ -13,6 +17,8 @@ import com.jinyafu.jmall.mapper.third.serve.ServeMapper;
 import com.jinyafu.jmall.mapper.third.supplier.SupplierMapper;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.OutputCode;
+import com.jinyafu.thirdpart.common.code.PageOutput;
+import com.jinyafu.thirdpart.common.data.PageInfos;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,8 +63,10 @@ public class SupplierService {
      * 供应商列表
      */
     @Transactional
-    public MessageOutput listAll() {
-        return MessageOutput.ok(supplierMapper.listAll());
+    public PageOutput listAll(PageInfos pageInfos) {
+        Page<Supplier> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
+        List<Supplier> supplierList = supplierMapper.listAll();
+        return PageOutput.ok(page,supplierList);
     }
 
     /**
@@ -97,6 +105,12 @@ public class SupplierService {
         serveMapper.deleteServeByFid(supplierId);
         return MessageOutput.ok();
 
+    }
+
+    @Transactional
+    public MessageOutput selectById(String supplierId){
+
+        return MessageOutput.ok(supplierMapper.selectById(supplierId));
     }
 
 
