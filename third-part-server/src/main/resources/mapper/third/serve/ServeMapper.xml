@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.serve.ServeMapper">
+    <select id="listAll" resultType="com.jinyafu.jmall.entity.third.serve.Serve">
+        SELECT * FROM serve
+        WHERE status =1
+        <if test="name !=null and name !=''">
+            and  name=#{name}
+        </if>
+        <if test="pid!=null and pid !=''">
+            AND  pid=#{pid}
+        </if>
+        <if test="gid !=null and git !=''">
+            AND gid=#{gid}
+        </if>
+        <if test="user!=null and user !=''">
+            AND user=#{user}
+        </if>
+
+    </select>
+    <update id="updateServeById" parameterType="String" >
+        UPDATE  serve SET status=0  WHERE  id=#{id}
+    </update>
+
+    <insert id="addServe" parameterType="com.jinyafu.jmall.entity.third.serve.Serve">
+        insert into serve (id,name,gid,pid,user,operator,startTime,endTime,status)
+
+        VALUES
+
+        (#{id},#{name},#{gid},#{pid},#{user},#{operator},#{startTime},#{endTime},#{status})
+    </insert>
+
+    <select id="selectByAllname" parameterType="String" resultType="com.jinyafu.jmall.entity.third.serve.Serve">
+        SELECT *FROM serve
+         WHERE status=1
+        <!-- <if test="name !=null and name != ''">
+             and name like concat('%',#{name},'' )
+         </if>-->
+    </select>
+
+    <select id="selectByName" parameterType="com.jinyafu.jmall.entity.third.serve.Serve" resultType="com.jinyafu.jmall.entity.third.serve.Serve">
+        SELECT *FROM serve
+        WHERE status=1
+        <if test="name !=null and name!=''"> and name like concat('%',#{name},'%' )</if>
+    </select>
+
+
+
+    <update id="uodateServe" parameterType="com.jinyafu.jmall.entity.third.serve.Serve">
+        UPDATE serve
+        <set>
+            <if test="name !=null "> name = #{name},</if>
+            <if test="gid != null ">gid = #{gid},</if>
+            <if test="user != null ">user = #{user},</if>
+            <if test="startTime != null ">startTime = #{startTime},</if>
+            <if test="endTime != null ">endTime = #{endTime},</if>
+            <if test="type!= null ">type= #{type},</if>
+        </set>
+        where id=#{id}
+    </update>
+
+    <update id="deleteServeByFid" parameterType="String">
+        UPDATE serve set status = 0 where pid =#{pid}
+    </update>
+
+</mapper>
