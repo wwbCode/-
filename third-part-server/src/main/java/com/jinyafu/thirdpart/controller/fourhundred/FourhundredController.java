@@ -61,7 +61,6 @@ public class FourhundredController {
         if(null!=map.get("pageSize")||null!=map.get("pageNum")){
             pageInfos.setPageSize((int)map.get("pageSize"));
             pageInfos.setPageNum((int)map.get("pageNum"));
-            //展现部分字段，按时间排序
             return fourhundredService.listAll(pageInfos);
         } else {
             return PageOutput.ex();
@@ -92,8 +91,8 @@ public class FourhundredController {
      */
     @ResponseBody
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
-    public MessageOutput (@RequestBody Fourhundred fourhundred){
-        return fourhundredService.deleteFourhundred(fourhundred.getId);
+    public MessageOutput delete(@RequestBody Fourhundred fourhundred){
+        return fourhundredService.deleteFourhundred(fourhundred.getId());
     }
 
     /**
@@ -105,22 +104,36 @@ public class FourhundredController {
      */
     @ResponseBody
     @RequestMapping(value = "/getById",method = RequestMethod.POST)
-    public Fourhundred getById(@RequestBody String  fourhundredId){
-        return fourhundredService.getById(fourhundredId);
+    public MessageOutput getById(@RequestBody Fourhundred  fourhundred){
+        return fourhundredService.getById(fourhundred.getId());
     }
 
+//    /**
+//     * @description: 通过模糊查询 查找记录
+//     * @date: 2019/9/4 9:19
+//     * @author: wwb
+//     * @param:
+//     * @return:
+//     */
+//    @ResponseBody
+//    @RequestMapping(value = "/selectByTel",method = RequestMethod.POST)
+//    public PageOutput selectByTel(@RequestBody Fourhundred fourhundred){
+//        return fourhundredService.selectByTel(fourhundred.getTel());
+//    }
+
     /**
-     * @description: 通过模糊查询 查找记录
-     * @date: 2019/9/4 9:19
+     * @description:多条件查询400
+     * @date: 2019/9/4 15:09
      * @author: wwb
      * @param:
      * @return:
      */
     @ResponseBody
-    @RequestMapping(value = "/selectByName",method = RequestMethod.POST)
-    public MessageOutput selectByName(@RequestBody Fourhundred fourhundred){
-        return fourhundredService.selectByName(fourhundred.getName);
+    @RequestMapping(value = "/selectByConditions",method = RequestMethod.POST)
+    public PageOutput selectByConditions (@RequestBody Fourhundred fourhundred){
+        return fourhundredService.selectByConditions(fourhundred);
     }
+
 
 
 }

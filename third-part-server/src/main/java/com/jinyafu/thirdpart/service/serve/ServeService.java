@@ -62,6 +62,7 @@ public class ServeService {
                 if (serve.getPid() != null) {
                     if (serve.getOperator() != null) {
                         serve.setId(UUID.randomUUID().toString().replace("-", ""));
+                        serve.setIsDelete(1);
                         serveMapper.addServe(serve);
                     } else {
                         return MessageOutput.get("101", "服务所对接人不能为空！");
