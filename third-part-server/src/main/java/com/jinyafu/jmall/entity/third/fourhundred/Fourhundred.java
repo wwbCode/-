@@ -71,4 +71,7 @@ public class Fourhundred {
     /**最新用途*/
     private String latestUse;
 
+    private Integer pagesize;
+    private  Integer pageNum;
+
 }
