@@ -9,6 +9,8 @@ package com.jinyafu.jmall.mapper.third.fourhundred;/**
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jinyafu.jmall.entity.third.fourhundred.Fourhundred;
 
+import java.util.List;
+
 /**
  * @program: third-part-server-FourhundredMapper
  * @description:
@@ -16,5 +18,17 @@ import com.jinyafu.jmall.entity.third.fourhundred.Fourhundred;
  * @create: 2019-09-04 10:41
  **/
 public interface FourhundredMapper extends BaseMapper<Fourhundred> {
+    void addFourhundred(Fourhundred fourhundred);
+
+    List<Fourhundred> listAll();
+
+    void editFourhundred(Fourhundred fourhundred);
+
+    void deleteFourhundred(String fourhundredId);
+
+    Fourhundred getById(String fourhundredId);
+
+    List<Fourhundred> selectByConditions(Fourhundred fourhundred);
+
 
 }
