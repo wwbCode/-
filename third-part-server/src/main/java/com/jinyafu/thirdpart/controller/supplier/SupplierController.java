@@ -6,10 +6,13 @@ package com.jinyafu.thirdpart.controller.supplier;/**
  * @Version: 1.0
  */
 
+import com.github.pagehelper.PageInfo;
 import com.jinyafu.jmall.entity.third.supplier.Supplier;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.Output;
 import com.jinyafu.thirdpart.common.code.OutputCode;
+import com.jinyafu.thirdpart.common.code.PageOutput;
+import com.jinyafu.thirdpart.common.data.PageInfos;
 import com.jinyafu.thirdpart.service.supplier.SupplierService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -59,8 +63,18 @@ public class SupplierController {
 
     @ResponseBody
     @RequestMapping(value = "/listAll",method = RequestMethod.POST)
-    public MessageOutput listAll(){
-        return supplierService.listAll();
+    public PageOutput listAll(@RequestBody Map<String,Object> map){
+        PageInfos pageInfos = new PageInfos();
+        if(null!=map.get("pageSize")||null!=map.get("pageNum")){
+            pageInfos.setPageSize((Integer) map.get("pageSize"));
+            pageInfos.setPageNum((Integer)map.get("pageNum"));
+            return supplierService.listAll(pageInfos);
+        } else {
+            return PageOutput.ex();
+        }
+
+
+
     }
 
     /**
@@ -110,6 +124,15 @@ public class SupplierController {
         } else {throw new MessageOutput.get(OutputCode.PARAMS_INVALID_EMPTY.getCode(),OutputCode.PARAMS_INVALID_EMPTY.getMessage());
         }
     }*/
+    @ResponseBody
+    @RequestMapping(value = "getById",method = RequestMethod.POST)
+    public MessageOutput getById(@RequestBody String supplierId){
+        if(null!=supplierId) {
+            return supplierService.selectById(supplierId);
+        } else {
+            return MessageOutput.get(OutputCode.EX.getCode(),OutputCode.EX.getMessage());
+        }
+    }
 
 
 
