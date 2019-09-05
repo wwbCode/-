@@ -35,14 +35,13 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
-    public PageOutput queryList(RoleQuery roleQuery, PageInfos pageInfos){
+
+public PageOutput queryList(RoleQuery roleQuery, PageInfos pageInfos){
         Page<Object> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
         List<Role> roleList = roleMapper.queryList(roleQuery);
         //pageInfos.setTotalCount((int) page.getTotal());
         return PageOutput.ok(page, roleList);
-    }
-
-    public  List<Role> queryList(RoleQuery roleQuery){
+    }    public  List<Role> queryList(RoleQuery roleQuery){
         List<Role> roleList = roleMapper.queryList(roleQuery);
         return roleList;
     }
