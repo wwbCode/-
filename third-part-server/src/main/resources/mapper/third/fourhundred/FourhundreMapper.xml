@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jinyafu.jmall.mapper.third.fourhundred.FourhundredMapper">
     <insert id="addFourhundred" parameterType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
-        insert into a_400
+        insert into s_400
         (
         id,
         tel,
@@ -60,12 +60,12 @@
 
     <!--查询所有列表-->
     <select id="listAll" resultType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
-      SELECT * from a_400 where isDelete=1
+      SELECT * from s_400 where isDelete=1
     </select>
 
     <!--编辑400-->
     <update id="editFourhundred" parameterType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
-        update a_400 set
+        update s_400 set
         tel= #{tel},
         operator= #{operator},
         serviceProviders= #{serviceProviders},
@@ -93,17 +93,17 @@
 
     <!--删除400 -->
     <update id="deleteFourhundred" parameterType="String">
-        update a_400 set isDelete=0 where id=#{id}
+        update s_400 set isDelete=0 where id=#{id}
     </update>
 
     <!--查找400通过id-->
     <select id="getById" parameterType="String" resultType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
-        SELECT * FROM a_400 WHERE id=#{id} and isDelete=1
+        SELECT * FROM s_400 WHERE id=#{id} and isDelete=1
     </select>
 
     <!--多条件查询-->
     <select id="selectByConditions" parameterType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred" resultType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
-        SELECT  * FROM  a_400
+        SELECT  * FROM  s_400
         WHERE
         isDelete=1
         <if test="tel !=null and tel!= ''">

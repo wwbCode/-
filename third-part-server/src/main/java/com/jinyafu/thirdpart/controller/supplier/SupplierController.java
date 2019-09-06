@@ -101,10 +101,10 @@ public class SupplierController {
      */
 
     @ResponseBody
-    @RequestMapping(value = "delete",method = RequestMethod.POST)
-    public MessageOutput deleteSupplier(@RequestBody String supplierId){
-        if(null!=supplierId) {
-            return supplierService.deleteSupplier(supplierId);
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    public MessageOutput deleteSupplier(@RequestBody  Supplier supplier){
+        if(null!=supplier.getId()) {
+            return supplierService.deleteSupplier(supplier.getId());
         } else {
             return MessageOutput.ex();
         }
@@ -126,13 +126,30 @@ public class SupplierController {
     }*/
     @ResponseBody
     @RequestMapping(value = "getById",method = RequestMethod.POST)
-    public MessageOutput getById(@RequestBody String supplierId){
-        if(null!=supplierId) {
-            return supplierService.selectById(supplierId);
+    public MessageOutput getById(@RequestBody Supplier supplier){
+        if(null!=supplier.getId()) {
+            return supplierService.selectById(supplier.getId());
         } else {
             return MessageOutput.get(OutputCode.EX.getCode(),OutputCode.EX.getMessage());
         }
     }
+    /**
+     * @description: getByName
+     * @date: 2019/9/6 8:57
+     * @author: wwb
+     * @param:
+     * @return:
+     */
+    @ResponseBody
+    @RequestMapping(value = "getByName",method = RequestMethod.POST)
+    public MessageOutput getByName(@RequestBody Supplier supplier){
+        if(null!=supplier.getName()) {
+            return supplierService.selectByName(supplier.getName());
+        } else {
+            return MessageOutput.get(OutputCode.EX.getCode(),OutputCode.EX.getMessage());
+        }
+    }
+
 
 
 

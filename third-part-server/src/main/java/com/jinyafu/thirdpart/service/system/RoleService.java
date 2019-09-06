@@ -38,7 +38,8 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
-        return roleList;
+    }
+       return roleList;
 }
 
 public ResponseDTO<?> queryList(RoleDTO data){
