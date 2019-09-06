@@ -69,7 +69,7 @@ public class MenuController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "条件获取菜单", key = "/third/system/menu/list", superKey = "system", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "条件获取菜单", key = "/third/system/menu/list", superKey = "/third/system/menu/allList", type = PermissionMapping.Type.menu)
     @RequestMapping(method = RequestMethod.POST, value = "/menu/list")
     public Output<?> list(HttpServletRequest request,
                         @RequestBody MenuQuery menuQuery) {

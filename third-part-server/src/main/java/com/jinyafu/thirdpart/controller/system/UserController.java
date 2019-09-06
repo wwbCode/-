@@ -1,5 +1,7 @@
 package com.jinyafu.thirdpart.controller.system;
 
+import com.jinyafu.jmall.common.dto.ResponseDTO;
+import com.jinyafu.jmall.entity.data.system.UserDTO;
 import com.jinyafu.jmall.entity.data.system.UserQuery;
 import com.jinyafu.jmall.entity.data.system.UserRoleInfo;
 import com.jinyafu.jmall.entity.third.system.User;
@@ -37,28 +39,14 @@ public class UserController {
     UserService userService;
 
     @ResponseBody
-    @PermissionMapping(name = "系统用户列表", key = "/third/system/user/pagelist", superKey = "system", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "系统用户列表（分页）", key = "/third/system/user/pagelist", superKey = "system", type = PermissionMapping.Type.menu)
     @RequestMapping(method = RequestMethod.POST, value = "/user/pagelist")
-    public PageOutput list(@RequestBody Map<String, Object> map){
-        try {
-            UserQuery userQuery;
-            if(map.get("userQuery")!=null&&map.get("userQuery")!=""){
-                userQuery = (UserQuery) JsonUtil.convertMap(UserQuery.class,(Map) map.get("userQuery"));
-            }else{
-                userQuery =new UserQuery();
-            }
-            PageInfos pageInfos = new PageInfos();
-            pageInfos.setPageNum((Integer) map.get("pageNum"));
-            pageInfos.setPageSize((Integer) map.get("pageSize"));
-            return userService.queryUserList(userQuery, pageInfos);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return PageOutput.ex();
-        }
+    public ResponseDTO<?> list(@RequestBody UserDTO data){
+            return userService.queryUserList(data);
     }
 
     @ResponseBody
-    @PermissionMapping(name = "获取系统用户", key = "/third/system/user/get", superKey = "/third/system/user/list")
+    @PermissionMapping(name = "获取系统用户", key = "/third/system/user/get", superKey = "/third/system/user/pagelist")
     @RequestMapping(method = RequestMethod.POST, value = "/user/get")
     public Output<?> get(@RequestBody Map<String, Object> map) {
         try {
@@ -71,7 +59,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "编辑用户", key = "/third/system/user/addOrUpdate", superKey = "/third/system/user/list")
+    @PermissionMapping(name = "编辑用户", key = "/third/system/user/addOrUpdate", superKey = "/third/system/user/pagelist")
     @RequestMapping(method = RequestMethod.POST, value = "/user/addOrUpdate")
     public MessageOutput<?> addOrUpdate(@RequestBody Map<String, Object> map) {
         try {
@@ -91,7 +79,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "删除系统用户", key = "/third/system/user/delete", superKey = "/third/system/user/list")
+    @PermissionMapping(name = "删除系统用户", key = "/third/system/user/delete", superKey = "/third/system/user/pagelist")
     @RequestMapping(method = RequestMethod.POST, value = "/user/delete")
     public MessageOutput<?> delete(@RequestBody Map<String, Object> map) {
         try {
@@ -104,7 +92,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "获取系统用户详情", key = "/third/system/user/getInfo", superKey = "/third/system/user/list")
+    @PermissionMapping(name = "获取系统用户详情", key = "/third/system/user/getInfo", superKey = "/third/system/user/pagelist")
     @RequestMapping(method = RequestMethod.POST, value = "/user/getInfo")
     public Output<?> loadInfo(@RequestBody Map<String, Object> map) {
         try {
@@ -121,7 +109,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "修改密码", key = "/third/system/user/updatePassword", superKey = "/third/system/user/list")
+    @PermissionMapping(name = "修改密码", key = "/third/system/user/updatePassword", superKey = "/third/system/user/pagelist")
     @RequestMapping(method = RequestMethod.POST, value = "/user/updatePassword")
     public MessageOutput<?> saveUpdatePassword(@RequestBody Map<String, Object> map) {
         try {
@@ -136,7 +124,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "账号是否存在", key = "/third/system/user/isExist", superKey = "/third/system/user/list")
+    @PermissionMapping(name = "账号是否存在", key = "/third/system/user/isExist", superKey = "/third/system/user/pagelist")
     @RequestMapping(method = RequestMethod.POST, value = "/user/isExist")
     public Output<?> isExistAccount(@RequestBody Map<String, Object> map) {
         String account = map.get("account").toString();

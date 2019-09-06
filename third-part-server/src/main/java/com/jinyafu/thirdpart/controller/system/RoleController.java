@@ -54,7 +54,7 @@ public class RoleController {
 //    }
 
     @ResponseBody
-    @PermissionMapping(name = "编辑角色", key = "/third/system/role/addOrUpdate", superKey = "/third/system/role/list")
+    @PermissionMapping(name = "编辑角色", key = "/third/system/role/addOrUpdate", superKey = "/third/system/role/pageList")
     @RequestMapping(method = RequestMethod.POST, value = "/role/addOrUpdate")
     public MessageOutput<?> addOrUpdate(@RequestBody Map<String, Object> map) {
         try {
@@ -74,7 +74,7 @@ public class RoleController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "获取单个角色详情", key = "/third/system/role/get", superKey = "/third/system/role/list")
+    @PermissionMapping(name = "获取单个角色详情", key = "/third/system/role/get", superKey = "/third/system/role/pageList")
     @RequestMapping(method = RequestMethod.POST, value = "/role/get")
     public Output<?> get(@RequestBody Map<String, Object> map) {
         try {
@@ -87,7 +87,7 @@ public class RoleController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "删除角色", key = "/third/system/role/delete", superKey = "/third/system/role/list")
+    @PermissionMapping(name = "删除角色", key = "/third/system/role/delete", superKey = "/third/system/role/pageList")
     @RequestMapping(method = RequestMethod.POST, value = "/role/delete")
     public MessageOutput<?> delete(@RequestBody Map<String, Object> map) {
         try {
@@ -100,7 +100,7 @@ public class RoleController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "角色权限", key = "/third/system/role/roleMenuList", superKey = "/third/system/role/list")
+    @PermissionMapping(name = "角色权限", key = "/third/system/role/roleMenuList", superKey = "/third/system/role/pageList")
     @RequestMapping(method = RequestMethod.POST, value = "/role/roleMenuList")
     public Output<?> roleMenuList(@RequestBody Map<String, Object> map) {
         try {
@@ -113,7 +113,7 @@ public class RoleController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "所有角色列表", key = "/third/system/role/allList", superKey = "system", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "所有角色列表", key = "/third/system/role/allList", superKey = "/third/system/role/pageList", type = PermissionMapping.Type.menu)
     @RequestMapping(method = RequestMethod.POST, value = "/role/allList")
     public Output<?> allList() {
 
