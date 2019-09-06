@@ -9,7 +9,7 @@ package com.jinyafu.thirdpart.controller.broadband;/**
 import com.jinyafu.jmall.common.dto.ResponseDTO;
 import com.jinyafu.jmall.entity.third.broadband.Broadband;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
-import com.jinyafu.thirdpart.service.BroadbandService;
+import com.jinyafu.thirdpart.service.broadband.BroadbandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
