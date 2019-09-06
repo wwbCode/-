@@ -8,7 +8,6 @@ import com.jinyafu.thirdpart.common.menu.MenuBox;
 import com.jinyafu.thirdpart.common.util.common.ClassScaner;
 import com.jinyafu.thirdpart.common.util.common.MapTools;
 import com.jinyafu.thirdpart.common.util.common.MenuUtil;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
