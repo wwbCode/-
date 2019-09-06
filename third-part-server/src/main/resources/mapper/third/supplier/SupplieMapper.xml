@@ -33,6 +33,7 @@
         SELECT * FROM  supplier WHERE name=#{name}
     </select>
 
+
     <select id="selectById" parameterType="String" resultType="com.jinyafu.jmall.entity.third.supplier.Supplier">
         SELECT * FROM  supplier where id=#{id}
     </select>
