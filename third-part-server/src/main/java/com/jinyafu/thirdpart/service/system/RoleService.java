@@ -20,6 +20,7 @@ import com.jinyafu.jmall.mapper.third.system.RoleMapper;
 import com.jinyafu.jmall.mapper.third.system.RoleMenuMapper;
 
 
+
 /**
  * @Description:
  * @CreateDate: 2019/8/29 16:54
@@ -36,9 +37,7 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
-        List<Role> list = roleMapper.queryList(page, data);        return ResponseDTO.success(new ResponsePageData<Role>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));
-}
-
+        return ResponseDTO.success(new ResponsePageData<Role>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));}
     public void addOrUpdate(Role role, List<String> menuIds) {
         if (null == role.getId() || "".equals(role.getId())) {
             roleMapper.insertRole(role);

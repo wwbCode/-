@@ -46,7 +46,6 @@ public class SupplierService {
         if (null != supplier.getName()) {
             supplier.setId(UUID.randomUUID().toString().replace("-", ""));
             supplier.setStartTime(new Date());
-          
             supplier.setStatus(1);//未删除
             supplierMapper.addSupplier(supplier);
         } else {
@@ -60,7 +59,6 @@ public class SupplierService {
      * 供应商列表
      */
     @Transactional
-
     public PageOutput listAll(PageInfos pageInfos) {
         Page<Supplier> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
         List<Supplier> supplierList = supplierMapper.listAll();
@@ -99,6 +97,7 @@ public class SupplierService {
     public MessageOutput deleteSupplier (String supplierId){
         //删除供应商以下所有的服务，把所有的服务状态置为0就可以
         supplierMapper.deleteSupplierById(supplierId);
+
 
         serveMapper.deleteServeByFid(supplierId);
         return MessageOutput.ok();
