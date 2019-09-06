@@ -1,12 +1,14 @@
 package com.jinyafu.jmall.mapper.third.system;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.jinyafu.jmall.entity.data.system.RoleQuery;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jinyafu.jmall.entity.data.system.RoleDTO;
 import com.jinyafu.jmall.entity.third.system.Menu;
 import com.jinyafu.jmall.entity.third.system.Role;
 
 import java.util.List;
-import java.util.Map;
+
+import org.apache.ibatis.annotations.Param;
 
 /**
  * @Description:
@@ -17,7 +19,7 @@ import java.util.Map;
  */
 public interface RoleMapper extends BaseMapper<Menu>{
 
-    List<Role> queryList(RoleQuery roleQuery);
+    List<Role> queryList(Page<?> page, @Param("data") RoleDTO data);
 
     void insertRole(Role role);
 
@@ -25,5 +27,8 @@ public interface RoleMapper extends BaseMapper<Menu>{
 
     void delete(String id);
 
+    Role get(String id);
 
+
+    List<Role> list();
 }

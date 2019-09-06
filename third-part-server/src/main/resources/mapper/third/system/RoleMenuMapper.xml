@@ -22,13 +22,17 @@
         )
     </insert>
 
-    <select id="getRoleMenuListByRoleId" parameterType="string" resultType="map">
+    <select id="getRoleMenuListByRoleId" parameterType="string" resultType="com.jinyafu.jmall.entity.third.system.RoleMenu">
         select * from role_menu where roleId = #{roleId}
     </select>
 
 
     <delete id="delete" parameterType="string">
         delete from role_menu where id = #{id}
+    </delete>
+
+    <delete id="deleteByRoleId" parameterType="string">
+        delete from role_menu where roleId = #{roleId}
     </delete>
 
 </mapper>

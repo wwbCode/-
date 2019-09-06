@@ -35,6 +35,9 @@
     <select id="selectById" parameterType="String">
         SELECT * FROM  supplier where id=#{id}
     </select>
+    <select id="selectByName" parameterType="String">
+        SELECT * FROM  supplier where name=#{name}
+    </select>
 
     <update id="deleteSupplierById" parameterType="String">
         UPDATE supplier SET status =0 where id=#{id}

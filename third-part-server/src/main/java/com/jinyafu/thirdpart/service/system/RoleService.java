@@ -1,22 +1,25 @@
 package com.jinyafu.thirdpart.service.system;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jinyafu.jmall.common.dto.ResponseDTO;
+import com.jinyafu.jmall.common.dto.ResponsePageData;
+import com.jinyafu.jmall.entity.data.system.RoleDTO;
 import com.jinyafu.jmall.entity.data.system.RoleQuery;
 import com.jinyafu.jmall.entity.third.system.Role;
 import com.jinyafu.jmall.entity.third.system.RoleMenu;
 import com.jinyafu.jmall.mapper.third.system.RoleMapper;
 import com.jinyafu.jmall.mapper.third.system.RoleMenuMapper;
 import com.jinyafu.thirdpart.common.code.PageOutput;
-import com.jinyafu.thirdpart.common.data.PageInfos;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -35,16 +38,12 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
+     public ResponseDTO<?> queryList(RoleDTO data) {
+         Page<?> page = new Page<>(data.getPage().getPageNum(), data.getPage().getPageSize());
+         List<Role> list = roleMapper.queryList(page, data);
+         return ResponseDTO.success(new ResponsePageData<Role>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));
+     }
 
-public PageOutput queryList(RoleQuery roleQuery, PageInfos pageInfos){
-        Page<Object> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
-        List<Role> roleList = roleMapper.queryList(roleQuery);
-        //pageInfos.setTotalCount((int) page.getTotal());
-        return PageOutput.ok(page, roleList);
-    }    public  List<Role> queryList(RoleQuery roleQuery){
-        List<Role> roleList = roleMapper.queryList(roleQuery);
-        return roleList;
-    }
 
     public void addOrUpdate(Role role, List<String> menuIds) {
         if (null == role.getId() || "".equals(role.getId())) {
@@ -93,4 +92,24 @@ public PageOutput queryList(RoleQuery roleQuery, PageInfos pageInfos){
         }
     }
 
+    public Role getRole(String id) {
+        id = (null == id) ? "" : id;
+        return roleMapper.get(id);
+    }
+
+    public void delete(String id) {
+        roleMapper.delete(id);
+        roleMenuMapper.deleteByRoleId(id);
+        //adminRoleDAO.deleteByRoleId(id);
+    }
+
+    public List<RoleMenu> getRoleMenuListByRoleId(String roleId) {
+        List<RoleMenu> rmList = roleMenuMapper.getRoleMenuListByRoleId(roleId);
+        return rmList;
+    }
+
+    public List<Role> allList() {
+        List<Role> list = roleMapper.list();
+        return list;
+    }
 }

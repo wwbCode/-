@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MailController extends BaseController {
 
+    /*@
+    private String*/
 
     /**
      * @description: 发送发票邮件
@@ -39,7 +41,7 @@ public class MailController extends BaseController {
                 +"<p>"+"内容：尊敬的"+ emailInfoReq.getNickname()+"您好："+"</p>"
                 +"<p>"+"感谢您在金雅福 ("+ emailInfoReq.getNetUrl()+" ) 购物!"+"</p>"
                 +"<p>"+"金雅福已经为您开具订单"+emailInfoReq.getOrderNumber()+"的电子普通发票，发票数量共计"+emailInfoReq.getNum()+"张，如下:"+"</p>"
-                +"<p>"+"，您可以点击“"+ emailInfoReq.getTicketUrl() +"”获取该发票文件；"+"</p>"
+                +"<p>"+"，您可以点击 <a href='"+ emailInfoReq.getInvoiceUrl() +"' target='_blank'>发票地址</a> 获取该发票文件；"+"</p>"
                 +"</div>"
                 +"</body></html>";
         HandlerAdapter handlerAdapter=getHandler("email");

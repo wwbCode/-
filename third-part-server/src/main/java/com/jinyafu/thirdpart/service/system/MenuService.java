@@ -152,12 +152,11 @@ public class MenuService {
         return map;
     }
 
-    public boolean updateFlag(String id, String flag) {
+    public void updateFlag(String id, String flag) {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("id", id);
         map.put("flag", flag);
-        int count = menuMapper.updateMapBySelective(map);
-        return count > 0;
+        menuMapper.updateMapBySelective(map);
     }
 
     public List<Menu> list(MenuQuery menuQuery) {

@@ -2,10 +2,7 @@ package com.jinyafu.thirdpart.controller;
 
 import com.jinyafu.thirdpart.common.enums.ThirdTypeEnum;
 import com.jinyafu.thirdpart.company.weixin.constants.ApiOperateType;
-import com.jinyafu.thirdpart.company.weixin.vo.MiniProgramLoginReqVo;
-import com.jinyafu.thirdpart.company.weixin.vo.MiniProgramLoginResVo;
-import com.jinyafu.thirdpart.company.weixin.vo.WxGetTokenReqVo;
-import com.jinyafu.thirdpart.company.weixin.vo.WxGetTokenResVo;
+import com.jinyafu.thirdpart.company.weixin.vo.*;
 import com.jinyafu.thirdpart.handler.HandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +42,7 @@ public class WeixinApiController extends BaseController {
     /**
      * @return com.jinyafu.thirdpart.company.weixin.vo.WxGetTokenResVo
      * @throws
-     * @description: 获取微信公众号token
+     * @description: 获取微信公众号access_token或者微信小程序access_token
      * @params [wxGetTokenReqVo]
      * @author lean.yang
      * @date 2019/8/27
@@ -61,4 +58,11 @@ public class WeixinApiController extends BaseController {
         }
         return null;
     }
+
+    /*@PostMapping("/getWxAcodeUrl")
+    public WxGetAcodeResVo getWxAcodeUrl(){
+
+    }*/
+
+
 }

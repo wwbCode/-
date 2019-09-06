@@ -18,6 +18,9 @@ public interface RoleMenuMapper extends BaseMapper<RoleMenu> {
 
     void delete(String id);
 
+    void deleteByRoleId(String roleId);
+
     List<RoleMenu> getRoleMenuListByRoleId(String roleId);
+
 
 }
