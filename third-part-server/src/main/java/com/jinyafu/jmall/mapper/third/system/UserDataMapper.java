@@ -1,8 +1,11 @@
 package com.jinyafu.jmall.mapper.third.system;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jinyafu.jmall.entity.data.system.UserDTO;
 import com.jinyafu.jmall.entity.data.system.UserData;
 import com.jinyafu.jmall.entity.data.system.UserQuery;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,5 +18,5 @@ import java.util.List;
  */
 public interface UserDataMapper extends BaseMapper<UserData>{
 
-    List<UserData> queryList(UserQuery userQuery);
+    List<UserData> queryList(Page<?> page, @Param("data") UserDTO data);
 }
