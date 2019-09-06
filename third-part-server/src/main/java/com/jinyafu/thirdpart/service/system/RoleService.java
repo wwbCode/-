@@ -14,12 +14,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jinyafu.jmall.common.dto.ResponseDTO;
 import com.jinyafu.jmall.common.dto.ResponsePageData;
 import com.jinyafu.jmall.entity.data.system.RoleDTO;
-import com.jinyafu.jmall.entity.data.system.RoleQuery;
 import com.jinyafu.jmall.entity.third.system.Role;
 import com.jinyafu.jmall.entity.third.system.RoleMenu;
 import com.jinyafu.jmall.mapper.third.system.RoleMapper;
 import com.jinyafu.jmall.mapper.third.system.RoleMenuMapper;
-import com.jinyafu.thirdpart.common.code.PageOutput;
 
 
 /**

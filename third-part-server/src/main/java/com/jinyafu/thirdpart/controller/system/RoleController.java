@@ -39,20 +39,6 @@ public class RoleController {
     	return roleService.queryList(data);
     }
 
-//    @ResponseBody
-//    @PermissionMapping(name = "角色列表", key = "/third/system/role/list", superKey = "system", type = PermissionMapping.Type.menu)
-//    @RequestMapping(method = RequestMethod.POST, value = "/role/list")
-//    public Output<?> list(@RequestBody RoleQuery roleQuery) {
-//        try {
-//            List<Role> list = roleService.queryList(roleQuery);
-//            return Output.ok(list);
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return Output.ex();
-//        }
-//    }
-
     @ResponseBody
     @PermissionMapping(name = "编辑角色", key = "/third/system/role/addOrUpdate", superKey = "/third/system/role/pageList")
     @RequestMapping(method = RequestMethod.POST, value = "/role/addOrUpdate")
