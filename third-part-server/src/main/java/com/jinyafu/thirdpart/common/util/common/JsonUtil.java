@@ -89,36 +89,36 @@ public class JsonUtil {
      * @param obj 要转化的对象
      * @return 转化出来的 JavaBean 对象
      */
-    public static Map<String, Object> objectToMap(Object obj) {
-        if(obj == null)
-            return null;
-
-        Map<String, Object> map = new HashMap<String, Object>();
-
-        BeanInfo beanInfo = null;
-        try {
-            beanInfo = Introspector.getBeanInfo(obj.getClass());
-        } catch (IntrospectionException e) {
-            e.printStackTrace();
-        }
-        PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
-        for (PropertyDescriptor property : propertyDescriptors) {
-            String key = property.getName();
-            if (key.compareToIgnoreCase("class") == 0) {
-                continue;
-            }
-            Method getter = property.getReadMethod();
-            Object value = null;
-            try {
-                value = getter!=null ? getter.invoke(obj) : null;
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
-                e.printStackTrace();
-            }
-            map.put(key, value);
-        }
-
-        return map;
-    }
+//    public static Map<String, Object> objectToMap(Object obj) {
+//        if(obj == null)
+//            return null;
+//
+//        Map<String, Object> map = new HashMap<String, Object>();
+//
+//        BeanInfo beanInfo = null;
+//        try {
+//            beanInfo = Introspector.getBeanInfo(obj.getClass());
+//        } catch (IntrospectionException e) {
+//            e.printStackTrace();
+//        }
+//        PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+//        for (PropertyDescriptor property : propertyDescriptors) {
+//            String key = property.getName();
+//            if (key.compareToIgnoreCase("class") == 0) {
+//                continue;
+//            }
+//            Method getter = property.getReadMethod();
+//            Object value = null;
+//            try {
+//                value = getter!=null ? getter.invoke(obj) : null;
+//            } catch (IllegalAccessException e) {
+//                e.printStackTrace();
+//            } catch (InvocationTargetException e) {
+//                e.printStackTrace();
+//            }
+//            map.put(key, value);
+//        }
+//
+//        return map;
+//    }
 }

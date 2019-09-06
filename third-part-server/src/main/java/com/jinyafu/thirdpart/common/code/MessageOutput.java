@@ -91,18 +91,18 @@ public class MessageOutput<T>implements Out {
      * @param data 数据
      * @return 输出
      */
-    public static MessageOutput<Object> okCode(Object data) {
-        return new MessageOutput<Object>(OutputCode.OK.getCode(), null, data);
-    }
+//    public static MessageOutput<Object> okCode(Object data) {
+//        return new MessageOutput<Object>(OutputCode.OK.getCode(), null, data);
+//    }
 
     /**
      * 处理成功 代码
      *
      * @return 输出
      */
-    public static MessageOutput<Object> okCode() {
-        return new MessageOutput<Object>(OutputCode.OK.getCode());
-    }
+//    public static MessageOutput<Object> okCode() {
+//        return new MessageOutput<Object>(OutputCode.OK.getCode());
+//    }
 
     /**
      * 代码
@@ -161,18 +161,18 @@ public class MessageOutput<T>implements Out {
      * @param data 数据
      * @return 输出
      */
-    public static MessageOutput<Object> exCode(Object data) {
-        return new MessageOutput<Object>(OutputCode.EX.getCode(), null, data);
-    }
+//    public static MessageOutput<Object> exCode(Object data) {
+//        return new MessageOutput<Object>(OutputCode.EX.getCode(), null, data);
+//    }
 
     /**
      * 异常 代码
      *
      * @return 输出
      */
-    public static MessageOutput<Object> exCode() {
-        return new MessageOutput<Object>(OutputCode.EX.getCode());
-    }
+//    public static MessageOutput<Object> exCode() {
+//        return new MessageOutput<Object>(OutputCode.EX.getCode());
+//    }
 
     /**
      * 参数不对 代码数据
@@ -180,26 +180,26 @@ public class MessageOutput<T>implements Out {
      * @param data 数据
      * @return 输出
      */
-    public static MessageOutput<Object> pmCode(Object data) {
-        return new MessageOutput<Object>(OutputCode.EX.getCode(), null, data);
-    }
+//    public static MessageOutput<Object> pmCode(Object data) {
+//        return new MessageOutput<Object>(OutputCode.EX.getCode(), null, data);
+//    }
 
     /**
      * 参数不对 代码
      *
      * @return 输出
      */
-    public static MessageOutput<Object> pmCode() {
-        return new MessageOutput<Object>(OutputCode.PM.getCode());
-    }
+//    public static MessageOutput<Object> pmCode() {
+//        return new MessageOutput<Object>(OutputCode.PM.getCode());
+//    }
 
     /**
      * 参数不对
      *
      * @return 输出
      */
-    public static MessageOutput<Object> pm() {
-        return new MessageOutput<Object>(OutputCode.PM.getCode(), OutputCode.PM.getMessage());
-    }
+//    public static MessageOutput<Object> pm() {
+//        return new MessageOutput<Object>(OutputCode.PM.getCode(), OutputCode.PM.getMessage());
+//    }
 
 }
