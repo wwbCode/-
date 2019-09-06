@@ -1,18 +1,16 @@
 package com.jinyafu.thirdpart.service.system;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.jinyafu.jmall.common.dto.ResponseDTO;
+import com.jinyafu.jmall.common.dto.ResponsePageData;
+import com.jinyafu.jmall.entity.data.system.UserDTO;
 import com.jinyafu.jmall.entity.data.system.UserData;
-import com.jinyafu.jmall.entity.data.system.UserQuery;
 import com.jinyafu.jmall.entity.data.system.UserRoleInfo;
 import com.jinyafu.jmall.entity.third.system.User;
 import com.jinyafu.jmall.entity.third.system.UserRole;
 import com.jinyafu.jmall.mapper.third.system.*;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.OutputCode;
-import com.jinyafu.thirdpart.common.code.PageOutput;
-import com.jinyafu.thirdpart.common.consts.CommonConsts;
-import com.jinyafu.thirdpart.common.data.PageInfos;
 import com.jinyafu.thirdpart.common.util.common.OnlyMD5Util;
 import com.jinyafu.thirdpart.config.AuthManager;
 import org.apache.commons.lang.StringUtils;
@@ -51,11 +49,10 @@ public class UserService {
     AuthManager authManager;
 
     @SuppressWarnings("rawtypes")
-    public PageOutput queryUserList(UserQuery userQuery, PageInfos pageInfos) {
-
-        userQuery.setType(User.type_general);
-        Page<UserData> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
-        List<UserData> list = userDataMapper.queryList(userQuery);
+    public ResponseDTO<?> queryUserList(UserDTO data) {
+        Page<?> page = new Page<>(data.getPage().getPageNum(), data.getPage().getPageSize());
+        data.setType(User.type_general);
+        List<UserData> list = userDataMapper.queryList(page, data);
 
         List<String> userIdList = new ArrayList<String>();
         Map<String, UserData> map = new HashMap<String, UserData>();
@@ -76,7 +73,7 @@ public class UserService {
                 userRoleList.add(ur);
             }
         }
-        return PageOutput.ok(page, list);
+        return ResponseDTO.success(new ResponsePageData<UserData>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));
     }
 
     public User getById(String id) {

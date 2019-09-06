@@ -25,7 +25,7 @@ public class ResponseDTO<T> implements Serializable {
 
     public static <T> ResponseDTO<T> success(T data) {
         return ResponseDTO.<T>builder()
-                .code("0")
+                .code("200")
                 .success(true)
                 .message("成功")
                 .data(data)
@@ -52,7 +52,7 @@ public class ResponseDTO<T> implements Serializable {
      */
     public static <T> ResponseDTO<T> success() {
         return ResponseDTO.<T>builder()
-                .code("0")
+                .code("200")
                 .success(true)
                 .message("成功")
                 .build();

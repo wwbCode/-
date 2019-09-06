@@ -20,6 +20,8 @@ public class MenuBox {
 
         createMenu(list, "system", "系统权限");
         createMenu(list, "index", "首页导航");
+        createMenu(list,"supplier", "供应商管理");
+        createMenu(list, "service","服务管理");
 
         return list;
     }

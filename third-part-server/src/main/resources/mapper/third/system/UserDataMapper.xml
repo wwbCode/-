@@ -2,15 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jinyafu.jmall.mapper.third.system.UserDataMapper">
 
-    <select id="queryList" parameterType="com.jinyafu.jmall.entity.data.system.UserQuery" resultType="com.jinyafu.jmall.entity.data.system.UserData">
+    <select id="queryList" parameterType="com.jinyafu.jmall.entity.data.system.UserDTO" resultType="com.jinyafu.jmall.entity.data.system.UserData">
         select * from user
         <where>
-            <if test="account != null and account != ''">and account like "%"#{account}"%"</if>
-            <if test="name != null and name != ''">and name like "%"#{name}"%"</if>
-            <if test="mobile != null and mobile != ''">and mobile like "%"#{mobile}"%"</if>
-            <if test="gender != null and gender != ''">and gender = #{gender}</if>
-            <if test="type != null and type != -1">and type = #{type}</if>
-            <if test="flag != null and flag != ''">and flag = #{flag}</if>
+            <if test="data.name != null and data.name != ''">and name like "%"#{data.name}"%"</if>
         </where>
     </select>
 </mapper>
