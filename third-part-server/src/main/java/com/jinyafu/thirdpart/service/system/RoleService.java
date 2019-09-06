@@ -38,7 +38,6 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
-    }
 
 public ResponseDTO<?> queryList(RoleDTO data){
     	Page<?> page = new Page<>(data.getPage().getPageNum(), data.getPage().getPageSize());
