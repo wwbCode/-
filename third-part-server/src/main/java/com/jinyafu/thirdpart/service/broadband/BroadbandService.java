@@ -1,4 +1,4 @@
-package com.jinyafu.thirdpart.service;/**
+package com.jinyafu.thirdpart.service.broadband;/**
  * @Description: 类功能介绍
  * @CreateDate: 2019/9/5 10:25
  * @Copyright版权所有 深圳金雅福控股集团有限公司
