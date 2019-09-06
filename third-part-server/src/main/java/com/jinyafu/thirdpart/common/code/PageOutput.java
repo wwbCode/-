@@ -93,16 +93,16 @@ public class PageOutput implements Out {
      * @param page 分页
      * @return 输出
      */
-    public static PageOutput okMessage(Page page) {
-        PageOutput output = new PageOutput();
-        output.setCode(OutputCode.OK.getCode());
-        output.setMessage(OutputCode.OK.getMessage());
-        output.setPage(page.getPageNum());
-        output.setRows(page);
-        output.setTotalPage(page.getPages());
-        output.setTotal(page.getTotal());
-        return output;
-    }
+//    public static PageOutput okMessage(Page page) {
+//        PageOutput output = new PageOutput();
+//        output.setCode(OutputCode.OK.getCode());
+//        output.setMessage(OutputCode.OK.getMessage());
+//        output.setPage(page.getPageNum());
+//        output.setRows(page);
+//        output.setTotalPage(page.getPages());
+//        output.setTotal(page.getTotal());
+//        return output;
+//    }
 
     /**
      * 分页

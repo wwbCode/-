@@ -127,9 +127,9 @@ public class Output<T> implements Out {
      *
      * @return 输出
      */
-    public static Output<Object> pm() {
-        return new Output<>(OutputCode.PM.getCode());
-    }
+//    public static Output<Object> pm() {
+//        return new Output<>(OutputCode.PM.getCode());
+//    }
 
     /**
      * 设置 数据

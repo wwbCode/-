@@ -6,21 +6,15 @@ package com.jinyafu.jmall.entity.data.system;
 
 
 import com.jinyafu.jmall.entity.third.system.UserRole;
+import lombok.Data;
 
 /**
  * 
  * @author xiahui
  */
+@Data
 public class UserRoleInfo extends UserRole {
 
 	private String roleName;// 角色Id
-
-	public String getRoleName() {
-		return roleName;
-	}
-
-	public void setRoleName(String roleName) {
-		this.roleName = roleName;
-	}
 
 }
