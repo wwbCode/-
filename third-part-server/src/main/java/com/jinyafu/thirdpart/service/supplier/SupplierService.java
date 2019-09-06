@@ -50,7 +50,7 @@ public class SupplierService {
         if (null != supplier.getName()) {
             supplier.setId(UUID.randomUUID().toString().replace("-", ""));
             supplier.setStartTime(new Date());
-            supplier.setStatus("1");//未删除
+            supplier.setStatus(1);//未删除
             supplierMapper.addSupplier(supplier);
         } else {
             return MessageOutput.get(OutputCode.PARAMS_INVALID_EMPTY.getCode(), OutputCode.PARAMS_INVALID_EMPTY.getMessage());
@@ -99,18 +99,37 @@ public class SupplierService {
      */
     @Transactional
     public MessageOutput deleteSupplier (String supplierId){
-        //删除供应商以下所有的服务，把所有的服务状态置为0就可以了
-
+        //删除供应商以下所有的服务，把所有的服务状态置为0就可以
         supplierMapper.deleteSupplierById(supplierId);
+
         serveMapper.deleteServeByFid(supplierId);
         return MessageOutput.ok();
 
     }
-
+/**
+ * @description: 方法描述
+ * @date: 2019/9/6 8:59
+ * @author: wwb
+ * @param:
+ * @return:
+ */
     @Transactional
     public MessageOutput selectById(String supplierId){
 
         return MessageOutput.ok(supplierMapper.selectById(supplierId));
+    }
+
+    /**
+     * @description: getByName
+     * @date: 2019/9/6 8:59
+     * @author: wwb
+     * @param:
+     * @return:
+     */
+    @Transactional
+    public MessageOutput selectByName(String supplierName){
+
+        return MessageOutput.ok(supplierMapper.selectByName(supplierName));
     }
 
 
