@@ -60,7 +60,9 @@ export const otherRouter = {
         { path: 'ownspace', title: '个人中心', name: 'ownspace_index', component: () => import('@/views/own-space/own-space.vue') },
         { path: 'order/:order_id', title: '订单详情', name: 'order-info', component: () => import('@/views/advanced-router/component/order-info.vue') }, // 用于展示动态路由
         { path: 'shopping', title: '购物详情', name: 'shopping', component: () => import('@/views/advanced-router/component/shopping-info.vue') }, // 用于展示带参路由
-        { path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue') }
+        { path: 'message', title: '消息中心', name: 'message_index', component: () => import('@/views/message/message.vue') },
+        { path: 'server', title: '服务器管理', name: 'server', component: () => import('@/views/service/server/server-list.vue')},
+        { path: 'device', title: '设备管理', name: 'device', component: () => import('@/views/service/device/device-list.vue')}
     ]
 };
 
@@ -95,6 +97,43 @@ export const appRouter = [
                 component: () => import('@/views/system/user/user-list.vue')
             }
             ]
+    },
+    {
+        path: '/service',
+        icon: 'key',
+        name: 'service',
+        title: '服务管理',
+        component: Main,
+        children: [
+            {
+                path: 'services',
+                icon: 'key',
+                name : 'third.service.services.list',
+                title: '服务列表',
+                component: () => import('@/views/service/services/services-list.vue')
+            },
+            // {
+            //     path: 'server',
+            //     icon: 'key',
+            //     name : 'third.service.server.list',
+            //     title: '服务器管理',
+            //     component: () => import('@/views/service/server/server-list.vue')
+            // },
+            {
+                name: 'third.service.contact.list',
+                path: 'contact',
+                title: '联络人管理',
+                icon: 'ios-switch-outline',
+                component: () => import('@/views/service/contact/contact-list.vue')
+            }
+            // {
+            //     name: 'third.service.device.list',
+            //     path: 'device',
+            //     title: '设备管理',
+            //     icon: 'ios-switch-outline',
+            //     component: () => import('@/views/service/device/device-list.vue')
+            // }
+        ]
     },
     // {
     //     path: '/user',

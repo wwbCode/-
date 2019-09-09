@@ -11,14 +11,23 @@
             </p>
             <Row>
                 <Input v-model="query.name" placeholder="请输入名称搜搜..." style="width: 200px"/>
+                <Select v-model="query.supplierId" placeholder="供应商" style="width:120px">
+                    <Option v-for="item in supplierList" :value="item.id" :key="item.value">
+                        {{ item.name }}
+                    </Option>
+
+                </Select>
                 <span @click="handleSearch" style="margin: 0 10px;">
                     <Button type="primary" icon="ios-search">搜索</Button>
                 </span>
-                <Button
-                        @click="add"
-                        type="primary" shape="circle" icon="md-add">
-                    新增角色
-                </Button>
+                <span @click="handleCancel" style="margin: 0 10px;">
+                    <Button type="primary">重置</Button>
+                </span>
+                <span style="float: right">
+                    <Button  @click="add" type="primary" shape="circle" icon="md-add">
+                        新增服务
+                    </Button>
+                </span>
             </Row>
         </Card>
         <Card>
@@ -44,7 +53,7 @@
                 :mask-closable="false"
         >
 
-            <roleEdit :role-id="editRoleId" @on-done="handleEditDone"></roleEdit>
+            <servicesEdit :services-id="editServiceId" @on-done="handleEditDone"></servicesEdit>
             <div slot="footer">
 
             </div>
@@ -53,25 +62,33 @@
 </template>
 
 <script>
-    import roleEdit from './role-edit';
-    import roleRequest from '../../../app/api/system/role';
+    import servicesEdit from './services-edit';
+    import servicesRequest from '../../../app/api/service/services';
+    import supplierRequest from '../../../app/api/supplier/supplier';
     import dictionary from '../../../app/common/lib/dictionary';
     import prompt from '@/libs/prompt';
 
     export default {
-        name: 'role-list',
+        name: 'services-list',
         data() {
             return {
                 editVisible: false,
-                editRoleId: '',
+                editServiceId: '',
                 query: {
                     name: '',
+                    supplierId: '',
                     page: {
                         pageSize: 10,
                         pageNum: 1,
                         totalCount: 0
                     }
-                    },
+                },
+                supplierList:[
+                    {
+                        id: '',
+                        name: ''
+                    }
+                ],
                 columns: [
                     {
                         key: 'index',
@@ -86,19 +103,48 @@
                     },
                     {
                         key: 'name',
-                        title: '角色名'
+                        title: '服务名称',
+                        render: (h, params) => {
+                            return h('a', {
+                                attrs: {
+                                    title: params.row.name
+                                },
+                                on: {
+                                    click: () => {
+                                        this.toDetail(params.row.id, params.row.type);
+                                    }
+                                }
+                            }, params.row.name);
+                        }
+
                     },
                     {
-                        key: 'introduce',
-                        title: '介绍'
+                        key: 'supplierName',
+                        title: '供应商'
                     },
                     {
-                        key: 'flagName',
-                        title: '有效标志'
+                        key: 'user',
+                        title: '使用者'
                     },
                     {
-                        key: 'createTime',
-                        title: '创建时间'
+                        key: 'operator',
+                        title: '经办人'
+                    },
+                    {
+                        key: 'status',
+                        title: '服务状态'
+                    },
+                    {
+                        key: 'type',
+                        title: '服务类型'
+                    },
+                    {
+                        key: 'startTime',
+                        title: '开始使用时间'
+                    },
+                    {
+                        key: 'endTime',
+                        title: '服务截至时间'
                     },
                     {
                         title: '操作',
@@ -139,9 +185,10 @@
                 dataList: []
             };
         },
-        components: {roleEdit},
+        components: {servicesEdit},
         methods: {
             init() {
+                this.querySupplier();
                 this.search();
             },
             handleSearch: function () {
@@ -149,7 +196,9 @@
                 this.search();
             },
             handleCancel() {
-                this.data = this.initTable;
+                this.query.page.pageNum = 1;
+                this.query.name = '';
+                this.search();
             },
             handlePage(value) {
                 var own = this;
@@ -161,11 +210,28 @@
                 own.query.page.pageSize = value;
                 this.search();
             },
+            querySupplier(){
+                var own = this;
+                var supplier = {
+                    id : '',
+                    name : '全部'
+                }
+                supplierRequest.supplierNameList(function (data) {
+                    if (data.rows){
+                        var list = data.rows;
+                        dictionary.setName(list, 'common', 'flag', 'flagName');
+                        own.supplierList = list;
+                        own.supplierList.push(supplier);
+
+                    }
+                });
+
+            },
             search() {
                 var own = this;
                 var query = own.query;
 
-                roleRequest.list(query,function (data) {
+                servicesRequest.pageList(query,function (data) {
                     if (data.data.list) {
                         var list = data.data.list;
                         dictionary.setName(list, 'common', 'flag', 'flagName');
@@ -177,7 +243,7 @@
 
             },
             openEdit(id) {
-                this.editRoleId = id;
+                this.editServiceId = id;
                 this.editVisible = true;
             },
             add() {
@@ -192,7 +258,7 @@
                     title: '确定',
                     content: '<p>确定删除？</p></p>',
                     onOk: () => {
-                        roleRequest.delete(id, function (data) {
+                        servicesRequest.delete(id, function (data) {
                             own.search();
                         });
                     },
@@ -211,7 +277,23 @@
                     }
                 }
                 prompt.message(info, '保存成功。', '保存失败！');
-            }
+            },
+            toDetail (id, type) {
+                var own = this;
+                var query = {'id': ''};
+                if (type === 1) {
+                    own.$router.push({
+                        name: 'server'
+                        // query: query
+                    });
+                }
+                if (type === 2) {
+                    own.$router.push({
+                        name: 'device',
+                        query: query
+                    });
+                }
+            },
         },
         mounted() {
             this.init();

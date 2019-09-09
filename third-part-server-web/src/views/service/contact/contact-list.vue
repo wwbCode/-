@@ -14,11 +14,14 @@
                 <span @click="handleSearch" style="margin: 0 10px;">
                     <Button type="primary" icon="ios-search">搜索</Button>
                 </span>
-                <Button
-                        @click="add"
-                        type="primary" shape="circle" icon="md-add">
-                    新增角色
-                </Button>
+                <span @click="handleCancel" style="margin: 0 10px;">
+                    <Button type="primary">重置</Button>
+                </span>
+                <span style="float: right">
+                    <Button  @click="add" type="primary" shape="circle" icon="md-add">
+                        新增联络人
+                    </Button>
+                </span>
             </Row>
         </Card>
         <Card>
@@ -44,7 +47,7 @@
                 :mask-closable="false"
         >
 
-            <roleEdit :role-id="editRoleId" @on-done="handleEditDone"></roleEdit>
+            <contactEdit :contact-id="editContactId" @on-done="handleEditDone"></contactEdit>
             <div slot="footer">
 
             </div>
@@ -53,17 +56,17 @@
 </template>
 
 <script>
-    import roleEdit from './role-edit';
-    import roleRequest from '../../../app/api/system/role';
+    import contactEdit from './contact-edit';
     import dictionary from '../../../app/common/lib/dictionary';
     import prompt from '@/libs/prompt';
+    import contactRequest from "../../../app/api/service/contact";
 
     export default {
-        name: 'role-list',
+        name: 'contact-list',
         data() {
             return {
                 editVisible: false,
-                editRoleId: '',
+                editContactId: '',
                 query: {
                     name: '',
                     page: {
@@ -71,7 +74,7 @@
                         pageNum: 1,
                         totalCount: 0
                     }
-                    },
+                },
                 columns: [
                     {
                         key: 'index',
@@ -85,20 +88,44 @@
                         }
                     },
                     {
+                        key: 'supplier',
+                        title: '供应商'
+                    },
+                    {
                         key: 'name',
-                        title: '角色名'
+                        title: '姓名'
                     },
                     {
-                        key: 'introduce',
-                        title: '介绍'
+                        key: 'position',
+                        title: '岗位'
                     },
                     {
-                        key: 'flagName',
-                        title: '有效标志'
+                        key: 'phone',
+                        title: '手机'
                     },
                     {
-                        key: 'createTime',
-                        title: '创建时间'
+                        key: 'fixedLine',
+                        title: '固话'
+                    },
+                    {
+                        key: 'mail',
+                        title: '邮箱'
+                    },
+                    {
+                        key: 'weChat',
+                        title: '微信'
+                    },
+                    {
+                        key: 'qq',
+                        title: 'QQ'
+                    },
+                    {
+                        key: 'address',
+                        title: '办公地址'
+                    },
+                    {
+                        key: 'remark',
+                        title: '备注'
                     },
                     {
                         title: '操作',
@@ -139,7 +166,7 @@
                 dataList: []
             };
         },
-        components: {roleEdit},
+        components: {contactEdit},
         methods: {
             init() {
                 this.search();
@@ -149,7 +176,9 @@
                 this.search();
             },
             handleCancel() {
-                this.data = this.initTable;
+                this.query.page.pageNum = 1;
+                this.query.name = '';
+                this.search();
             },
             handlePage(value) {
                 var own = this;
@@ -165,7 +194,7 @@
                 var own = this;
                 var query = own.query;
 
-                roleRequest.list(query,function (data) {
+                contactRequest.pageList(query,function (data) {
                     if (data.data.list) {
                         var list = data.data.list;
                         dictionary.setName(list, 'common', 'flag', 'flagName');
@@ -177,7 +206,7 @@
 
             },
             openEdit(id) {
-                this.editRoleId = id;
+                this.editContactId = id;
                 this.editVisible = true;
             },
             add() {
@@ -192,7 +221,7 @@
                     title: '确定',
                     content: '<p>确定删除？</p></p>',
                     onOk: () => {
-                        roleRequest.delete(id, function (data) {
+                        contactRequest.delete(id, function (data) {
                             own.search();
                         });
                     },

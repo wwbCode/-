@@ -2,16 +2,16 @@ import service from '@/libs/service';
 
 let user = {};
 
-user.list = function (query, page, back) {
+user.list = function (query, back) {
     var body = {
-        'adminQuery': query,
-        'page': page
+        'name': query.name,
+        'page': query.page
     };
     service.post('/third/system/user/pagelist', body, back);
 };
 
 user.addOrUpdate = function (bean, roleIds, back) {
-    var body = {'admin': bean, 'roleIds': roleIds};
+    var body = {'user': bean, 'roleIds': roleIds};
     service.post('/third/system/user/addOrUpdate', body, back);
 };
 

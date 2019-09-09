@@ -28,9 +28,9 @@
         </Card>
         <Card>
             <Row>
-                <Page :current.sync="page.pageNumber"
-                      :page-size="page.pageSize"
-                      :total.sync="page.totalCount"
+                <Page :current.sync="query.page.pageNum"
+                      :page-size="query.page.pageSize"
+                      :total.sync="query.page.totalCount"
                       @on-change="handlePage"
                       @on-page-size-change='handlePageSize'
                       show-elevator show-sizer>
@@ -121,7 +121,14 @@
                     ]
                 },
                 editId: '',
-                query: {name: ''},
+                query: {
+                    name: '',
+                    page: {
+                        pageSize: 10,
+                        pageNum: 1,
+                        totalCount: 0
+                    }
+                    },
                 columns: [
                     {
                         key: 'index',
@@ -166,7 +173,7 @@
                                     props: {
                                         type: 'primary',
                                         size: 'small',
-                                        disabled: !permission.has('manage.system.user.addOrUpdate')
+                                        // disabled: !permission.has('third.system.user.addOrUpdate')
                                     },
                                     style: {
                                         marginRight: '5px'
@@ -181,7 +188,7 @@
                                     props: {
                                         type: 'error',
                                         size: 'small',
-                                        disabled: !permission.has('manage.system.user.delete')
+                                        // disabled: !permission.has('third.system.user.delete')
                                     },
                                     on: {
                                         click: () => {
@@ -193,7 +200,7 @@
                                     props: {
                                         type: 'dashed',
                                         size: 'small',
-                                        disabled: !permission.has('manage.system.user.delete')
+                                        // disabled: !permission.has('third.system.user.delete')
                                     },
                                     on: {
                                         click: () => {
@@ -206,11 +213,7 @@
                     }
                 ],
                 dataList: [],
-                page: {
-                    pageSize: 10,
-                    pageNumber: 1,
-                    totalCount: 0
-                }
+
             };
         },
         components: {userEdit, userAdd},
@@ -219,7 +222,7 @@
                 this.search();
             },
             handleSearch: function () {
-                this.page.pageNumber = 1;
+                this.query.page.pageNum = 1;
                 this.search();
             },
             handleCancel() {
@@ -227,30 +230,26 @@
             },
             handlePage(value) {
                 var own = this;
-                own.page.pageNumber = value;
+                own.query.page.pageNum = value;
                 this.search();
             },
             handlePageSize(value) {
                 var own = this;
-                own.page.pageSize = value;
+                own.query.page.pageSize = value;
                 this.search();
             },
             search() {
                 var own = this;
                 var query = own.query;
-                var page = own.page;
 
-                userRequest.list(query, page, function (data) {
-                    if (data.rows) {
-                        var list = data.rows;
+                userRequest.list(query, function (data) {
+                    if (data.data.list) {
+                        var list = data.data.list;
                         dictionary.setName(list, 'common', 'flag', 'flagName');
                         own.dataList = list;
                     }
-                    if (data.page) {;
-                        var page = data.page;
-                        var totalCount = page.total;
-                        own.page.totalCount = totalCount;
-                    }
+                    var totalCount = data.data.total;
+                    own.query.page.totalCount = totalCount;
                 });
             },
             roleInfoList(h, params) {

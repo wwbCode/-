@@ -2,10 +2,11 @@ import service from '@/libs/service';
 
 let role = {};
 
-role.list = function (query, page, back) {
+role.list = function (query,back) {
     var body = {
-        'roleQuery': query,
-        'page': page
+        'name': query.name,
+        'page':query.page
+
     };
     service.post('/third/system/role/pageList', body, back);
 };

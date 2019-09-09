@@ -14,11 +14,14 @@
                 <span @click="handleSearch" style="margin: 0 10px;">
                     <Button type="primary" icon="ios-search">搜索</Button>
                 </span>
-                <Button
-                        @click="add"
-                        type="primary" shape="circle" icon="md-add">
-                    新增角色
-                </Button>
+                <span @click="handleCancel" style="margin: 0 10px;">
+                    <Button type="primary">重置</Button>
+                </span>
+                <span style="float: right">
+                    <Button  @click="add" type="primary" shape="circle" icon="md-add">
+                        新增服务器
+                    </Button>
+                </span>
             </Row>
         </Card>
         <Card>
@@ -44,7 +47,7 @@
                 :mask-closable="false"
         >
 
-            <roleEdit :role-id="editRoleId" @on-done="handleEditDone"></roleEdit>
+            <serverEdit :server-id="editServerId" @on-done="handleEditDone"></serverEdit>
             <div slot="footer">
 
             </div>
@@ -53,17 +56,17 @@
 </template>
 
 <script>
-    import roleEdit from './role-edit';
-    import roleRequest from '../../../app/api/system/role';
+    import serverEdit from './server-edit';
+    import serverRequest from '../../../app/api/service/server';
     import dictionary from '../../../app/common/lib/dictionary';
     import prompt from '@/libs/prompt';
 
     export default {
-        name: 'role-list',
+        name: 'server-list',
         data() {
             return {
                 editVisible: false,
-                editRoleId: '',
+                editServerId: '',
                 query: {
                     name: '',
                     page: {
@@ -71,7 +74,7 @@
                         pageNum: 1,
                         totalCount: 0
                     }
-                    },
+                },
                 columns: [
                     {
                         key: 'index',
@@ -85,20 +88,48 @@
                         }
                     },
                     {
-                        key: 'name',
-                        title: '角色名'
+                        key: 'projectName',
+                        title: '项目名'
                     },
                     {
-                        key: 'introduce',
-                        title: '介绍'
+                        key: 'machineryRoom',
+                        title: '机房'
                     },
                     {
-                        key: 'flagName',
-                        title: '有效标志'
+                        key: 'intranetIp',
+                        title: '内网'
                     },
                     {
-                        key: 'createTime',
-                        title: '创建时间'
+                        key: 'otherIp',
+                        title: '其他Ip'
+                    },
+                    {
+                        key: 'fixedAssetsCode',
+                        title: '固定资产编号'
+                    },
+                    {
+                        key: 'purpose',
+                        title: '用途'
+                    },
+                    {
+                        key: 'equipmentType',
+                        title: '设备类型'
+                    },
+                    {
+                        key: 'account',
+                        title: '账户'
+                    },
+                    {
+                        key: 'osType',
+                        title: 'OS类型'
+                    },
+                    {
+                        key: 'loginType',
+                        title: '登录方式'
+                    },
+                    {
+                        key: 'remark',
+                        title: '备注'
                     },
                     {
                         title: '操作',
@@ -139,7 +170,7 @@
                 dataList: []
             };
         },
-        components: {roleEdit},
+        components: {serverEdit},
         methods: {
             init() {
                 this.search();
@@ -149,7 +180,9 @@
                 this.search();
             },
             handleCancel() {
-                this.data = this.initTable;
+                this.query.page.pageNum = 1;
+                this.query.name = '';
+                this.search();
             },
             handlePage(value) {
                 var own = this;
@@ -165,7 +198,7 @@
                 var own = this;
                 var query = own.query;
 
-                roleRequest.list(query,function (data) {
+                serverRequest.pageList(query,function (data) {
                     if (data.data.list) {
                         var list = data.data.list;
                         dictionary.setName(list, 'common', 'flag', 'flagName');
@@ -177,7 +210,7 @@
 
             },
             openEdit(id) {
-                this.editRoleId = id;
+                this.editServerId = id;
                 this.editVisible = true;
             },
             add() {
@@ -192,7 +225,7 @@
                     title: '确定',
                     content: '<p>确定删除？</p></p>',
                     onOk: () => {
-                        roleRequest.delete(id, function (data) {
+                        serverRequest.delete(id, function (data) {
                             own.search();
                         });
                     },
