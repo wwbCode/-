@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.service.ServicesMapper">
+
+    <select id="queryList" parameterType="com.jinyafu.jmall.entity.data.service.ServicesDTO" resultType="map">
+        select service.* ,supplier.name supplierName from service left join supplier on supplier.id = service.supplierId
+        <where>
+            <if test="data.name != null and data.name != ''">and name like "%"#{data.name}"%"</if>
+            <if test="data.supplierId != null and data.supplierId != ''">and supplierId = #{data.supplierId}</if>
+            and isdelete = 0
+        </where>
+    </select>
+
+    <select id="get" parameterType="string" resultType="com.jinyafu.jmall.entity.third.service.Services">
+        select * from service where id = #{id}
+    </select>
+
+    <select id="listAll" resultType="com.jinyafu.jmall.entity.third.service.Services">
+        SELECT * FROM service
+        WHERE isDelete =0
+    </select>
+    <!--通过id删除-->
+    <update id="updateServeById" parameterType="String" >
+        UPDATE  service SET isDelete=1,updateTime = now() WHERE  id=#{id}
+    </update>
+     <!--添加服务-->
+    <insert id="add" parameterType="com.jinyafu.jmall.entity.third.service.Services">
+        <selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select replace(uuid(),'-','') as id
+        </selectKey>
+        insert into service (id,name,superId,supplierId,user,operator,createTime,startTime,endTime,status,type,isDelete)
+        VALUES
+        (#{id},#{name},#{superId},#{supplierId},#{user},#{operator},now(),#{startTime},#{endTime},#{status},#{type},0)
+    </insert>
+     <!--全称搜所-->
+    <select id="selectByAllname" parameterType="String" resultType="com.jinyafu.jmall.entity.third.service.Services">
+        SELECT * FROM service
+         WHERE isDelete=1
+        <!-- <if test="name !=null and name != ''">
+             and name like concat('%',#{name},'' )
+         </if>-->
+    </select>
+      <!--名字模糊查询-->
+    <select id="selectByName" parameterType="com.jinyafu.jmall.entity.third.service.Services" resultType="com.jinyafu.jmall.entity.third.service.Services">
+        SELECT * FROM service
+        WHERE isDelete=1
+        <if test="name !=null and name!=''"> and name like concat('%',#{name},'%' )</if>
+    </select>
+
+    <!--更新服务信息-->
+    <update id="update" parameterType="com.jinyafu.jmall.entity.third.service.Services">
+        UPDATE service
+        <set>
+            <if test="name !=null "> name = #{name},</if>
+            <if test="superId != null ">superId = #{superId},</if>
+            <if test="supplierId != null ">supplierId = #{supplierId},</if>
+            <if test="user != null ">user = #{user},</if>
+            <if test="startTime != null ">startTime = #{startTime},</if>
+            <if test="endTime != null ">endTime = #{endTime},</if>
+            <if test="type!= null ">type= #{type},</if>
+            <if test="operator != null">operator=#{operator},</if>
+            <if test="status !=null">status=#{status},</if>
+            updateTime = now()
+        </set>
+        where id=#{id}
+    </update>
+   <!--删除供应商下的服务-->
+    <update id="deleteServeByFid" parameterType="String">
+        UPDATE service set isDelete = 0 updateTime = now() where pid =#{pid}
+    </update>
+
+</mapper>

@@ -203,6 +203,16 @@
             <artifactId>commons-beanutils</artifactId>
             <version>1.9.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.onlyxiahui</groupId>
+            <artifactId>only-common-lib-util</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.onlyxiahui</groupId>
+            <artifactId>only-common-message</artifactId>
+            <version>0.0.1</version>
+        </dependency>
 
     </dependencies>
     <build>

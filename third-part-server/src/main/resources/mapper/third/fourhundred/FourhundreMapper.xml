@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.fourhundred.FourhundredMapper">
+    <insert id="addFourhundred" parameterType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
+        insert into s_400
+        (
+        id,
+        tel,
+        operator,
+        serviceProviders,
+        openingTime,
+        endTime,
+        cost,
+        minutes,
+        bondList,
+        emil,
+        mobile,
+        address,
+        acc,
+        password,
+        addService,
+        agent,
+        paymentMethods,
+        collectionBank,
+        collectionBankAcc,
+        company,
+        businessLicense,
+        status,
+        latestUse,
+        isDelete
+        )
+        VALUES
+        (
+        #{id},
+        #{tel},
+        #{operator},
+        #{serviceProviders},
+        #{openingTime},
+        #{endTime},
+        #{cost},
+        #{minutes},
+        #{bondList},
+        #{emil},
+        #{mobile},
+        #{address},
+        #{acc},
+        #{password},
+        #{addService},
+        #{agent},
+        #{paymentMethods},
+        #{collectionBank},
+        #{collectionBankAcc},
+        #{company},
+        #{businessLicense},
+        #{status},
+        #{latestUse},
+        #{isDelete}
+        )
+    </insert>
+
+    <!--查询所有列表-->
+    <select id="listAll" resultType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
+      SELECT * from s_400 where isDelete=1
+    </select>
+
+    <!--编辑400-->
+    <update id="editFourhundred" parameterType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
+        update s_400 set
+        tel= #{tel},
+        operator= #{operator},
+        serviceProviders= #{serviceProviders},
+        openingTime= #{openingTime},
+        endTime= #{endTime},
+        cost= #{cost},
+        minutes= #{minutes},
+        bondList= #{bondList},
+        emil= #{emil},
+        mobile= #{mobile},
+        address=#{address},
+        acc=#{acc},
+        password=#{password},
+        addService=#{addService},
+        agent=#{agent},
+        paymentMethods=#{paymentMethods},
+        collectionBank= #{collectionBank},
+        collectionBankAcc= #{collectionBankAcc},
+        company= #{company},
+        businessLicense= #{businessLicense},
+        status= #{status},
+        latestUse= #{latestUse}
+        where id=#{id}
+    </update>
+
+    <!--删除400 -->
+    <update id="deleteFourhundred" parameterType="String">
+        update s_400 set isDelete=0 where id=#{id}
+    </update>
+
+    <!--查找400通过id-->
+    <select id="getById" parameterType="String" resultType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
+        SELECT * FROM s_400 WHERE id=#{id} and isDelete=1
+    </select>
+
+    <!--多条件查询-->
+    <select id="selectByConditions" parameterType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred" resultType="com.jinyafu.jmall.entity.third.fourhundred.Fourhundred">
+        SELECT  * FROM  s_400
+        WHERE
+        isDelete=1
+        <if test="tel !=null and tel!= ''">
+            and tel like concat('%',#{tel},'%')
+        </if>
+        <if test="operator!=null and operator!=''">
+            and operator=#{operator}
+        </if>
+        <if test="serviceProviders!=null and serviceProviders!=''">
+            and serviceProviders= #{serviceProviders}
+        </if>
+        <if test="openingTime !=null and openingTime!=''">
+            and openingTime &lt;= #{openingTime}/*  &gt; 大于号  &lt; 小于号 */
+        </if>
+        <if test="endTime !=null and endTime!=''">
+            and endTime &gt;=#{endTime}
+        </if>
+
+
+    </select>
+
+</mapper>

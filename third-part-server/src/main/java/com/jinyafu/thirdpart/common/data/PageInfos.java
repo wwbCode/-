@@ -17,14 +17,14 @@ public class PageInfos {
 	private Integer pageNum = 1;
 	private Integer totalPage;
 
-	public Integer getTotalCount() {
-		return totalCount;
-	}
+//	public Integer getTotalCount() {
+//		return totalCount;
+//	}
 
 	
-	public void setTotalCount(Integer totalCount) {
-		this.totalCount = totalCount;
-	}
+//	public void setTotalCount(Integer totalCount) {
+//		this.totalCount = totalCount;
+//	}
 
 	
 	public Integer getPageSize() {
@@ -40,20 +40,20 @@ public class PageInfos {
 		}
 	}
 
-	public void setStartResult(Integer startResult) {
-		this.startResult = startResult;
-	}
+//	public void setStartResult(Integer startResult) {
+//		this.startResult = startResult;
+//	}
 
 	
-	public Integer getTotalPage() {
-		if (this.getTotalCount() > 0) {
-			totalPage = this.getTotalCount() / this.getPageSize();
-			if (this.getTotalCount() % this.getPageSize() > 0) {
-				totalPage = totalPage + 1;
-			}
-		}
-		return totalPage;
-	}
+//	public Integer getTotalPage() {
+//		if (this.getTotalCount() > 0) {
+//			totalPage = this.getTotalCount() / this.getPageSize();
+//			if (this.getTotalCount() % this.getPageSize() > 0) {
+//				totalPage = totalPage + 1;
+//			}
+//		}
+//		return totalPage;
+//	}
 
 	
 	public Integer getStartResult() {
@@ -72,22 +72,22 @@ public class PageInfos {
 	}
 
 	
-	public void setEndResult(Integer endResult) {
-		if (endResult > this.getTotalCount()) {
-			this.endResult = this.getTotalCount();
-		} else {
-			this.endResult = endResult;
-		}
-	}
+//	public void setEndResult(Integer endResult) {
+//		if (endResult > this.getTotalCount()) {
+//			this.endResult = this.getTotalCount();
+//		} else {
+//			this.endResult = endResult;
+//		}
+//	}
 
 	
-	public Integer getEndResult() {
-		endResult = (this.getPageNum() * this.getPageSize());
-		if (endResult > this.getTotalCount()) {
-			endResult = this.getTotalCount();
-		}
-		return endResult;
-	}
+//	public Integer getEndResult() {
+//		endResult = (this.getPageNum() * this.getPageSize());
+//		if (endResult > this.getTotalCount()) {
+//			endResult = this.getTotalCount();
+//		}
+//		return endResult;
+//	}
 
 	
 	public void setPageNum(Integer pageNum) {

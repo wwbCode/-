@@ -15,11 +15,12 @@ public class ServerDTO extends RequestDTO{
 
     private static final long serialVersionUID = 1L;
 
+    private String serviceId; //服务Id
     private String projectName; //项目名
     private String machineryRoom; //机房
     private String intranetIp; //内网
     private String otherIp; //其他Ip
-    private  String fixedAssetsCode; //固定资产编号
+    private String fixedAssetsCode; //固定资产编号
     private String purpose; //用途
     private String equipmentType; //设备类型
     private String account; //账户

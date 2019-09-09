@@ -14,12 +14,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jinyafu.jmall.common.dto.ResponseDTO;
 import com.jinyafu.jmall.common.dto.ResponsePageData;
 import com.jinyafu.jmall.entity.data.system.RoleDTO;
-import com.jinyafu.jmall.entity.data.system.RoleQuery;
 import com.jinyafu.jmall.entity.third.system.Role;
 import com.jinyafu.jmall.entity.third.system.RoleMenu;
 import com.jinyafu.jmall.mapper.third.system.RoleMapper;
 import com.jinyafu.jmall.mapper.third.system.RoleMenuMapper;
-import com.jinyafu.thirdpart.common.code.PageOutput;
 
 
 /**
@@ -38,17 +36,14 @@ public class RoleService {
     @Resource
     RoleMenuMapper roleMenuMapper;
 
-    public ResponseDTO<?> queryList(RoleDTO data){
+
+public ResponseDTO<?> queryList(RoleDTO data){
     	Page<?> page = new Page<>(data.getPage().getPageNum(), data.getPage().getPageSize());
         List<Role> list = roleMapper.queryList(page, data);
         return ResponseDTO.success(new ResponsePageData<Role>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));
-    }
+}
 
-//    public  List<Role> queryList(RoleQuery roleQuery){
-//        List<Role> roleList = roleMapper.queryList(roleQuery);
-//        return roleList;
 //    }
-
     public void addOrUpdate(Role role, List<String> menuIds) {
         if (null == role.getId() || "".equals(role.getId())) {
             roleMapper.insertRole(role);

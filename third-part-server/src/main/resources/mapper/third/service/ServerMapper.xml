@@ -4,8 +4,10 @@
 
     <select id="queryList" parameterType="com.jinyafu.jmall.entity.data.service.ServerDTO" resultType="map">
         select * from s_server
+        left join service on service.id = s_server.serviceId
         <where>
             <if test="data.projectName != null and data.projectName != ''">and projectName like "%"#{data.projectName}"%"</if>
+            <if test ="data.serviceId != null and data.serviceId != ''">and serviceId = #{data.serviceId}</if>
         </where>
     </select>
 

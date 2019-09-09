@@ -2,23 +2,17 @@ package com.jinyafu.thirdpart.controller.system;
 
 import com.jinyafu.jmall.common.dto.ResponseDTO;
 import com.jinyafu.jmall.entity.data.system.UserDTO;
-import com.jinyafu.jmall.entity.data.system.UserQuery;
 import com.jinyafu.jmall.entity.data.system.UserRoleInfo;
 import com.jinyafu.jmall.entity.third.system.User;
 import com.jinyafu.thirdpart.common.annotation.PermissionMapping;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.Output;
-import com.jinyafu.thirdpart.common.code.OutputCode;
-import com.jinyafu.thirdpart.common.code.PageOutput;
-import com.jinyafu.thirdpart.common.data.PageInfos;
 import com.jinyafu.thirdpart.common.util.common.JsonUtil;
 import com.jinyafu.thirdpart.service.system.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -124,6 +118,7 @@ public class UserController {
     }
 
     @ResponseBody
+
     @PermissionMapping(name = "账号是否存在", key = "/third/system/user/isExist", superKey = "/third/system/user/pagelist")
     @RequestMapping(method = RequestMethod.POST, value = "/user/isExist")
     public Output<?> isExistAccount(@RequestBody Map<String, Object> map) {

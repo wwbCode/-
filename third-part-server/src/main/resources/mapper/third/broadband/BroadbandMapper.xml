@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~   Copyright © 2011-2015 Kinghood Group All Rights Reserved.
+  ~   未经本公司正式书面同意，其他任何个人、团体不得使用、复制、修改或发布本软件.
+  ~   版权所有深圳金雅福控股集团有限公司 www.jinyafu.com.
+  -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.broadband.BroadbandMapper">
+    <!--添加宽带记录-->
+   <insert id="addBroadband" parameterType="com.jinyafu.jmall.entity.third.broadband.Broadband">
+       insert into s_broadband
+       (
+       id,
+       tel,
+       operator,
+       system,
+       chargeMode,
+       monthlyFee,
+       openTime,
+       expirationTime,
+       fee,
+       address,
+       agent,
+       manager,
+       managerTel,
+       paymentMethod,
+       collectionBank,
+       collectionbankAcc,
+       company,
+       businessLicense,
+       status,
+       latestUse,
+       latestBillingStatus,
+       isLatestBill,
+       isDelete
+       )
+       VALUES
+       (
+       #{id},
+       #{tel},
+       #{operator},
+       #{system},
+       #{chargeMode},
+       #{monthlyFee},
+       #{openTime},
+       #{expirationTime},
+       #{fee},
+       #{address},
+       #{agent},
+       #{manager},
+       #{managerTel},
+       #{paymentMethod},
+       #{collectionBank},
+       #{collectionbankAcc},
+       #{company},
+       #{businessLicense},
+       #{status},
+       #{latestUse},
+       #{latestBillingStatus},
+       #{isLatestBill},
+       #{isDelete}
+       )
+   </insert>
+    <!--列表展示-->
+    <select id="listAll" resultType="com.jinyafu.jmall.entity.third.broadband.Broadband">
+        select * from s_broadband where isDelete = 1
+    </select>
+    <!--编辑-->
+    <update id="editBroadband" parameterType="com.jinyafu.jmall.entity.third.broadband.Broadband" >
+      update s_broadband SET
+       tel=#{tel},
+       operator=#{operator},
+       system=#{system},
+       chargeMode=#{chargeMode},
+       monthlyFee=#{monthlyFee},
+       <if test="openTime != null and openTime !=''"> openTime=#{openTime},</if>
+       <if test="expirationTime !=null and expirationTime != ''">expirationTime=#{expirationTime},</if>
+
+       fee=#{fee},
+       address=#{address},
+       agent=#{agent},
+       manager=#{manager},
+       managerTel=#{managerTel},
+       paymentMethod=#{paymentMethod},
+       collectionBank=#{collectionBank},
+       collectionbankAcc=#{collectionbankAcc},
+       company=#{company},
+       businessLicense=#{businessLicense},
+       status=#{status},
+       latestUse=#{latestUse},
+       latestBillingStatus=#{latestBillingStatus},
+       isLatestBill=#{isLatestBill},
+       isDelete=#{isDelete}
+       where id=#{id}
+    </update>
+    <!--删除-->
+    <update id="deleteBroadband" parameterType="String">
+        update a_broadband set isDelete = 0 where id=#{id}
+    </update>
+    <!--多条件查询-->
+    <select id="selectByConditions" parameterType="com.jinyafu.jmall.entity.third.broadband.Broadband" resultType="com.jinyafu.jmall.entity.third.broadband.Broadband">
+        select * from s_broadband
+        where isDelete = 1
+        <if test="tel !=null and tel!= ''">
+            and tel like concat('%',#{tel},'%')
+        </if>
+        <if test="operator!=null and operator!=''">
+            and operator=#{operator}
+        </if>
+        <if test="system!=null and system!=''">
+            and system=#{system}
+        </if>
+        <if test="openTime !=null and openTime!=''">
+            and openTime &lt;= #{openTime}/*  &gt; 大于号  &lt; 小于号 */
+        </if>
+        <if test="expirationTime !=null and expirationTime!=''">
+            and expirationTime &gt;=#{expirationTime}
+        </if>
+    </select>
+
+    <!--通过id查找记录-->
+    <select id="getById" parameterType="String" resultType="com.jinyafu.jmall.entity.third.broadband.Broadband">
+        select * FROM  s_broadband where id=#{id}
+    </select>
+
+</mapper>
