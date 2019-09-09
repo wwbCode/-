@@ -6,10 +6,13 @@ package com.jinyafu.thirdpart.service.supplier;/**
  * @Version: 1.0
  */
 
-
 import com.github.pagehelper.Page;
-import com.jinyafu.jmall.entity.third.supplier.Supplier;
+import com.github.pagehelper.PageHelper;
 
+import com.github.pagehelper.PageInfo;
+import com.jinyafu.jmall.entity.third.serve.Serve;
+import com.jinyafu.jmall.entity.third.supplier.Supplier;
+import com.jinyafu.jmall.entity.third.supplier.SupplierExt;
 import com.jinyafu.jmall.mapper.third.serve.ServeMapper;
 import com.jinyafu.jmall.mapper.third.supplier.SupplierMapper;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
@@ -61,7 +64,7 @@ public class SupplierService {
      */
     @Transactional
     public PageOutput listAll(PageInfos pageInfos) {
-        Page page =new Page();
+        Page<Supplier> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
         List<Supplier> supplierList = supplierMapper.listAll();
         return PageOutput.ok(page,supplierList);
     }
@@ -98,7 +101,6 @@ public class SupplierService {
     public MessageOutput deleteSupplier (String supplierId){
         //删除供应商以下所有的服务，把所有的服务状态置为0就可以
         supplierMapper.deleteSupplierById(supplierId);
-
 
         serveMapper.deleteServeByFid(supplierId);
         return MessageOutput.ok();

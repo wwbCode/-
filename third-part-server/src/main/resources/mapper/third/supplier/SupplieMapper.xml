@@ -32,12 +32,11 @@
         SELECT * FROM  supplier WHERE name=#{name}
     </select>
 
- 
-   
-    <select id="selectById" parameterType="String" resultType="com.jinyafu.jmall.entity.third.supplier.Supplier">
+    <select id="selectById" parameterType="String">
         SELECT * FROM  supplier where id=#{id}
     </select>
-    <select id="selectByName" parameterType="String"  resultType="com.jinyafu.jmall.entity.third.supplier.Supplier">        SELECT * FROM  supplier where name=#{name}
+    <select id="selectByName" parameterType="String">
+        SELECT * FROM  supplier where name=#{name}
     </select>
 
     <update id="deleteSupplierById" parameterType="String">
