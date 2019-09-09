@@ -5,6 +5,7 @@ let server = {};
 server.pageList = function (query,back) {
     var body = {
         'projectName': query.name,
+        'serviceId': query.serviceId,
         'page':query.page
 
     };

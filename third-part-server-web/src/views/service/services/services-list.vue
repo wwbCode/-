@@ -280,14 +280,14 @@
             },
             toDetail (id, type) {
                 var own = this;
-                var query = {'id': ''};
-                if (type === 1) {
+                var query = {'serviceId': id};
+                if (type === '1') {
                     own.$router.push({
-                        name: 'server'
-                        // query: query
+                        name: 'server',
+                        query: query
                     });
                 }
-                if (type === 2) {
+                if (type === '2') {
                     own.$router.push({
                         name: 'device',
                         query: query

@@ -69,6 +69,7 @@
                 editServerId: '',
                 query: {
                     name: '',
+                    serviceId: '',
                     page: {
                         pageSize: 10,
                         pageNum: 1,
@@ -197,7 +198,7 @@
             search() {
                 var own = this;
                 var query = own.query;
-
+                query.serviceId = this.$route.query.serviceId;
                 serverRequest.pageList(query,function (data) {
                     if (data.data.list) {
                         var list = data.data.list;
