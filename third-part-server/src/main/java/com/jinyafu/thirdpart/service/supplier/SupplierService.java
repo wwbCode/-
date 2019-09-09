@@ -5,10 +5,11 @@ package com.jinyafu.thirdpart.service.supplier;/**
  * @Author: wwb
  * @Version: 1.0
  */
-import com.github.pagehelper.PageInfo;
-import com.jinyafu.jmall.entity.third.serve.Serve;
+
+
+import com.github.pagehelper.Page;
 import com.jinyafu.jmall.entity.third.supplier.Supplier;
-import com.jinyafu.jmall.entity.third.supplier.SupplierExt;
+
 import com.jinyafu.jmall.mapper.third.serve.ServeMapper;
 import com.jinyafu.jmall.mapper.third.supplier.SupplierMapper;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
@@ -60,7 +61,7 @@ public class SupplierService {
      */
     @Transactional
     public PageOutput listAll(PageInfos pageInfos) {
-        Page<Supplier> page = PageHelper.offsetPage(pageInfos.getStartResult(), pageInfos.getPageSize());
+        Page page =new Page();
         List<Supplier> supplierList = supplierMapper.listAll();
         return PageOutput.ok(page,supplierList);
     }

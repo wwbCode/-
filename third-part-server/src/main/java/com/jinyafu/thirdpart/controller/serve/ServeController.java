@@ -128,10 +128,4 @@ class ServeController {
     }
 
 
-    @RequestMapping(value = "/getByType", method = RequestMethod.POST)
-    @ResponseBody
-    public PageOutput getByType(@RequestBody Serve serve) {
-            return serveService.getByType(serve);
-    }
-
 }
