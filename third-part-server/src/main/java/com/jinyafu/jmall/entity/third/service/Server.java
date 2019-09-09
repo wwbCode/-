@@ -17,12 +17,15 @@ import lombok.NoArgsConstructor;
  */
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor
-@TableName(value = "s_servers")
+@TableName(value = "s_server")
 @Data
 public class Server {
 
     @TableId("id")
     private String id; //主键id
+
+    @TableField("serviceId")
+    private String serviceId; //服务Id
 
     @TableField("projectName")
     private String projectName; //项目名
@@ -61,6 +64,7 @@ public class Server {
     public String toString() {
         return "Server{" +
                 "id='" + id + '\'' +
+                ", serviceId='" + serviceId + '\'' +
                 ", projectName='" + projectName + '\'' +
                 ", machineryRoom='" + machineryRoom + '\'' +
                 ", intranetIp='" + intranetIp + '\'' +

@@ -9,11 +9,8 @@ package com.jinyafu.thirdpart.service.supplier;/**
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 
-import com.github.pagehelper.PageInfo;
-import com.jinyafu.jmall.entity.third.serve.Serve;
 import com.jinyafu.jmall.entity.third.supplier.Supplier;
-import com.jinyafu.jmall.entity.third.supplier.SupplierExt;
-import com.jinyafu.jmall.mapper.third.serve.ServeMapper;
+import com.jinyafu.jmall.mapper.third.service.ServicesMapper;
 import com.jinyafu.jmall.mapper.third.supplier.SupplierMapper;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.OutputCode;
@@ -38,7 +35,7 @@ public class SupplierService {
     @Resource
     SupplierMapper supplierMapper;
     @Resource
-    ServeMapper serveMapper;
+    ServicesMapper servicesMapper;
 
 
     /**
@@ -102,7 +99,7 @@ public class SupplierService {
         //删除供应商以下所有的服务，把所有的服务状态置为0就可以
         supplierMapper.deleteSupplierById(supplierId);
 
-        serveMapper.deleteServeByFid(supplierId);
+        servicesMapper.deleteServeByFid(supplierId);
         return MessageOutput.ok();
 
     }

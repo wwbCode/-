@@ -65,13 +65,13 @@ public class SupplierController {
     @RequestMapping(value = "/listAll",method = RequestMethod.POST)
     public PageOutput listAll(@RequestBody Map<String,Object> map){
         PageInfos pageInfos = new PageInfos();
-        if(null!=map.get("pageSize")||null!=map.get("pageNum")){
-            pageInfos.setPageSize((Integer) map.get("pageSize"));
-            pageInfos.setPageNum((Integer)map.get("pageNum"));
+//        if(null!=map.get("pageSize")||null!=map.get("pageNum")){
+//            pageInfos.setPageSize((Integer) map.get("pageSize"));
+//            pageInfos.setPageNum((Integer)map.get("pageNum"));
             return supplierService.listAll(pageInfos);
-        } else {
-            return PageOutput.ex();
-        }
+//        } else {
+//            return PageOutput.ex();
+//        }
 
 
 
@@ -149,8 +149,6 @@ public class SupplierController {
             return MessageOutput.get(OutputCode.EX.getCode(),OutputCode.EX.getMessage());
         }
     }
-
-
 
 
 }

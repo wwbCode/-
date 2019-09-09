@@ -118,6 +118,7 @@ public class UserController {
     }
 
     @ResponseBody
+
     @PermissionMapping(name = "账号是否存在", key = "/third/system/user/isExist", superKey = "/third/system/user/pagelist")
     @RequestMapping(method = RequestMethod.POST, value = "/user/isExist")
     public Output<?> isExistAccount(@RequestBody Map<String, Object> map) {
