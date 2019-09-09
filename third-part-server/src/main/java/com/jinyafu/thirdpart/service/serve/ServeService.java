@@ -9,7 +9,10 @@ package com.jinyafu.thirdpart.service.serve;/**
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.jinyafu.jmall.entity.third.broadband.Broadband;
 import com.jinyafu.jmall.entity.third.serve.Serve;
+import com.jinyafu.jmall.mapper.third.broadband.BroadbandMapper;
+import com.jinyafu.jmall.mapper.third.fourhundred.FourhundredMapper;
 import com.jinyafu.jmall.mapper.third.serve.ServeMapper;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.PageOutput;
@@ -32,6 +35,10 @@ import java.util.UUID;
 public class ServeService {
     @Resource
     private ServeMapper serveMapper;
+    @Resource
+    private BroadbandMapper broadbandMapper;
+    @Resource
+    private FourhundredMapper fourhundredMapper;
 
     /**
      * @description: 服务 列表

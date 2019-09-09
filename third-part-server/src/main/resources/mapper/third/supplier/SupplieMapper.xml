@@ -21,7 +21,6 @@
             <if test="remark != null ">remark = #{remark},</if>
             <if test="operator != null ">operator = #{operator},</if>
             <if test="user!= null ">user= #{user},</if>
-
             <if test="status != null ">status = #{status},</if>
             <if test="startTime != null ">startTime=#{startTime}</if>
         </set>
@@ -33,12 +32,12 @@
         SELECT * FROM  supplier WHERE name=#{name}
     </select>
 
-
+ 
+   
     <select id="selectById" parameterType="String" resultType="com.jinyafu.jmall.entity.third.supplier.Supplier">
         SELECT * FROM  supplier where id=#{id}
     </select>
-    <select id="selectByName" parameterType="String" resultType="com.jinyafu.jmall.entity.third.supplier.Supplier">
-        SELECT * FROM  supplier where name=#{name}
+    <select id="selectByName" parameterType="String"  resultType="com.jinyafu.jmall.entity.third.supplier.Supplier">        SELECT * FROM  supplier where name=#{name}
     </select>
 
     <update id="deleteSupplierById" parameterType="String">

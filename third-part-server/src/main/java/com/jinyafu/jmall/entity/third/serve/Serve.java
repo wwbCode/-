@@ -34,9 +34,7 @@ public class Serve {
     /***/
     private String operator;
     /**业务状态*/
-    private int status;
-    /***/
-    private int type;
+    private Integer status;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private  Date startTime;
@@ -45,5 +43,7 @@ public class Serve {
     private Date endTime;
     /*是否被删除*/
     private Integer isDelete;
+    /**服务类型*/
+    private Integer type;
 
 }
