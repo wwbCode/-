@@ -106,7 +106,7 @@
         SELECT  * FROM  s_400
         WHERE
         isDelete=1
-        <if test="tel !=null and tel!= ''">
+        <if test="tel!=null and tel!=''">
             and tel like concat('%',#{tel},'%')
         </if>
         <if test="operator!=null and operator!=''">

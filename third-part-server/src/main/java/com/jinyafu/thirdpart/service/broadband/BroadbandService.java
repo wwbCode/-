@@ -62,7 +62,7 @@ public class BroadbandService {
     @Transactional
     public ResponseDTO<?> listAll(Broadband broadband){
         Page<?> page = new Page<>(broadband.getPage().getPageNum(),broadband.getPage().getPageSize());
-        List<Broadband> broadbandList =broadbandMapper.listAll(page, broadband);
+        List<Broadband> broadbandList =broadbandMapper.listAll(page,broadband);
         return ResponseDTO.success(new ResponsePageData<Broadband>(page.getCurrent(),page.getTotal(),page.getSize(),broadbandList,null));
     }
 
@@ -102,7 +102,8 @@ public class BroadbandService {
     @Transactional
     public ResponseDTO<?>selectByConditions(Broadband broadband){
         Page<?> page = new Page<>(broadband.getPage().getPageNum(),broadband.getPage().getPageSize());
-        List<Broadband> broadbandList = broadbandMapper.selectByConditions(page,broadband);
+        List<Broadband> broadbandList = broadbandMapper.selectByConditions(broadband);
+        System.out.print(broadbandList);
         return ResponseDTO.success(new ResponsePageData<Broadband>( page.getCurrent(),page.getTotal(),page.getSize(),broadbandList,null));
     }
 

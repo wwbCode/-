@@ -25,7 +25,7 @@ import java.util.Locale;
 @NoArgsConstructor
 public class RequestPageData {
     public long pageNum = 1; // 页码
-    public long pageSize = 10; // 每页记录数
+    public long pageSize = 1; // 每页记录数
 
     public String orderBy; // 排序字段
     public int sort; // 排序类型：1升序；2降序

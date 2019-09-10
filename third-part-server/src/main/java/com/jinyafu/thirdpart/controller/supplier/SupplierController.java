@@ -104,7 +104,8 @@ public class SupplierController {
     @RequestMapping(value = "/delete",method = RequestMethod.POST)
     public MessageOutput deleteSupplier(@RequestBody  Supplier supplier){
         if(null!=supplier.getId()) {
-            return supplierService.deleteSupplier(supplier.getId());
+            String id=supplier.getId();
+            return supplierService.deleteSupplier(id);
         } else {
             return MessageOutput.ex();
         }

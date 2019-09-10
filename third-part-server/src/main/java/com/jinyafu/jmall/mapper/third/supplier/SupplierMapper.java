@@ -34,7 +34,7 @@ public interface SupplierMapper extends BaseMapper<Supplier> {
 
     List<Supplier> selectSupplierByName(@Param("name") String name);
 
-    void deleteSupplierById(@Param("id")String id);
+    void deleteSupplierById(String id);
 
     Supplier selectById(String supplierId);
 

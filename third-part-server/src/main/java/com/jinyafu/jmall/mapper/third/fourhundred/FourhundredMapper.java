@@ -8,6 +8,7 @@ package com.jinyafu.jmall.mapper.third.fourhundred;/**
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.jinyafu.jmall.entity.third.fourhundred.Fourhundred;
+import feign.Param;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public interface FourhundredMapper extends BaseMapper<Fourhundred> {
 
     Fourhundred getById(String fourhundredId);
 
-    List<Fourhundred> selectByConditions(Fourhundred fourhundred);
+    List<Fourhundred> selectByConditions(@Param("fourhundred")Fourhundred fourhundred);
 
 
 }

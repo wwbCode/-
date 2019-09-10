@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @create: 2019-09-05 09:31
  **/
 @Controller
-@RequestMapping("/third/broadband")
+@RequestMapping("/third/service")
 public class BroadbandController {
 
     @Autowired
@@ -36,7 +36,7 @@ public class BroadbandController {
      * @param:
      * @return:
      */
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/broadband/add", method = RequestMethod.POST)
     @ResponseBody
     public MessageOutput add(@RequestBody Broadband broadband) {
         if (null != broadband.getOperator() && !broadband.getOperator().equals("")) {
@@ -63,7 +63,7 @@ public class BroadbandController {
      * @param:
      * @return:
      */
-    @RequestMapping(value = "/listAll", method = RequestMethod.POST)
+    @RequestMapping(value = "/broadband/listAll", method = RequestMethod.POST)
     @ResponseBody
     public ResponseDTO<?> listAll(@RequestBody Broadband broadband) {
         return broadbandService.listAll(broadband);
@@ -76,7 +76,7 @@ public class BroadbandController {
      * @param:
      * @return:
      */
-    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "/broadband/edit", method = RequestMethod.POST)
     @ResponseBody
     public MessageOutput edit(@RequestBody Broadband broadband) {
         if (null != broadband.getOperator() && !broadband.getOperator().equals("")) {
@@ -103,7 +103,7 @@ public class BroadbandController {
      * @param:
      * @return:
      */
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/broadband/delete", method = RequestMethod.POST)
     @ResponseBody
     public MessageOutput delete(@RequestBody Broadband broadband) {
         broadbandService.deleteBroadband(broadband.getId());
@@ -118,7 +118,7 @@ public class BroadbandController {
      * @return:
      */
     @ResponseBody
-    @RequestMapping(value = "/selectByConditions",method = RequestMethod.POST)
+    @RequestMapping(value = "/broadband/selectByConditions",method = RequestMethod.POST)
     public ResponseDTO<?> selectByConditions (@RequestBody Broadband broadband){
         return broadbandService.selectByConditions(broadband);
     }
@@ -131,7 +131,7 @@ public class BroadbandController {
      * @return:
      */
     @ResponseBody
-    @RequestMapping(value = "/getById",method = RequestMethod.POST)
+    @RequestMapping(value = "/broadband/getById",method = RequestMethod.POST)
     public MessageOutput getById(@RequestBody Broadband  broadband){
         return broadbandService.getById(broadband.getId());
     }

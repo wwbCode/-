@@ -22,13 +22,13 @@ import java.util.List;
 public interface BroadbandMapper extends BaseMapper<Broadband> {
     void addBroadband(Broadband broadband);
 
-    List<Broadband> listAll(Page<?> page, @Param("broadband") Broadband broadband);
+    List<Broadband> listAll(Page page, @Param("broadband") Broadband broadband);
 
     void editBroadband(Broadband broadband);
 
     void deleteBroadband(String broadbandId);
 
-    List<Broadband> selectByConditions(Page<?> page, Broadband broadband);
+    List<Broadband> selectByConditions(Broadband broadband);
 
     Broadband getById(String id);
 

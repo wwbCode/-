@@ -71,19 +71,13 @@ public class SupplierService {
      */
     @Transactional
     public MessageOutput editSupplier(Supplier supplier) {
-        List<Supplier> supplierInTable = supplierMapper.selectSupplierByName(supplier.getName());
-        if ( supplierInTable.get(0).toString()==null) {
+       // List<Supplier> supplierInTable = supplierMapper.selectSupplierByName(supplier.getName());
+
             if (null != supplier.getName() || !supplier.getName().equals("")) {
-
                 supplierMapper.updateSupplier(supplier);
-
             } else {
                 return MessageOutput.get(OutputCode.DX.getCode(), OutputCode.DX.getMessage());
             }
-
-        } else {
-            return MessageOutput.get(OutputCode.DX.getCode(), OutputCode.DX.getMessage());
-        }
         return MessageOutput.ok();
     }
 
@@ -99,7 +93,7 @@ public class SupplierService {
         //删除供应商以下所有的服务，把所有的服务状态置为0就可以
         supplierMapper.deleteSupplierById(supplierId);
 
-        servicesMapper.deleteServeByFid(supplierId);
+       // servicesMapper.deleteServeByFid(supplierId);
         return MessageOutput.ok();
 
     }
