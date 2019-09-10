@@ -33,13 +33,14 @@ supplier.delete = function (id,back) {
     service.post('/third/supplier/delete',m,back)
 };
 
-supplier.addOrUpdate=function(supplier,back){
-    var body = {
-        'object': supplier
-    };
-    var m ={'body':body};
-    service.post('/manage/chemical/product/edit',m,back);
+supplier.update=function(supplier,back){
 
+        service.post('/third/supplier/edit',supplier,back);
+
+};
+supplier.add = function (suppplier,back){
+
+  service.post('/third/supplier/add',suppplier,back)
 };
 supplier.supplierNameList = function (back) {
     var body = {

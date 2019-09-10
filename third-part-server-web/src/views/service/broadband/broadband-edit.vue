@@ -1,27 +1,29 @@
 <style lang="less">
-    @import '../../styles/common.less';
+    @import '../../../styles/common.less';
 </style>
 <template>
     <div>
         <p slot="header" style="height: 10px"></p>
         <div>
-            <Form ref="supplier" :model="supplier" :rules="ruleValidate" label-position="left">
-
+            <Form ref="broadband" :model="broadband" :rules="ruleValidate" label-position="left">
                 <row>
                     <Col span="12">
                         <Card>
-                        <p slot="title">供应商信息</p>
-                            <Form-item label="供应商：" prop="name">
+                            <p slot="title">供应商信息</p>
+                            <Form-item label="供应商：" prop="operator">
                                 <!--<Select v-model="supplier.supplierId">
                                     <Option v-for="item in categoryList" :value="item.id" :key="item.id">{{item.name}}</Option>
                                 </Select>-->
-                                <Input v-model="supplier.name"  type="text"/>
+                                <Input v-model="broadband.operator" placeholder="经办人"  type="text"/>
                             </Form-item>
                             <Form-item label="电话：" prop="tel">
-                                <Input v-model="supplier.tel" placeholder="电话" type="text"/>
+                                <Input v-model="broadband.tel" placeholder="电话" type="text"/>
                             </Form-item>
                             <Form-item label="地址：" prop="address">
-                                <Input v-model="supplier.address" placeholder="地址" type="text"/>
+                                <Input v-model="broadband.address" placeholder="地址" type="text"/>
+                            </Form-item>
+                            <Form-item label="系统：" prop="system">
+                                <Input v-model="broadband.system" placeholder="系统" type="text"/>
                             </Form-item>
                             <!--<Form-item label="单位：" prop="name">
                                 <Select v-model="supplier.unit">
@@ -30,19 +32,19 @@
                                     </Option>
                                 </Select>
                             </Form-item>-->
-                           <!-- <Poptip trigger="focus" title="提示" content="数字越大越靠前，最大为10">
-                                <Form-item label="排序数字：" prop="sort">
-                                    <Input v-model="supplier.sort" number placeholder="排序数字" type="text"/>
-                                </Form-item>
-                            </Poptip>-->
+                            <!-- <Poptip trigger="focus" title="提示" content="数字越大越靠前，最大为10">
+                                 <Form-item label="排序数字：" prop="sort">
+                                     <Input v-model="supplier.sort" number placeholder="排序数字" type="text"/>
+                                 </Form-item>
+                             </Poptip>-->
                             <Form-item label="状态：" prop="flag">
-                                <RadioGroup v-model="supplier.flag">
+                                <RadioGroup v-model="broadband.flag">
                                     <Radio label="0">禁用</Radio>
                                     <Radio label="1">启用</Radio>
                                 </RadioGroup>
                             </Form-item>
                             <Form-item label="是否显示在首页导航栏分类下：" prop="flag">
-                                <RadioGroup v-model="supplier.isTop">
+                                <RadioGroup v-model="broadband.isTop">
                                     <Radio label="0">否</Radio>
                                     <Radio label="1">是</Radio>
                                 </RadioGroup>
@@ -51,14 +53,14 @@
                     </Col>
                     <Col span="10" offset="1">
                         <Card>
-                            <Form-item label="当前使用人：" prop="user">
-                                <Input v-model="supplier.user" placeholder="使用人" type="text"/>
+                            <Form-item label="当前使用人：" prop="agent">
+                                <Input v-model="broadband.agent" placeholder="使用人" type="text"/>
                             </Form-item>
-                            <Form-item label="经办人：" prop="operator">
-                                <Input v-model="supplier.operator" placeholder="经办人" type="text"/>
+                            <Form-item label="经理人：" prop="manager">
+                                <Input v-model="broadband.manager" placeholder="经理人" type="text"/>
                             </Form-item>
                             <Form-item label="备注：" prop="remark">
-                                <Input v-model="supplier.remark" type="textarea" placeholder="描述"></Input>
+                                <Input v-model="broadband.remark" type="textarea" placeholder="描述"/>
                             </Form-item>
                         </Card>
                     </Col>
@@ -66,7 +68,7 @@
 
                 <div class="footer-item">
                     <Form-item>
-                        <Button type="primary" @click="handleSubmit('supplier')">
+                        <Button type="primary" @click="handleSubmit('broadband')">
                             提交
                         </Button>
                     </Form-item>
@@ -77,20 +79,18 @@
 </template>
 
 <script>
-    import supplierRequest from '@/app/api/supplier/supplier';
+    import broadbandRequest from '@/app/api/service/broadband';
     export default {
-        name: 'supplier-edit',
+        name: 'broadband-edit',
         props: {
-            supplierId: {
+            broadbandId: {
                 type: String
             }
-
-
         },
         data () {
             return {
-                currentId: this.supplierId,
-                supplier: {
+                currentId: this.broadbandId,
+                broadband: {
                     id: '',
                     categoryId: '',
                     code: '',
@@ -103,13 +103,24 @@
                     tel:'',
                     address:'',
                     user:'',
-                    remark:''
+                    remark:'',
+                    system:'',
+                    chargeMode:'',
+                    monthlyFee:'',
+                    fee:'',
+                    manager:'',
+                    managerTel:'',
+                    paymentMethod:'',
+                    collectionBank:'',
+                    collectionbankAcc:'',
+                    company:'',
+                    businessLicense:'',
                 },
                 categoryList: [],
                 ruleValidate: {
-                    name: [{required: true, message: '供应商不能为空', trigger: 'blur'}],
+                    operator: [{required: true, message: '供应商不能为空', trigger: 'blur'}],
                     tel: [{required: true, message: '电话不能为空', trigger: 'blur'}],
-                   // name: [{required: true, message: '名称不能为空', trigger: 'blur'}]
+                    // name: [{required: true, message: '名称不能为空', trigger: 'blur'}]
                 },
                 columns: [
                     {
@@ -131,7 +142,7 @@
         },
         methods: {
             init () {
-                this.$refs['supplier'].resetFields();
+                this.$refs['broadband'].resetFields();
                 this.load();
             },
             setCurrentId (id) {
@@ -142,13 +153,14 @@
                 let own = this;
                 let id = own.currentId;
                 if (id && '' !== id) {
-                    supplierRequest.getById(id, function (data) {
-                             let body = data.data
-                            own.supplier = body;
-                            debugger;
+                    broadbandRequest.getById(id, function (data) {
+                        debugger;
+                        let body = data.data;
+                        own.broadband = body;
+                        debugger;
                     });
                 } else {
-                    var supplier = {
+                    var broadband = {
                         id: '',
                         categoryId: '',
                         code: '',
@@ -161,9 +173,21 @@
                         tel:'',
                         address:'',
                         user:'',
-                        remark:''
+                        remark:'',
+                        system:'',
+                        chargeMode:'',
+                        monthlyFee:'',
+                        fee:'',
+                        manager:'',
+                        managerTel:'',
+                        paymentMethod:'',
+                        collectionBank:'',
+                        collectionbankAcc:'',
+                        company:'',
+                        businessLicense:'',
+
                     };
-                    this.supplier = supplier;
+                    this.broadband = broadband;
                 }
 
                 // 加载类别列表
@@ -191,17 +215,17 @@
                 this.$refs[name].validate((valid) => {
                     if (valid) {
                         if(id!=null){
-                        supplierRequest.update(own.supplier, function (data) {
-                            var info = data.code;
-                            debugger;
-                            //var supplier = data.rows.object;
-                            var supplier = data.code;
-                            own.$emit('on-done', own, info, supplier);
-                        });
+                            broadbandRequest.update(own.broadband, function (data) {
+                                var info = data.code;
+                                debugger;
+                                //var supplier = data.rows.object;
+                                var broadband = data.code;
+                                own.$emit('on-done', own, info, broadband);
+                            });
                         }
                         else {
                             debugger;
-                            supplierRequest.add(own.supplier, function (data) {
+                            broadbandRequest.add(own.broadband, function (data) {
                                 // debugger;
                                 // var info = data.code;
                                 // debugger;
@@ -209,8 +233,8 @@
                                 // var supplier = data.code;
                                 // own.$emit('on-done', own, info, supplier);
                                 var info = data.code;
-                                var supplier = data.code;
-                                own.$emit('on-done',own,info,supplier);
+                                var broadband = data.code;
+                                own.$emit('on-done',own,info,broadband);
                             });
                         }
                     }
@@ -218,7 +242,7 @@
             }
         },
         watch: {
-            supplierId (val) {
+            broadbandId (val) {
                 this.setCurrentId(val);
                 this.init();
             }

@@ -134,6 +134,13 @@ export const appRouter = [
                 title: '联络人管理',
                 icon: 'ios-switch-outline',
                 component: () => import('@/views/service/contact/contact-list.vue')
+            },
+            {
+                name: 'third.service.broadband.list',
+                path: 'broadband-list',
+                title: '宽带管理',
+                icon: 'ios-switch-outline',
+                component: () => import('@/views/service/broadband/broadband-list.vue')
             }
         ]
     },

@@ -1,9 +1,9 @@
 <style lang="less">
-    @import '../../styles/common.less';
+    @import '../../../styles/common.less';
 </style>
 
 <template>
-    <div class="supplier">
+    <div class="broadband-list">
         <Card>
             <p slot="title">
                 <Icon type="mouse"></Icon>
@@ -16,16 +16,11 @@
                 <DatePicker v-model="endTime" :start-date="new Date()" type="date" show-week-numbers placeholder="结束时间" style="width: 150px"></DatePicker>
                 <span @click="handleSearch" style="margin: 0 10px;"><Button type="primary" icon="search">搜索</Button></span>
                 <Button @click="handleCancel" type="ghost">重置</Button>
-
                 <span style="float: right">
                     <Button  @click="add" type="primary" shape="circle" icon="md-add">
-                        新增供应商
+                        新增宽带记录
                     </Button>
                 </span>
-
-                <!--<Input v-model="searchConName" placeholder="请输入电话搜搜..." style="width: 200px"/>-->
-                <!--<span @click="handleSearch" style="margin: 0 10px;"><Button type="primary" icon="search">搜索</Button></span>-->
-                <!--<Button @click="handleCancel" type="ghost">重置</Button>-->
             </Row>
         </Card>
         <Card>
@@ -51,7 +46,7 @@
                 :mask-closable="false"
         >
 
-            <SupplierEdit :supplier-id="editSupplierId" @on-done="handleEditDone"></SupplierEdit>
+            <BroadbandEdit :broadband-id="editBroadbandId" @on-done="handleEditDone"></BroadbandEdit>
             <div slot="footer">
 
             </div>
@@ -61,18 +56,18 @@
 </template>
 
 <script>
-
-    import supplierRequest from '@/app/api/supplier/supplier';
-    import SupplierEdit from "./supplier-edit";
+    import broadbandRequest from '@/app/api/service/broadband';
+    import dictionary from '../../../app/common/lib/dictionary';
+    import BroadbandEdit from'./broadband-edit'
     import prompt from '@/libs/prompt';
 
     export default {
-        name: 'list',
-        components: {SupplierEdit},
+        name: 'broadband-list',
+        components: {BroadbandEdit},
         data() {
             return {
                 editVisible: false,
-                editSupplierId: '',
+                editBroadbandId: '',
                 query: {nameSearch: ''},
                 searchConName: '',
                 startTime:null,
@@ -91,32 +86,65 @@
                             ]);
                         }
                     },
-                    {
-                        key: 'name',
-                        title: '供应商'
-                    },
-                    {
-                        key: 'address',
-                        title: '地址'
-                    },
+
                     {
                         key: 'tel',
                         title: '联系方式'
                     },
                     {
-                        key: 'remark',
-                        title: '简略信息'
-                    },
-                    {
-                        key: 'startTime',
-                        title: '合作时间'
-                    },
-                    {
                         key: 'operator',
                         title: '经办人'
                     },
-                    {   key: 'user',
-                        title: '使用人'},
+                    {
+                        key: 'system',
+                        title: '系统'
+                    },
+                    {
+                        key: 'chargeMode',
+                        title: '计费方式'
+                    },
+                    {
+                        key: 'monthlyFee',
+                        title: '月费'
+                    },
+                    {
+                        key: 'openTime',
+                        title: '开始时间'
+                    },
+                    {
+                        key: 'expirationTime',
+                        title: '结束时间'
+                    },
+                    {
+                        key: 'businessLicense',
+                        title: '营业编码'
+                    },
+                    {
+                        key: 'address',
+                        title: '地址'
+                    },
+                    {   key: 'agent',
+                        title: '使用人'
+                    },
+                    {   key: 'manager',
+                        title: '经理人'
+                    },
+                    {   key: 'managerTel',
+                        title: '经理人电话'
+                    },
+                    {   key: 'paymentMethod',
+                        title: '支付方式'
+                    },
+                    {   key: 'collectionBank',
+                        title: '托收银行'
+                    },
+                    {   key: 'collectionbankAcc',
+                        title: '托收银行账号'
+                    },
+                    {
+                        key:'businessLicense',
+                        title:'营业编号'
+                    },
                     {
                         title: '操作',
                         key: 'action',
@@ -157,7 +185,7 @@
                 tableList: [],
                 initTable: [],
                 page: {
-                    pageSize: 2,
+                    pageSize: 1,
                     pageNum: 1,
                     totalCount: 0
                 }
@@ -177,7 +205,6 @@
                 this.page.pageNum = 1;
                 this.query = {};
                 this.search();
-                this.searchConName='';
             },
             handlePage (value) {
                 var own = this;
@@ -194,38 +221,36 @@
                 debugger;
                 var own = this;
                 var page = own.page;
-                supplierRequest.getByName(name,function (data) {
+                broadbandRequest.getByName(name,function (data) {
                     var list = data.data;
                     own.dataList=list;
                 })
-
             },
             search() {
                 var own = this;
                 var query = own.query;
                 var page = own.page;
 
-                supplierRequest.list(page, function (data) {
+                broadbandRequest.list(page, function (data) {
                     debugger;
-                    if (data.rows) {
+                    if (data.data.list) {
                         debugger;
-                        var list =data.rows;
+                        var list =data.data.list;
                         debugger;
                         // dictionary.setName(list, 'common', 'flag', 'flagName');
                         // dictionary.setName(list, 'common', 'unit', 'unitName');
                         // dictionary.setName(list, 'common', 'isTop', 'isTopName');
                         own.dataList = list;
                     }
-                    if (data.rows && data.page) {
-                        var body = data.rows;
-                        var page = data.page;
-                        var totalCount =page;
+                    if (data.data && data.data.page) {
+                        let page = data.data.page;
+                        var totalCount =page.totalCount;
                         own.page.totalCount = totalCount;
                     }
                 });
             },
             openEdit(id) {
-                this.editSupplierId = id;
+                this.editBroadbandId= id;
                 this.editVisible = true;
             },
             add() {
@@ -242,8 +267,8 @@
                     content: '<p>确定删除？</p></p>',
                     onOk: () => {
                         debugger;
-                       supplierRequest.delete(id, function () {
-                           own.search();//刷新页面 调用listAll方法
+                        broadbandRequest.delete(id, function () {
+                            own.search();//刷新页面 调用listAll方法
                         });
                     },
                     onCancel: () => {
@@ -252,18 +277,18 @@
                 });
             },
             handleEditDone(edit, info, supplier,editType) {
-                debugger;
-
-                    this.editVisible = false;
-                    this.search();
-                    // if('0'==editType){
-                    //     this.handleSearch();
-                    // }else{
-                    //     this.search();
-                    // }
-                }
-               // prompt.message(info, '保存成功。', '保存失败！');
-
+                // if (info.success) {
+                //     this.editVisible = false;
+                //     if('0'==editType){
+                //         this.handleSearch();
+                //     }else{
+                //         this.search();
+                //     }
+                // }
+                this.editVisible = false;
+                this.search();
+                prompt.message(info, '保存成功。', '保存失败！');
+            }
         },
         mounted() {
             this.init();
