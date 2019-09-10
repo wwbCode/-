@@ -27,6 +27,7 @@
     "iview": "^2.8.0",
     "iview-area": "^1.5.14",
     "js-cookie": "^2.2.0",
+    "js-md5": "^0.7.3",
     "rasterizehtml": "^1.2.4",
     "simplemde": "^1.11.2",
     "sortablejs": "^1.7.0",
@@ -34,8 +35,7 @@
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",
     "vue-virtual-scroller": "^0.10.6",
-    "vuex": "^3.0.1",
-    "js-md5": "latest"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",

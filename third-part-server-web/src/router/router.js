@@ -99,6 +99,22 @@ export const appRouter = [
             ]
     },
     {
+        path: '/supplier',
+        icon: 'key',
+        name: 'supplier',
+        title: '供应商',
+        component: Main,
+        children: [
+            {
+                path: 'list',
+                icon: 'key',
+                name: 'suppelierList',
+                title: '供应商管理',
+                component: () => import('@/views/supplier/supplier.vue')
+            }
+        ]
+    },
+    {
         path: '/service',
         icon: 'key',
         name: 'service',
@@ -112,13 +128,6 @@ export const appRouter = [
                 title: '服务列表',
                 component: () => import('@/views/service/services/services-list.vue')
             },
-            // {
-            //     path: 'server',
-            //     icon: 'key',
-            //     name : 'third.service.server.list',
-            //     title: '服务器管理',
-            //     component: () => import('@/views/service/server/server-list.vue')
-            // },
             {
                 name: 'third.service.contact.list',
                 path: 'contact',
@@ -126,31 +135,9 @@ export const appRouter = [
                 icon: 'ios-switch-outline',
                 component: () => import('@/views/service/contact/contact-list.vue')
             }
-            // {
-            //     name: 'third.service.device.list',
-            //     path: 'device',
-            //     title: '设备管理',
-            //     icon: 'ios-switch-outline',
-            //     component: () => import('@/views/service/device/device-list.vue')
-            // }
         ]
     },
-    // {
-    //     path: '/user',
-    //     icon: 'social-buffer',
-    //     name: 'user',
-    //     title: '用户管理',
-    //     component: Main,
-    //     children: [
-    //         {
-    //             path: 'list',
-    //             icon: 'pound',
-    //             name: 'user-list',
-    //             title: '用户管理',
-    //             component: () => import('@/views/user/list.vue')
-    //         }
-    //     ]
-    // },
+
     {
         path: '/access-test',
         icon: 'lock-combination',
