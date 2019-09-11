@@ -1,122 +1,187 @@
-<style lang="less">
-    @import '../../styles/common.less';
-</style>
-
-<template>
-    <div class="supplier">
-        <Card>
+<template><!--模板文件-->
+    <div class="monitor">
+        <card>
             <p slot="title">
                 <Icon type="mouse"></Icon>
                 点击搜索进行搜索
             </p>
 
             <Row>
-                <Input v-model="searchConName" placeholder="请输入姓名搜搜..." style="width: 200px"/>
+                <Input v-model="searchConName" placeholder="请输入一些东西搜搜..." style="width: 200px"/>
                 <DatePicker  v-model="startTime" :start-date="new Date()" type="date" show-week-numbers placeholder="开始时间" style="width: 150px"></DatePicker> ~
                 <DatePicker v-model="endTime" :start-date="new Date()" type="date" show-week-numbers placeholder="结束时间" style="width: 150px"></DatePicker>
                 <span @click="handleSearch" style="margin: 0 10px;"><Button type="primary" icon="search">搜索</Button></span>
-                <Button @click="handleCancel" type="ghost">重置</Button>
+                <Button @click="handleCancel"type="hh">重置</Button>
 
                 <span style="float: right">
                     <Button  @click="add" type="primary" shape="circle" icon="md-add">
-                        新增供应商
+                        新增宽带
                     </Button>
                 </span>
-
-                <!--<Input v-model="searchConName" placeholder="请输入电话搜搜..." style="width: 200px"/>-->
-                <!--<span @click="handleSearch" style="margin: 0 10px;"><Button type="primary" icon="search">搜索</Button></span>-->
-                <!--<Button @click="handleCancel" type="ghost">重置</Button>-->
             </Row>
-        </Card>
-        <Card>
+        </card>
+        <card>
             <Row>
                 <Table :columns="columns" :data="dataList"></Table>
             </Row>
-        </Card>
-        <Card>
+        </card>
+
+        <card>
             <Row>
                 <Page :current.sync="page.pageNum"
                       :page-size="page.pageSize"
                       :total.sync="page.totalCount"
                       @on-change="handlePage"
-                      @on-page-size-change='handlePageSize'
+                      @on-page-size-change="handlePageSize"
                       show-elevator show-sizer></Page>
             </Row>
-        </Card>
+        </card>
+        <modal
+           v-model="editVisible"
+           width="860"
+           class="form-modal"
+           :mask-closable="false"
+          >
+             <monitor-edit :monitor-id="editMonitorId"@on-done="handleEditDone"></monitor-edit>
 
-        <Modal
-                v-model="editVisible"
-                width="860"
-                class="form-modal"
-                :mask-closable="false"
-        >
-
-            <SupplierEdit v-bind:supplier-id="editSupplierId" @on-done="handleEditDone"></SupplierEdit>
             <div slot="footer">
 
-            </div>
-        </Modal>
+              </div>
+       </modal>
 
     </div>
+
 </template>
 
 <script>
-
-    import supplierRequest from '@/app/api/supplier/supplier';
-    import SupplierEdit from "./supplier-edit";
-    import prompt from '@/libs/prompt';
-
+    import monitorRequest from '@/app/api/service/monitor';
+    import monitorEdit from './monitor-edit';
     export default {
-        name: 'list',
-        components: {SupplierEdit},
-        data() {
-            return {
+        name: "monitor-list",
+        components:{monitorEdit},
+        data(){
+            return{
                 editVisible: false,
-                editSupplierId: '',
-                query: {nameSearch: ''},
-                searchConName: '',
+                editMonitorId:'',
                 startTime:null,
                 endTime:null,
-                columns: [
+                query: {nameSearch: ''},
+                searchConName: '',
+                dataList:[],
+                tableList: [],
+                initTable: [],
+                page: {
+                    pageSize: 2,
+                    pageNum: 1,
+                    totalCount: 0
+                },
+
+                columns:[
                     {
-                        key: 'index',
-                        title: '序号',
-                        width: 80,
-                        render: (h, params) => {
-                            // var column = params.column;
-                            // var row = params.row;
+                        key:'index',
+                        title:'序号',
+                        width:80,
+                        render:(h,params)=>{
                             var index = params.index;
-                            return h('div', [
-                                h('label', {}, (index + 1))
+                            return h('div',[
+                                h('label',{},(index+1))
                             ]);
                         }
                     },
                     {
-                        key: 'name',
-                        title: '供应商'
+                        key:'company',
+                        title:'所属公司'
+
                     },
                     {
-                        key: 'address',
-                        title: '地址'
+                        key:'place',
+                        title:'场地'
+
                     },
                     {
-                        key: 'tel',
-                        title: '联系方式'
+                        key:'leader',
+                        title:'负责人'
                     },
                     {
-                        key: 'remark',
-                        title: '简略信息'
+                        key:'monitorType',
+                        title:'监控类型'
                     },
                     {
-                        key: 'startTime',
-                        title: '合作时间'
+                        key:'loginIp',
+                        title:'登入ip'
                     },
                     {
-                        key: 'operator',
-                        title: '经办人'
+                        key:'memory',
+                        title:'存贮空间'
                     },
-                    {   key: 'user',
-                        title: '使用人'},
+                    {
+                        key:'storageDays',
+                        title:'标准存储天数'
+                    },
+                    {
+                        key:'acc',
+                        title:'账户'
+                    },
+                    {
+                        key:'password',
+                        title:'密码'
+                    },
+                    {
+                        key:'cameraType',
+                        title:'摄像机类型'
+                    },
+                    {
+                        key:'cameraNum',
+                        title:'摄像机数量'
+
+                    },
+                    {
+                        key:'purchasingSupplier',
+                        title:'购买供应商'
+                    },
+                    {
+                        key:'purchasingTel',
+                        title:'供应商tel'
+
+                    },
+
+                    {
+                        key:'deliveryDate',
+                        title:'到货日期'
+
+                    },
+
+                    {
+                        key:'warrantyPeriod',
+                        title:'保修时长'
+
+                    },
+
+                    {
+                        key:'implementationSupplier',
+                        title:'实施供应商'
+
+                    },
+
+                    {
+                        key:'implementationTel',
+                        title:'实施供应商tel'
+
+                    },
+
+                    {
+                        key:'installTel',
+                        title:'安装人员tel'
+
+                    },
+                    {
+                       key:'implementationWarrantyPeriod',
+                       title:'保修时长'
+                    },
+                    {
+                        key:'serviceType',
+                        title:'服务类型'
+                    },
                     {
                         title: '操作',
                         key: 'action',
@@ -153,18 +218,10 @@
                         }
                     }
                 ],
-                dataList: [],
-                tableList: [],
-                initTable: [],
-                page: {
-                    pageSize: 2,
-                    pageNum: 1,
-                    totalCount: 0
-                }
-            };
-        },
-        methods: {
 
+            }
+        },
+        methods:{
             init () {
                 this.search();
             },
@@ -194,8 +251,8 @@
                 debugger;
                 var own = this;
                 var page = own.page;
-                supplierRequest.getByName(name,function (data) {
-                    var list = data.data;
+               monitorRequest.getByName(name,function (data) {
+                    var list = data.data.list;
                     own.dataList=list;
                 })
 
@@ -204,28 +261,27 @@
                 var own = this;
                 var query = own.query;
                 var page = own.page;
-
-                supplierRequest.list(page, function (data) {
+                debugger;
+                monitorRequest.list(page, function (data) {
                     debugger;
-                    if (data.rows) {
+                    if (data.data.list) {
                         debugger;
-                        var list =data.rows;
+                        var list =data.data.list;
                         debugger;
                         // dictionary.setName(list, 'common', 'flag', 'flagName');
                         // dictionary.setName(list, 'common', 'unit', 'unitName');
                         // dictionary.setName(list, 'common', 'isTop', 'isTopName');
                         own.dataList = list;
                     }
-                    if (data.rows && data.page) {
-                        var body = data.rows;
-                        var page = data.page;
+                    if (data.data && data) {
+                        var page = data.data;
                         var totalCount =page;
-                        own.page.totalCount = totalCount;
+                        own.page = totalCount;
                     }
                 });
             },
             openEdit(id) {
-                this.editSupplierId = id;
+                this.editMonitorId = id;
                 this.editVisible = true;
             },
             add() {
@@ -242,32 +298,32 @@
                     content: '<p>确定删除？</p></p>',
                     onOk: () => {
                         debugger;
-                       supplierRequest.delete(id, function () {
-                           own.search();//刷新页面 调用listAll方法
+                        monitorRequest.delete(id, function () {
+                            own.search();//刷新页面 调用listAll方法
                         });
                     },
                     onCancel: () => {
-
                     }
                 });
             },
             handleEditDone(edit, info, supplier,editType) {
                 debugger;
-
-                    this.editVisible = false;
-                    this.search();
-                    // if('0'==editType){
-                    //     this.handleSearch();
-                    // }else{
-                    //     this.search();
-                    // }
-                }
-               // prompt.message(info, '保存成功。', '保存失败！');
-
+                this.editVisible = false;
+                this.search();
+                // if('0'==editType){
+                //     this.handleSearch();
+                // }else{
+                //     this.search();
+                // }
+                prompt.message(info, '保存成功。', '保存失败！');
+            }
         },
-        mounted() {
+        mounted(){//狗子函数
             this.init();
         }
-
     };
 </script>
+
+<style scoped>
+    @import '../../../styles/common.less';/*样式*/
+</style>
