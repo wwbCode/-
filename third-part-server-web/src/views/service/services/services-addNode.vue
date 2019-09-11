@@ -17,9 +17,9 @@
                         </Form-item>
                         <Form-item label="父服务：" prop="code">
                             <!--<Select v-model="services.superId" placeholder="父服务" style="width:120px">-->
-                                <!--<Option v-for="item in servicesNameList" :value="item.id" :key="item.value">-->
-                                    <!--{{ item.name }}-->
-                                <!--</Option>-->
+                            <!--<Option v-for="item in servicesNameList" :value="item.id" :key="item.value">-->
+                            <!--{{ item.name }}-->
+                            <!--</Option>-->
                             <Input v-model="services.superName" placeholder="父服务" type="text" disabled/>
                             <!--</Select>-->
                         </Form-item>
@@ -39,13 +39,13 @@
                         <row>
                             <Col span="12">
                                 <Form-item label="开始使用时间：" prop="startTime">
-                                    <DatePicker @on-change="startTime" type="datetime" :start-date="new Date()" format="yyyy-MM-dd HH:mm:ss"
+                                    <DatePicker @on-change="startTime" type="date" :start-date="new Date()" format="yyyy-MM-dd HH:mm:ss"
                                                 placeholder="选择日期"></DatePicker>
                                 </Form-item>
                             </Col>
                             <Col span="12">
                                 <Form-item label="服务截至时间：" prop="endTime">
-                                    <DatePicker @on-change="endTime" type="datetime" :start-date="new Date()" format="yyyy-MM-dd HH:mm:ss"
+                                    <DatePicker @on-change="endTime" type="date" :start-date="new Date()" format="yyyy-MM-dd HH:mm:ss"
                                                 placeholder="选择日期"></DatePicker>
                                 </Form-item>
                             </Col>
@@ -129,15 +129,7 @@
             load() {
                 let own = this;
                 let id = own.currentId;
-                if (id && '' != id) {
-                    servicesRequest.get(id, function (data) {
-                        let info = data.code;
-                        if (data.data) {
-                            own.services = data.data;
-                        }
-                    });
-                } else {
-                    var services = {
+                var services = {
                         id: '',
                         name: '',
                         superId:'0',
@@ -149,42 +141,38 @@
                         type:'',
                         startTime:'',
                         endTime:''
-                    };
+                };
+                services.superId = own.currentId;
+                if (id && '' != id) {
+                    servicesRequest.get(id, function (data) {
+                        if (data.data) {
+                            services.superName = data.data.name;
+                        }
+                    });
                     this.services = services;
                 }
                 supplierRequest.supplierNameList(function (data) {
                     if (data.rows){
                         var list = data.rows;
-                            dictionary.setName(list, 'common', 'flag', 'flagName');
-                            own.supplierList = list;
+                        own.supplierList = list;
                     }
                 });
-                servicesRequest.allList(function (data) {
+                servicesRequest.list(function (data) {
                     if (data.data){
                         var list = data.data;
-                        dictionary.setName(list, 'common', 'flag', 'flagName');
                         own.servicesNameList = list;
                     }
                 });
             },
             handleSubmit(name) {
                 var own = this;
-                var id = this.currentId;
                 this.$refs[name].validate((valid) => {
                     if (valid) {
-                        if (id == null){
-                            servicesRequest.add(own.services,function (data) {
-                                var info = data.code;
-                                var services = data.data;
-                                own.$emit('on-done', own, info, services, own.editType);
-                            });
-                        }else {
-                            servicesRequest.update(own.services,function (data) {
-                                var info = data.code;
-                                var services = data.data;
-                                own.$emit('on-done', own, info, services, own.editType);
-                            });
-                        }
+                        servicesRequest.add(own.services,function (data) {
+                            var info = data.code;
+                            var services = data.data;
+                            own.$emit('on-done', own, info, services, own.editType);
+                        });
                     }
                 });
             },

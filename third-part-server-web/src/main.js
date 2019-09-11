@@ -8,9 +8,12 @@ import '@/locale';
 import 'iview/dist/styles/iview.css';
 import VueI18n from 'vue-i18n';
 import util from './libs/util';
+import ZkTable from 'vue-table-with-tree-grid';
 
 Vue.use(VueI18n);
 Vue.use(iView);
+Vue.component(ZkTable.name, ZkTable);
+
 
 new Vue({
     el: '#app',

@@ -280,7 +280,7 @@
             },
             toDetail (id, type) {
                 var own = this;
-                var query = {'serviceId': id};
+                var query = {'serviceId': ''};
                 if (type === '1') {
                     own.$router.push({
                         name: 'server',
@@ -290,7 +290,7 @@
                 if (type === '2') {
                     own.$router.push({
                         name: 'device',
-                        query: query
+                        query: ss
                     });
                 }
             },
