@@ -9,7 +9,6 @@ package com.jinyafu.thirdpart.controller.supplier;/**
 
 import com.jinyafu.jmall.entity.third.supplier.Supplier;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
-import com.jinyafu.thirdpart.common.code.Output;
 import com.jinyafu.thirdpart.common.code.OutputCode;
 import com.jinyafu.thirdpart.common.code.PageOutput;
 import com.jinyafu.thirdpart.common.data.PageInfos;
@@ -22,9 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 /**
  * @program: third-part-server-SupplierController

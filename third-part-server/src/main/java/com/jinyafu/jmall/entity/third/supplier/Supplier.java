@@ -39,5 +39,7 @@ public class Supplier {
     private Date startTime;
     /**合作状态*/
     private Integer status;
+    /**是否删除*/
+    private Integer isDelete;
 }
 

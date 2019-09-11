@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jinyafu.jmall.mapper.third.supplier.SupplierMapper">
     <insert id="addSupplier" parameterType="com.jinyafu.jmall.entity.third.supplier.Supplier">
-        INSERT INTO supplier (id,name,address,tel,remark,operator,user,startTime,status)
+        INSERT INTO supplier (id,name,address,tel,remark,operator,user,startTime,status,isDelete)
 
         VALUES
 
-        (#{id},#{name},#{address},#{tel},#{remark},#{operator},#{user},#{startTime},#{status})
+        (#{id},#{name},#{address},#{tel},#{remark},#{operator},#{user},#{startTime},#{status},#{isDelete})
 
     </insert>
     <select id="listAll" resultType="com.jinyafu.jmall.entity.third.supplier.SupplierExt">
-        SELECT * FROM supplier WHERE status =1
+        SELECT * FROM supplier WHERE isDelete =1
     </select>
     <update id="updateSupplier" parameterType="com.jinyafu.jmall.entity.third.supplier.Supplier">
         update supplier
@@ -40,7 +40,7 @@
     </select>
 
     <update id="deleteSupplierById" parameterType="String">
-        UPDATE supplier SET status =0 where id=#{id}
+        UPDATE supplier SET isDelete =0 where id=#{id}
     </update>
 
 </mapper>

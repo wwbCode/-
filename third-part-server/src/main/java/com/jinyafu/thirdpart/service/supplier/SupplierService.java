@@ -47,7 +47,8 @@ public class SupplierService {
         if (null != supplier.getName()) {
             supplier.setId(UUID.randomUUID().toString().replace("-", ""));
             supplier.setStartTime(new Date());
-            supplier.setStatus(1);//未删除
+            supplier.setStatus(1);//合作
+            supplier.setIsDelete(1);//未删除
             supplierMapper.addSupplier(supplier);
         } else {
             return MessageOutput.get(OutputCode.PARAMS_INVALID_EMPTY.getCode(), OutputCode.PARAMS_INVALID_EMPTY.getMessage());
@@ -92,7 +93,6 @@ public class SupplierService {
     public MessageOutput deleteSupplier (String supplierId){
         //删除供应商以下所有的服务，把所有的服务状态置为0就可以
         supplierMapper.deleteSupplierById(supplierId);
-
        // servicesMapper.deleteServeByFid(supplierId);
         return MessageOutput.ok();
 

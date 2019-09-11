@@ -7,6 +7,7 @@ package com.jinyafu.jmall.entity.third.fourhundred;/**
  */
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.jinyafu.jmall.common.dto.ResponseDTO;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,7 +20,7 @@ import java.util.Date;
  * @create: 2019-09-04 09:47
  **/
 @Data
-public class Fourhundred {
+public class Fourhundred extends ResponseDTO{
     /** */
     private String id;
     /** 号码*/

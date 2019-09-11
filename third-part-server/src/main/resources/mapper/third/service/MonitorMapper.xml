@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.service.MonitorMapper">
+    <select id="listAll" resultType="com.jinyafu.jmall.entity.third.service.Monitor">
+          select * FROM s_monitor WHERE isDelete = 1
+    </select>
+
+    <insert id="insertMonitor" parameterType="com.jinyafu.jmall.entity.third.service.Monitor">
+         INSERT  INTO  s_monitor
+         (
+         id,
+         company,
+         place,
+         placeFullName,
+         leader,
+         tel,
+         monitorType,
+         loginIp,
+         memory,
+         storageDays,
+         acc,
+         password,
+         cameraIp,
+         cameraPassword,
+         cameraType,
+         cameraNum ,
+         purchasingSupplier,
+         purchasingTel,
+         deliveryDate,
+         warrantyPeriod,
+         implementationSupplier,
+         implementationTel,
+         implementationWarrantyPeriod,
+         installTel,
+         serviceId,
+         isDelete,
+         serviceType
+         )
+         VALUES
+         (
+          #{id},
+          #{company},
+          #{place},
+          #{placeFullName},
+          #{leader},
+          #{tel},
+          #{monitorType},
+          #{loginIp},
+          #{memory},
+          #{storageDays},
+          #{acc},
+          #{password},
+          #{cameraIp},
+          #{cameraPassword},
+          #{cameraType},
+          #{cameraNum},
+          #{purchasingSupplier},
+          #{purchasingTel},
+          #{deliveryDate},
+          #{warrantyPeriod},
+          #{implementationSupplier},
+          #{implementationTel},
+          #{implementationWarrantyPeriod},
+          #{installTel},
+          #{serviceId},
+          #{isDelete},
+          #{serviceType}
+         )
+    </insert>
+    <update id="updateMonitor" parameterType="com.jinyafu.jmall.entity.third.service.Monitor">
+     update s_monitor
+     set
+        company=#{company},
+        tel=#{tel},
+        leader=#{leader},
+        place =#{place},
+        placeFullName = #{placeFullName},
+        monitorType=#{monitorType},
+        loginIp = #{loginIp},
+        memory = #{memory},
+        storageDays = #{storageDays},
+        acc = #{acc},
+        password  = #{password},
+        cameraIp = #{cameraIp},
+        cameraPassword = #{cameraPassword},
+        cameraType = #{cameraType},
+        cameraNum  = #{cameraNum},
+        purchasingSupplier =#{purchasingSupplier},
+        purchasingTel =#{purchasingTel},
+        deliveryDate =#{deliveryDate},
+        warrantyPeriod =#{warrantyPeriod},
+        implementationSupplier =#{implementationSupplier},
+        implementationTel =#{implementationTel},
+        implementationWarrantyPeriod =#{implementationWarrantyPeriod},
+        installTel =#{installTel},
+        serviceId =#{serviceId},
+        serviceType =#{serviceType}
+        where id=#{id} and isDelete =1
+
+    </update>
+    <select id="getById" parameterType="String" resultType="com.jinyafu.jmall.entity.third.service.Monitor">
+      SELECT * from s_monitor WHERE  id=#{id} AND isDlete=1
+    </select>
+    <update id="deleteMonitor" parameterType="String">
+      update s_monitor set isDelete=0 WHERE id=#{id}
+    </update>
+    <select id="selectByConditions" parameterType="com.jinyafu.jmall.entity.third.service.Monitor"
+            resultType="com.jinyafu.jmall.entity.third.service.Monitor">
+        select * from s_monitor
+       <where>
+             isDelete=1
+           <if test="tel!=null and tel!=''">
+                AND tel like concat('%',#{tel},'%')
+           </if>
+           <if test="leader!=null and leader!=''">
+               and leader=#{leader}
+           </if>
+           <if test="company!=null and company!=''">
+               and company=#{company}
+           </if>
+
+       </where>
+
+    </select>
+
+
+</mapper>
