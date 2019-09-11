@@ -19,7 +19,7 @@ public class RequestDTO implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-    RequestPageData page = new RequestPageData(1L, 10L); // 分页信息
+    RequestPageData page = new RequestPageData(1L, 5L); // 分页信息
 }
 
 

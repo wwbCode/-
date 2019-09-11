@@ -9,6 +9,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jinyafu.jmall.common.dto.ResponseDTO;
 import com.jinyafu.jmall.common.dto.ResponsePageData;
 import com.jinyafu.jmall.entity.data.service.ServicesDTO;
+import com.jinyafu.jmall.entity.data.service.ServicesData;
+import com.jinyafu.jmall.entity.data.service.ServicesQuery;
 import com.jinyafu.jmall.entity.third.service.Services;
 import com.jinyafu.jmall.mapper.third.service.ServicesMapper;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
@@ -18,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -45,6 +48,12 @@ public class ServicesService {
         return ResponseDTO.success(new ResponsePageData<Services>(page.getCurrent(), page.getTotal(), page.getSize(), list, null));
     }
 
+    public List<ServicesData> list(ServicesQuery servicesQuery) {
+        List<ServicesData> list = servicesMapper.list(servicesQuery);
+        list = rebuildList2Tree(list);
+        return list;
+    }
+
     /**
      * @description: 服务 列表
      * @date: 2019/8/30 15:28
@@ -53,8 +62,8 @@ public class ServicesService {
      * @return:
      */
     @Transactional
-    public List<Services> listAll() {
-        List<Services> servicesList = servicesMapper.listAll();
+    public List<ServicesData> listAll() {
+        List<ServicesData> servicesList = servicesMapper.listAll();
         return servicesList;
     }
 
@@ -94,18 +103,17 @@ public class ServicesService {
     /**
      * @description: 删除服务
      * @date: 2019/8/30 17:04
-     * @author: wwb
+     * @author: xzq
      * @param:
      * @return:
      */
     @Transactional
-    public MessageOutput deleteServe(Services services) {
-        if (!services.getId().equals("")) {
-            servicesMapper.updateServeById(services.getId());
-        } else {
-            return MessageOutput.ex();
+    public void delete(String id) {
+        Services services = servicesMapper.get(id);
+        if (null != services){
+            servicesMapper.updateSuperIdBySuperId(services.getId(), services.getSuperId());
         }
-        return MessageOutput.ok();
+        servicesMapper.updateServeById(id);
     }
 
     /**
@@ -141,14 +149,58 @@ public class ServicesService {
     }
 
     public void add(Services services) {
+        if (services.getSupplierId() == "" && services.getSupplierId().isEmpty()){
+            services.setSupplierId("1");
+        }
         servicesMapper.add(services);
     }
 
     public void update(Services services) {
+        if (services.getSupplierId() == "" && services.getSupplierId().isEmpty()){
+            services.setSupplierId("1");
+        }
         servicesMapper.update(services);
     }
 
-    public Services get(String servicesId) {
+    public ServicesData get(String servicesId) {
         return servicesMapper.get(servicesId);
     }
+
+    private static List<ServicesData> rebuildList2Tree(List<ServicesData> treeNodes) {
+        boolean existRootNode = false;
+        List<ServicesData> newTree = new ArrayList<ServicesData>();//初始化一个新的列表
+        for (ServicesData treeNode : treeNodes) {
+            if (isRootNode(treeNode, treeNodes)) {//选择根节点数据开始找儿子
+                newTree.add(findChildren(treeNode, treeNodes));
+                existRootNode = true;
+            }
+        }
+        if(!existRootNode){//也可能大家都是根节点
+            return treeNodes;
+        }
+        return newTree;
+    }
+
+    private static boolean isRootNode(ServicesData checkNode, List<ServicesData> treeNodes) {
+        for (ServicesData treeNode : treeNodes) {
+            if (checkNode.getSuperId().equals(treeNode.getId())) {//判断checkNode是不是有爸爸
+                return  false;
+            }
+        }
+        return true;
+    }
+
+    private static ServicesData findChildren(ServicesData parentNode, List<ServicesData> treeNodes) {
+        List<ServicesData> children = parentNode.getChildren();
+        for (ServicesData it : treeNodes) {
+            if (parentNode.getId().equals(it.getSuperId())) {//找儿子，判断parentNode是不是有儿子
+                if (null!=children) {
+                    children.add(findChildren(it, treeNodes));
+                }
+            }
+        }
+        return parentNode;
+    }
+
+
 }
