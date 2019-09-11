@@ -7,37 +7,19 @@
         <Card>
             <p slot="title">
                 <Icon type="md-search" />
-                点击搜索进行搜索
+                服务器详情
             </p>
-            <Row>
-                <Input v-model="query.name" placeholder="请输入名称搜搜..." style="width: 200px"/>
-                <span @click="handleSearch" style="margin: 0 10px;">
-                    <Button type="primary" icon="ios-search">搜索</Button>
-                </span>
-                <span @click="handleCancel" style="margin: 0 10px;">
-                    <Button type="primary">重置</Button>
-                </span>
-                <span style="float: right">
+            <row>
+                <span style="float: left">
                     <Button  @click="add" type="primary" shape="circle" icon="md-add">
                         新增服务器
                     </Button>
                 </span>
-            </Row>
+            </row>
         </Card>
         <Card>
             <Row>
                 <Table :columns="columns" :data="dataList" border></Table>
-            </Row>
-        </Card>
-        <Card>
-            <Row>
-                <Page :current.sync="query.page.pageNum"
-                      :page-size="query.page.pageSize"
-                      :total.sync="query.page.totalCount"
-                      @on-change="handlePage"
-                      @on-page-size-change='handlePageSize'
-                      show-elevator show-sizer>
-                </Page>
             </Row>
         </Card>
         <Modal
@@ -68,13 +50,7 @@
                 editVisible: false,
                 editServerId: '',
                 query: {
-                    name: '',
-                    serviceId: '',
-                    page: {
-                        pageSize: 10,
-                        pageNum: 1,
-                        totalCount: 0
-                    }
+                    serviceId: ''
                 },
                 columns: [
                     {
@@ -177,22 +153,6 @@
                 this.search();
             },
             handleSearch: function () {
-                this.query.page.pageNum = 1;
-                this.search();
-            },
-            handleCancel() {
-                this.query.page.pageNum = 1;
-                this.query.name = '';
-                this.search();
-            },
-            handlePage(value) {
-                var own = this;
-                own.query.page.pageNum = value;
-                this.search();
-            },
-            handlePageSize(value) {
-                var own = this;
-                own.query.page.pageSize = value;
                 this.search();
             },
             search() {
@@ -205,8 +165,6 @@
                         dictionary.setName(list, 'common', 'flag', 'flagName');
                         own.dataList = list;
                     }
-                    var totalCount = data.data.total;
-                    own.query.page.totalCount = totalCount;
                 });
 
             },

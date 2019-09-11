@@ -58,9 +58,26 @@ services.delete = function (id, back) {
     service.post('/third/service/delete', m, back);
 };
 
-services.list = function (back) {
-    var body = {};
+services.queryList = function (query,back) {
+    var body = {
+        'name': query.name,
+        'superId': query.superId,
+        'supplierId': query.supplierId,
+        'user': query.user,
+        'operator': query.operator,
+        'status': query.status,
+        'type': query.type,
+        'startTime': query.startTime,
+        'endTime': query.endTime
+    };
     service.post('/third/service/list', body, back);
 };
+
+services.allList = function (back) {
+    var body = {
+
+    };
+    service.post('/third/service/allList', body, back);
+}
 
 export default services;

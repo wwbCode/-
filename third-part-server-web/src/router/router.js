@@ -126,7 +126,7 @@ export const appRouter = [
                 icon: 'key',
                 name : 'third.service.services.list',
                 title: '服务列表',
-                component: () => import('@/views/service/services/services-list.vue')
+                component: () => import('@/views/service/services/service-list.vue')
             },
             {
                 name: 'third.service.contact.list',
