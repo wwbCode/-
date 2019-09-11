@@ -22,6 +22,7 @@
         insert into s_server
         (
         id,
+        serviceId,
         projectName,
         machineryRoom,
         intranetIp,
@@ -37,6 +38,7 @@
         values
         (
         #{id},
+        #{serviceId},
         #{projectName},
         #{machineryRoom},
         #{intranetIp},

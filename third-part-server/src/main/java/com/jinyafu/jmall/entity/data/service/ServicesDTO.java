@@ -5,6 +5,7 @@ import com.jinyafu.jmall.common.dto.RequestDTO;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Description:
@@ -31,5 +32,6 @@ public class ServicesDTO extends RequestDTO{
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date endTime;  //结束时间
     private Integer isDelete;
+    private List<ServicesData> children;  //服务子节点
 
 }

@@ -6,7 +6,6 @@ package com.jinyafu.thirdpart.controller.supplier;/**
  * @Version: 1.0
  */
 
-
 import com.jinyafu.jmall.entity.third.supplier.Supplier;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
 import com.jinyafu.thirdpart.common.code.OutputCode;
@@ -147,6 +146,5 @@ public class SupplierController {
             return MessageOutput.get(OutputCode.EX.getCode(),OutputCode.EX.getMessage());
         }
     }
-
 
 }

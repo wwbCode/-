@@ -8,6 +8,8 @@ package com.jinyafu.thirdpart.controller.service;/**
 
 import com.jinyafu.jmall.common.dto.ResponseDTO;
 import com.jinyafu.jmall.entity.data.service.ServicesDTO;
+import com.jinyafu.jmall.entity.data.service.ServicesData;
+import com.jinyafu.jmall.entity.data.service.ServicesQuery;
 import com.jinyafu.jmall.entity.third.service.Services;
 import com.jinyafu.thirdpart.common.annotation.PermissionMapping;
 import com.jinyafu.thirdpart.common.code.MessageOutput;
@@ -17,6 +19,7 @@ import com.jinyafu.thirdpart.service.service.ServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -34,14 +37,14 @@ class ServicesController {
 
 
     @ResponseBody
-    @PermissionMapping(name = "服务列表（分页）", key = "/third/service/pageList", superKey = "service", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "服务列表（分页）", key = "/third/service/pageList", superKey = "/third/service/list", type = PermissionMapping.Type.menu)
     @RequestMapping(value = "/pageList", method = RequestMethod.POST)
     public ResponseDTO<?> pageList(@RequestBody ServicesDTO data){
         return servicesService.queryList(data);
     }
 
     @ResponseBody
-    @PermissionMapping(name = "增加服务", key = "/third/service/add", superKey = "/third/service/pageList", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "增加服务", key = "/third/service/add", superKey = "/third/service/list", type = PermissionMapping.Type.menu)
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public MessageOutput<?> add(@RequestBody Services services){
 
@@ -61,7 +64,7 @@ class ServicesController {
     }
 
     @ResponseBody
-    @PermissionMapping(name = "修改服务", key = "/third/service/update", superKey = "/third/service/pageList", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "修改服务", key = "/third/service/update", superKey = "/third/service/list", type = PermissionMapping.Type.menu)
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public MessageOutput<?> update(@RequestBody Services services){
 
@@ -86,10 +89,10 @@ class ServicesController {
     public Output<?> get(@RequestBody Map<String, Object> map){
 
         try{
-            Services services = new Services();
+            ServicesData servicesData = new ServicesData();
             String servicesId = map.get("id").toString();
-            services = servicesService.get(servicesId);
-            return Output.ok(services);
+            servicesData = servicesService.get(servicesId);
+            return Output.ok(servicesData);
         }catch (Exception e){
             e.printStackTrace();
             return Output.ex();
@@ -102,16 +105,36 @@ class ServicesController {
     /**
      * @description: 服务列表
      * @date: 2019/8/30 13:47
-     * @author: wwb
+     * @author: xie
      * @param:
      * @return:
      */
     @RequestMapping(value = "/list", method = RequestMethod.POST)
-    @PermissionMapping(name = "菜单列表", key = "/third/service/list", superKey = "/third/service/pageList", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "服务列表", key = "/third/service/list", superKey = "service", type = PermissionMapping.Type.menu)
     @ResponseBody
-    public Output<?> list() {
-        return Output.ok(servicesService.listAll());
+    public Output<?> list(@RequestBody ServicesQuery servicesQuery) {
+        try{
+            List<ServicesData> list = servicesService.list(servicesQuery);
+            return Output.ok(list);
+        }catch (Exception e){
+            e.printStackTrace();
+            return Output.ex();
+        }
     }
+
+    @ResponseBody
+    @PermissionMapping(name = "所有服务", key = "/third/service/allList", superKey = "/third/service/list", type = PermissionMapping.Type.menu)
+    @RequestMapping(value = "allList", method = RequestMethod.POST)
+    public Output<?> allList(){
+        try{
+            List<ServicesData> allList = servicesService.listAll();
+            return Output.ok(allList);
+        }catch (Exception e){
+            e.printStackTrace();
+            return Output.ex();
+        }
+    }
+
 
 //    /**
 //     * @description: 添加服务
@@ -136,10 +159,17 @@ class ServicesController {
      * @return:
      */
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
-    @PermissionMapping(name = "删除服务", key = "/third/services/delete", superKey = "/third/services/pageList", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "删除服务", key = "/third/services/delete", superKey = "/third/service/list", type = PermissionMapping.Type.menu)
     @ResponseBody
-    public MessageOutput delete(@RequestBody Services services) {
-        return servicesService.deleteServe(services);
+    public MessageOutput<?> delete(@RequestBody Map<String, Object> map) {
+        String id = map.get("id").toString();
+        try {
+            servicesService.delete(id);
+            return MessageOutput.ok();
+        }catch (Exception e){
+            e.printStackTrace();
+            return MessageOutput.ex();
+        }
     }
 
     /**
@@ -164,7 +194,7 @@ class ServicesController {
      * @return:
      */
     @RequestMapping(value = "/selectByName", method = RequestMethod.POST)
-    @PermissionMapping(name = "通过名字查找服务", key = "/third/service/selectByName", superKey = "/third/service/pageList", type = PermissionMapping.Type.menu)
+    @PermissionMapping(name = "通过名字查找服务", key = "/third/service/selectByName", superKey = "/third/service/list", type = PermissionMapping.Type.menu)
     @ResponseBody
     public Output<?> select(@RequestBody Map<String,Object> map) {
         Services services;

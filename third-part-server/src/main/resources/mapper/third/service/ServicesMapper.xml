@@ -7,22 +7,37 @@
         <where>
             <if test="data.name != null and data.name != ''">and name like "%"#{data.name}"%"</if>
             <if test="data.supplierId != null and data.supplierId != ''">and supplierId = #{data.supplierId}</if>
-            and isdelete = 0
+            and service.isDelete = 0
         </where>
     </select>
 
-    <select id="get" parameterType="string" resultType="com.jinyafu.jmall.entity.third.service.Services">
-        select * from service where id = #{id}
+    <select id="list" parameterType="com.jinyafu.jmall.entity.data.service.ServicesQuery" resultType="com.jinyafu.jmall.entity.data.service.ServicesData">
+        select service.* ,supplier.name supplierName from service left join supplier on supplier.id = service.supplierId
+        <where>
+            <if test="name != null and name != ''">and service.name like "%"#{name}"%"</if>
+            <if test="supplierId != null and supplierId != ''">and service.supplierId = #{supplierId}</if>
+            and service.isDelete = 0
+        </where>
     </select>
 
-    <select id="listAll" resultType="com.jinyafu.jmall.entity.third.service.Services">
-        SELECT * FROM service
-        WHERE isDelete =0
+    <select id="get" parameterType="string" resultType="com.jinyafu.jmall.entity.data.service.ServicesData">
+        select ser1.*,ser2.name superName from service ser1 left join service ser2 on ser1.superId = ser2.id where ser1.id = #{id}
     </select>
+
+    <select id="listAll" resultType="com.jinyafu.jmall.entity.data.service.ServicesData">
+        select service.* ,supplier.name supplierName from service left join supplier on supplier.id = service.supplierId
+        WHERE service.isDelete =0
+    </select>
+
+    <update id="updateSuperIdBySuperId" parameterType="string" >
+        update service set superId = #{superId}, updateTime = now() where superId = #{id}
+    </update>
+
     <!--通过id删除-->
     <update id="updateServeById" parameterType="String" >
         UPDATE  service SET isDelete=1,updateTime = now() WHERE  id=#{id}
     </update>
+
      <!--添加服务-->
     <insert id="add" parameterType="com.jinyafu.jmall.entity.third.service.Services">
         <selectKey keyProperty="id" resultType="String" order="BEFORE">
@@ -32,6 +47,7 @@
         VALUES
         (#{id},#{name},#{superId},#{supplierId},#{user},#{operator},now(),#{startTime},#{endTime},#{status},#{type},0)
     </insert>
+
      <!--全称搜所-->
     <select id="selectByAllname" parameterType="String" resultType="com.jinyafu.jmall.entity.third.service.Services">
         SELECT * FROM service
@@ -40,6 +56,7 @@
              and name like concat('%',#{name},'' )
          </if>-->
     </select>
+
       <!--名字模糊查询-->
     <select id="selectByName" parameterType="com.jinyafu.jmall.entity.third.service.Services" resultType="com.jinyafu.jmall.entity.third.service.Services">
         SELECT * FROM service
@@ -64,6 +81,7 @@
         </set>
         where id=#{id}
     </update>
+
    <!--删除供应商下的服务-->
     <update id="deleteServeByFid" parameterType="String">
         UPDATE service set isDelete = 0 ,updateTime = now() where pid =#{pid}

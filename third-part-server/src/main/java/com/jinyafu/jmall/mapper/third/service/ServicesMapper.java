@@ -10,6 +10,8 @@ package com.jinyafu.jmall.mapper.third.service;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.jinyafu.jmall.entity.data.service.ServicesDTO;
+import com.jinyafu.jmall.entity.data.service.ServicesData;
+import com.jinyafu.jmall.entity.data.service.ServicesQuery;
 import com.jinyafu.jmall.entity.third.service.Services;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,9 +26,9 @@ import java.util.List;
 public interface ServicesMapper extends BaseMapper<Services> {
 
     /**
-     * 服务列表
+     * 所有服务列表
      */
-    List<Services> listAll();
+    List<ServicesData> listAll();
 
     void updateServeById(String id);
 
@@ -42,5 +44,9 @@ public interface ServicesMapper extends BaseMapper<Services> {
 
     List<Services> queryList(Page<?> page, @Param("data")ServicesDTO data);
 
-    Services get(String id);
+    ServicesData get(String id);
+
+    List<ServicesData> list(ServicesQuery servicesQuery);
+
+    void updateSuperIdBySuperId(@Param("id") String id, @Param("superId") String superId);
 }
