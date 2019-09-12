@@ -11,7 +11,7 @@
                 <DatePicker  v-model="startTime" :start-date="new Date()" type="date" show-week-numbers placeholder="开始时间" style="width: 150px"></DatePicker> ~
                 <DatePicker v-model="endTime" :start-date="new Date()" type="date" show-week-numbers placeholder="结束时间" style="width: 150px"></DatePicker>
                 <span @click="handleSearch" style="margin: 0 10px;"><Button type="primary" icon="search">搜索</Button></span>
-                <Button @click="handleCancel"type="hh">重置</Button>
+                <Button @click="handleCancel"type="ghost">重置</Button>
 
                 <span style="float: right">
                     <Button  @click="add" type="primary" shape="circle" icon="md-add">
@@ -42,7 +42,7 @@
            class="form-modal"
            :mask-closable="false"
           >
-             <monitor-edit :monitor-id="editMonitorId"@on-done="handleEditDone"></monitor-edit>
+             <monitorEdit :monitor-id="editMonitorId"@on-done="handleEditDone"></monitorEdit>
 
             <div slot="footer">
 
