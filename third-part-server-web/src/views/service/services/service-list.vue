@@ -119,6 +119,8 @@
     import supplierRequest from '../../../app/api/supplier/supplier';
     import prompt from '@/libs/prompt';
     import boxUtil from '../../../libs/boxUtil';
+    import dictionary from '../../../libs/dictionary';
+
 
     export default {
         name: 'service-list',
@@ -150,6 +152,10 @@
                         label: '供应商'
                     },
                     {
+                        prop: 'typeName',
+                        label: '服务类型'
+                    },
+                    {
                         prop: 'user',
                         label: '使用者'
                     },
@@ -158,20 +164,16 @@
                         label: '经办人'
                     },
                     {
-                        prop: 'status',
-                        label: '服务状态'
-                    },
-                    {
-                        prop: 'type',
-                        label: '服务类型'
-                    },
-                    {
                         prop: 'startTime',
                         label: '开始使用时间'
                     },
                     {
                         prop: 'endTime',
                         label: '服务截至时间'
+                    },
+                    {
+                        prop: 'statusName',
+                        label: '服务状态'
                     },
                     {
                         label: '操作',
@@ -240,6 +242,8 @@
                     if (data.data) {
                         var list = data.data;
                         own.dataList = list;
+                        dictionary.setName(list, 'common', 'status', 'statusName', 'children');
+                        dictionary.setName(list, 'serviceType', 'type', 'typeName', 'children');
                         own.dataMap = boxUtil.sortList('id', list, 'children');
                         own.dataMap2 = boxUtil.getMap('id', list, 'children');
                     }

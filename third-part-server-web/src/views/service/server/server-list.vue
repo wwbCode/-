@@ -11,7 +11,7 @@
             </p>
             <row>
                 <span style="float: left">
-                    <Button  @click="add" type="primary" shape="circle" icon="md-add">
+                    <Button  @click="add(query.serviceId)" type="primary" shape="circle" icon="md-add">
                         新增服务器
                     </Button>
                 </span>
@@ -34,11 +34,24 @@
 
             </div>
         </Modal>
+        <Modal
+                v-model="addVisible"
+                width="860"
+                class="form-modal"
+                :mask-closable="false"
+        >
+
+            <serverAdd :server-id="addServiceId" @on-done="handleEditDone"></serverAdd>
+            <div slot="footer">
+
+            </div>
+        </Modal>
     </div>
 </template>
 
 <script>
     import serverEdit from './server-edit';
+    import serverAdd from './server-add';
     import serverRequest from '../../../app/api/service/server';
     import dictionary from '../../../app/common/lib/dictionary';
     import prompt from '@/libs/prompt';
@@ -48,7 +61,9 @@
         data() {
             return {
                 editVisible: false,
+                addVisible: false,
                 editServerId: '',
+                addServiceId: '',
                 query: {
                     serviceId: ''
                 },
@@ -147,7 +162,7 @@
                 dataList: []
             };
         },
-        components: {serverEdit},
+        components: {serverEdit,serverAdd},
         methods: {
             init() {
                 this.search();
@@ -172,8 +187,12 @@
                 this.editServerId = id;
                 this.editVisible = true;
             },
-            add() {
-                this.openEdit();
+            openAdd(id) {
+                this.addServiceId = id;
+                this.addVisible = true;
+            },
+            add(id) {
+                this.openAdd(id);
             },
             edit(id) {
                 this.openEdit(id);
@@ -196,6 +215,7 @@
             handleEditDone(edit, info, role,editType) {
                 if (info == 200) {
                     this.editVisible = false;
+                    this.addVisible = false;
                     if('0'==editType){
                         this.handleSearch();
                     }else{
