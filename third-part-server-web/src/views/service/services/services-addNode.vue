@@ -73,7 +73,7 @@
 <script>
     import servicesRequest from '../../../app/api/service/services';
     import supplierRequest from '../../../app/api/supplier/supplier';
-    import dictionary from '../../../app/common/lib/dictionary';
+
     export default {
         name: 'services-edit',
         props: {
