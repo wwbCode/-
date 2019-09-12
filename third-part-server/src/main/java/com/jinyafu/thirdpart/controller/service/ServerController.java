@@ -53,7 +53,6 @@ public class ServerController {
     @PermissionMapping(name = "新增服务器", key ="/third/service/server/add", superKey = "/third/service/server/pageList", type = PermissionMapping.Type.menu)
     @RequestMapping(method = RequestMethod.POST, value = "server/add")
     public MessageOutput<?> add(@RequestBody Map<String, Object> map){
-
         try{
             Server server;
             if (map.get("server")!= null && map.get("server")!= ""){

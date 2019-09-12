@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jinyafu.jmall.mapper.third.service.SslCertificateMapper">
+    <!--列表-->
+    <select id="list" parameterType="com.jinyafu.jmall.entity.third.service.SslCertificate" resultType="com.jinyafu.jmall.entity.third.service.SslCertificate">
+        select s_ssl.*,service.name serviceName,s3.name supplierName from s_ssl
+        left JOIN service on service.id=s_ssl.serviceId
+        LEFT join supplier as s3 on s3.id =s_ssl.supplierId
+        where s_ssl.isDelete=1
+    </select>
+
+    <!--添加操作-->
+    <insert id="insertSsl" parameterType="com.jinyafu.jmall.entity.third.service.SslCertificate">
+        insert into s_ssl
+        (
+        id,
+        serviceId,
+        supplierId,
+        dominName,
+        company,
+        purpose,
+        expirationTime,
+        certificateBand,
+        remark,
+        isDelete,
+        serviceType
+        )
+        VALUES
+        (
+        #{id},
+        #{serviceId},
+        #{supplierId},
+        #{dominName},
+        #{company},
+        #{purpose},
+        #{expirationTime},
+        #{certificateBand},
+        #{remark},
+        #{isDelete},
+        #{serviceType}
+        )
+    </insert>
+
+    <!--编辑操作-->
+    <update id="updateSsl" parameterType="com.jinyafu.jmall.entity.third.service.SslCertificate">
+      update s_ssl SET
+        <if test="serviceId!=null and serviceId!=''">serviceId =#{serviceId},</if>
+        <if test="supplierId!=null and supplierId!=''">supplierId=#{supplierId},</if>
+        <if test="dominName!=null and dominName!=''">dominName=#{dominName},</if>
+        <if test="company!=null and company !=''">company=#{company},</if>
+        <if test="purpose!=null and purpose!=''">purpose=#{purpose},</if>
+        <if test="expirationTime!=null and expiration!=''">expirationTime=#{expirationTime},</if>
+        <if test="certificateBand!=null and certificateBand!=''">certificateBand=#{certificateBand},</if>
+        <if test="remark!= null and remark!=''">remark=#{remark},</if>
+        <if test="serviceType!=null and serviceType!=''">serviceType=#{serviceType}</if>
+        where id=#{id}
+    </update>
+
+    <!--逻辑删除-->
+    <update id="deleteSsl" parameterType="String">
+
+       UPDATE  s_ssl set isDelete=0 where id=#{id}
+    </update>
+
+    <!--getById-->
+    <select id="getById" parameterType="String" resultType="map">
+     select s1.*,s2.name serviceName,s3.name supplierName from s_ssl as s1
+        left JOIN service as s2 on s2.id=s1.serviceId
+        LEFT join supplier as s3 on s3.id =s1.supplierId
+        where s1.isDelete=1 and s1.id=#{s1.id}
+    </select>
+
+    <!--多条件查询-->
+    <select id="getByConditions" parameterType="com.jinyafu.jmall.entity.third.service.SslCertificate" resultType="map">
+           select  s1.* , s2.name  as serviceName,  s3.name supplierName FROM  s_ssl as s1
+           LEFT  JOIN  service as s2 on s2.id=s1.serviceId
+           LEFT join supplier as s3 on s3.id =s1.supplierId
+        <where>
+            s1.isDelete=1
+            <if test="company!=null and company!=''">and company LIKE concat('%',#{company},'%')</if>
+            <if test="dominName!=null and dominName!=''">and dominName like concat('%',#{dominName},'%')</if>
+        </where>
+    </select>
+</mapper>
+
+
